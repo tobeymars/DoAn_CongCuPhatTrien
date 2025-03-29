@@ -1,0 +1,19 @@
+﻿@model Phongkham.Models.Cakham
+
+@{
+    ViewData["Title"] = "Xác nhận xóa";
+    Layout = "~/Views/Shared/_LayoutDentist.cshtml";
+}
+
+<div class="container mt-4">
+    <h2 class="text-center">Xác nhận xóa</h2>
+    <p class="text-danger text-center">Bạn có chắc chắn muốn xóa ca khám vào ngày @Model.NgayDang.ToShortDateString() không?</p>
+
+    <div class="d-flex justify-content-center mt-4">
+        <form asp-action="Delete" method="post">
+            <input type="hidden" name="id" value="@Model.Id" /> <!-- Thêm trường ẩn để gửi ID -->
+            <button type="submit" class="btn btn-danger">Xóa</button>
+            <a asp-action="Index" class="btn btn-secondary ml-3"style="color: white">Hủy</a>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,88 @@
+﻿@model Phongkham.Models.dichvu
+
+@{
+    ViewData["Title"] = "Chỉnh Sửa Dịch Vụ";
+    Layout = "~/Views/Shared/_LayoutStaff.cshtml";
+}
+
+<div class="container mt-5 d-flex justify-content-center">
+    <div class="col-md-6">
+        <!-- Giới hạn chiều rộng của form -->
+        <h2 class="text-center mb-4 text-primary"><i class="fas fa-edit"></i> Chỉnh Sửa Dịch Vụ</h2>
+
+        <div class="card shadow-lg border-0 rounded" style="background: linear-gradient(135deg, #dad054 0%, #0079ff 100%);">
+            <div class="card-body">
+                <form asp-action="Edit" method="post" enctype="multipart/form-data">
+                    <input type="hidden" name="Id" value="@Model.Id" />
+
+                    <!-- Tên Dịch Vụ -->
+                    <div class="form-group mb-3">
+                        <label for="ten" class="form-label"><i class="fas fa-cogs"></i> Tên Dịch Vụ</label>
+                        <input type="text" class="form-control" id="ten" name="ten" value="@Model.ten" required maxlength="100" placeholder="Nhập tên dịch vụ" />
+                    </div>
+
+                    <!-- Mô Tả -->
+                    <div class="form-group mb-3">
+                        <label for="Description" class="form-label"><i class="fas fa-info-circle"></i> Mô Tả</label>
+                        <textarea class="form-control" id="Description" name="Description" maxlength="500" placeholder="Mô tả chi tiết về dịch vụ">@Model.Description</textarea>
+                    </div>
+                    <!-- Hinh anh -->
+                    <div class="form-group">
+                        <label asp-for="ImageUrl">Ảnh</label>
+                        <input type="file" asp-for="ImageUrl" class="form-control" />
+                    </div>
+                    <div class="col-8">
+                        <img src="@Model.ImageUrl" alt="Image" style="max-width:200px;"
+                             id="previewImage" />
+                    </div>
+                    <!-- Giá -->
+                    <div class="form-group mb-3">
+                        <label for="Price" class="form-label"><i class="fas fa-tag"></i> Giá</label>
+                        <!-- Hiển thị giá ban đầu với dấu phẩy -->
+                        <input type="text" class="form-control" id="Price" name="Price" value="@Model.Price.ToString("N0")" min="0" required placeholder="Nhập giá dịch vụ" oninput="formatPrice(this)" />
+                    </div>
+
+                    <!-- Nút Lưu và Hủy -->
+                    <div class="form-group text-center">
+                        <button type="submit" class="btn btn-success btn-lg"><i class="fas fa-save"></i> Lưu</button>
+                        <a href="@Url.Action("Index", "StaffDichVu")" class="btn btn-secondary btn-lg ms-2"><i class="fas fa-times"></i> Hủy</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Hàm định dạng giá với dấu phẩy
+    function formatPrice(input) {
+        let value = input.value.replace(/\D/g, ''); // Loại bỏ tất cả ký tự không phải số
+        if (value) {
+            value = parseInt(value, 10).toString(); // Chuyển thành số và chuyển lại thành chuỗi
+            input.value = value.replace(/\B(?=(\d{3})+(?!\d))/g, ","); // Thêm dấu phẩy vào các số
+        }
+    }
+
+    // Khi form được gửi, loại bỏ dấu phẩy khỏi giá trị trước khi gửi về server
+    document.querySelector("form").addEventListener("submit", function (e) {
+        const priceInput = document.getElementById("Price");
+        if (priceInput) {
+            // Loại bỏ dấu phẩy trước khi gửi
+            priceInput.value = priceInput.value.replace(/,/g, "");
+        }
+    });
+    document.querySelectorAll('input[type="file"]').forEach(input => {
+        input.addEventListener('change', function (event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    const img = document.getElementById("previewImage")
+                    img.src = e.target.result
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+    });
+</script>
+

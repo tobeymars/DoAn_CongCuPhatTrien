@@ -1,0 +1,212 @@
+﻿@model dynamic
+@{
+    ViewData["Title"] = "Thống kê thu nhập theo tháng và năm";
+    Layout = "~/Views/Shared/_AdLayout.cshtml";
+    var selectedMonthYear = ViewData["SelectedMonthYear"] as string;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>@ViewData["Title"]</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        h1 {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 2rem;
+        }
+
+        .container {
+            width: 90%;
+            margin: auto;
+            margin-top: 30px;
+            display: block; /* Sửa từ flex thành block */
+        }
+
+        .table-container,
+        .chart-container {
+            width: 100%; /* Đảm bảo các phần tử chiếm hết chiều rộng */
+            margin-bottom: 30px; /* Thêm khoảng cách giữa bảng và biểu đồ */
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        table, th, td {
+            border: 1px solid black;
+        }
+
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+
+        .chart-container {
+            width: 48%;
+        }
+
+        canvas {
+            width: 100% !important;
+            height: 600px !important;
+        }
+
+        .filter-container {
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .form-control {
+            margin-right: 10px;
+        }
+
+        .form-group {
+            display: inline-block; /* Đặt form-group thành inline-block để chúng nằm trên cùng 1 hàng */
+            margin-right: 10px; /* Khoảng cách giữa các phần tử */
+        }
+
+        #searchMonth {
+            width: 200px; /* Điều chỉnh chiều rộng của input */
+        }
+
+        button {
+            height: 38px; /* Chiều cao nút */
+            font-size: 1rem;
+        }
+
+        .stat-comments {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #f8f9fa;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+            .stat-comments p {
+                font-size: 14px;
+                color: #333;
+            }
+
+            .stat-comments strong {
+                color: #007bff;
+            }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="table-container">
+            <h2 style="text-align:center">Thống kê dịch vụ theo tháng</h2>
+            <div class="filter-container">
+                <form method="get" action="@Url.Action("Index", "ThongKe")">
+                    <div class="form-group">
+                        <input type="month" id="searchMonth" name="monthYear" class="form-control"
+                               value="@DateTime.Now.ToString("yyyy-MM")" placeholder="Tìm kiếm theo tháng và năm" />
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary">Lọc</button>
+                    </div>
+                </form>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>STT</th>
+                        <th>Dịch vụ</th>
+                        <th>Giá</th>
+                        <th>Số lần</th>
+                        <th>Tổng Tiền</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @{
+                        int stt = 1;
+                        decimal tongTatCaTien = 0;
+                        foreach (var item in Model.Result)
+                        {
+                            tongTatCaTien += item.TongTien;
+                            <tr>
+                                <td>@stt</td>
+                                <td>@item.TenDichvu</td>
+                                <td>@item.GiaDichvu.ToString("N0")</td>
+                                <td>@item.SoLan</td>
+                                <td>@item.TongTien.ToString("N0")đ</td>
+                            </tr>
+                            stt++;
+                        }
+                    }
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="4" style="text-align: center; font-weight: bold;">Doanh thu tháng:</td>
+                        <td>@tongTatCaTien.ToString("N0")đ</td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+        <!-- Biểu đồ thu nhập -->
+        <div class="chart-container">
+            <h2 style="text-align:center;">Biểu đồ thu nhập tháng</h2>
+            <canvas id="thuNhapChart"></canvas>
+        </div>
+    </div>
+    <div class="stat-comments">
+        <p><strong>Nhận xét:</strong></p>
+        <p>Đây là tổng hợp doanh thu từ các dịch vụ trong tháng. Tổng doanh thu đạt được là <strong>@Model.TongTatCaTien.ToString("N0")đ</strong>, bao gồm các dịch vụ phổ biến như:</p>
+
+        @foreach (var service in Model.MaxRevenueServices)
+        {
+            <p><strong>@service.TenDichvu</strong> với số lần sử dụng là <strong>@service.SoLan</strong>.</p>
+        }
+
+        <p>Các dịch vụ này đóng góp vào tổng doanh thu tháng này và cho thấy sự hiệu quả trong việc cung cấp các dịch vụ.</p>
+    </div>
+    <script>
+        var ctx = document.getElementById('thuNhapChart').getContext('2d');
+        var thuNhapData = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model.Result));
+
+        var labels = thuNhapData.map(function (item) { return item.TenDichvu; });
+        var data = thuNhapData.map(function (item) { return item.TongTien; });
+
+        var chart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: 'Thu nhập (VND)',
+                    data: data,
+                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        ticks: {
+                            callback: function (value) {
+                                return value === 0 ? '0đ' : value.toLocaleString() + 'đ';
+                            }
+                        }
+                    }
+                },
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    tooltip: {
+                        callbacks: {
+                            label: function (tooltipItem) {
+                                var value = tooltipItem.raw;
+                                return value === 0 ? '0đ' : value.toLocaleString() + 'đ';
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

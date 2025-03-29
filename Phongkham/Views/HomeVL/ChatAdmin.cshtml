@@ -1,0 +1,271 @@
+﻿<head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/3.1.12/signalr.min.js"></script>
+    <style>
+        /* Đặt lại margin và padding cho html và body */
+        html, body {
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Khung chứa chính */
+        .chat-container {
+            display: flex;
+            width: 100%;
+            height: 100vh;
+            background-color: #1c1c1c;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Danh sách người dùng ở bên trái */
+        #userList {
+            width: 25%;
+            border-right: 1px solid #333;
+            background-color: #262626;
+            padding: 10px;
+            overflow-y: auto;
+        }
+
+        /* Tên người dùng trong danh sách */
+        #userListItems li {
+            cursor: pointer;
+            padding: 10px;
+            border-radius: 4px;
+            margin-bottom: 5px;
+            list-style: none;
+            color: #e1e1e1;
+            background-color: #333;
+        }
+
+            #userListItems li:hover {
+                background-color: #444;
+            }
+
+        /* Hộp tin nhắn bên phải */
+        #userMessagesList {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            padding: 0;
+            background-color: #121212;
+        }
+
+        /* Khu vực tin nhắn */
+        #chatBox {
+            flex: 1;
+            padding: 15px;
+            overflow-y: auto;
+        }
+
+        /* Tin nhắn của người dùng (căn phải) */
+        .admin-message {
+            background-color: #0078ff;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 15px;
+            margin: 10px 0;
+            max-width: 60%;
+            text-align: left;
+            margin-left: auto; /* Đẩy tin nhắn sang phải */
+            border-top-right-radius: 0; /* Tùy chọn: Bo góc trên phải */
+        }
+
+        /* Tin nhắn của admin (căn trái) */
+        .user-message {
+            background-color: #333;
+            color: #e1e1e1;
+            padding: 10px 15px;
+            border-radius: 15px;
+            margin: 10px 0;
+            max-width: 60%;
+            text-align: left;
+            border-top-left-radius: 0; /* Tùy chọn: Bo góc trên trái */
+        }
+
+
+        /* Khung nhập tin nhắn */
+        .inputt-container {
+            display: flex;
+            padding: 10px;
+            border-top: 1px solid #333;
+            background-color: #1c1c1c;
+        }
+
+        /* Ô nhập và nút gửi */
+        #replyInput {
+            flex: 1;
+            padding: 10px;
+            border-radius: 20px;
+            border: 1px solid #333;
+            background-color: #262626;
+            color: #e1e1e1;
+            outline: none;
+            font-size: 14px;
+            margin-right: 10px;
+        }
+
+        .send-button {
+            background-color: #0078ff;
+            color: #ffffff;
+            border: none;
+            border-radius: 20px;
+            padding: 10px 15px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+            .send-button:hover {
+                background-color: #0066cc;
+            }
+    </style>
+</head>
+
+<body>
+    <div class="chat-container">
+        <!-- Danh sách người dùng ở bên trái -->
+        <div id="userList">
+            <h3>Tin nhắn</h3>
+            <ul id="userListItems"></ul>
+        </div>
+
+        <!-- Hộp tin nhắn ở bên phải -->
+        <div id="userMessagesList">
+            <div id="chatBox"></div>
+            <div class="inputt-container">
+                <textarea type="text" id="replyInput" placeholder="Nhập tin nhắn..."></textarea>
+                <button class="send-button" onclick="sendMessageToUser()">Gửi</button>
+            </div>
+        </div>
+
+        <script type="text/javascript">
+            const connection = new signalR.HubConnectionBuilder().withUrl("/chathub").build();
+            const chatHistory = {};
+            let currentUserId = null;
+            const userEmails = {};
+
+            // Tải danh sách người dùng đã từng nhắn tin với Admin
+            function loadUserList() {
+                $.getJSON("/Chat/GetUserList", function (data) {
+                    data.forEach(userId => {
+                        fetchUserEmailAndAddToList(userId);
+                    });
+                });
+            }
+
+            // Tải lịch sử tin nhắn của người dùng khi nhấn vào danh sách
+            function loadChatHistory(userId) {
+                $.getJSON(`/Chat/GetChatHistory?userId=${userId}`, function (data) {
+                    chatHistory[userId] = data.map(msg => ({
+                        sender: msg.senderId === userId ? (userEmails[userId] || `User ${userId}`) : "Admin",
+                        message: msg.messageContent
+                    }));
+                    displayMessages(userId);
+                });
+            }
+
+            // Nhận tin nhắn từ người dùng và thêm vào chatHistory
+            connection.on("ReceiveMessageFromUser", async (userId, message) => {
+                if (!chatHistory[userId]) {
+                    chatHistory[userId] = [];
+                }
+
+                // Kiểm tra và lấy email nếu chưa có
+                if (!userEmails[userId]) {
+                    await fetchUserEmailAndAddToList(userId);
+                }
+
+                const sender = userEmails[userId] || `User ${userId}`;
+                chatHistory[userId].push({ sender: sender, message: message });
+
+                if (currentUserId === userId) {
+                    displayMessages(userId);
+                }
+            });
+
+            // Kết nối SignalR
+            connection.start().then(() => {
+                console.log("Admin connected to SignalR");
+                loadUserList(); // Tải danh sách người dùng khi kết nối
+            }).catch(err => console.error("Connection failed:", err));
+
+            // Hàm lấy email người dùng và thêm vào danh sách
+            async function fetchUserEmailAndAddToList(userId) {
+                try {
+                    const response = await fetch(`/users/getEmailById?userId=${userId}`);
+                    if (response.ok) {
+                        const userEmail = await response.text();
+                        userEmails[userId] = userEmail;
+                        addUserToList(userId, userEmail);
+                    } else {
+                        console.error("Lỗi khi lấy email người dùng");
+                    }
+                } catch (error) {
+                    console.error("Lỗi kết nối API:", error);
+                }
+            }
+
+            // Thêm người dùng vào danh sách hiển thị bên trái
+            function addUserToList(userId, userEmail) {
+                if (!document.getElementById(`user-${userId}`)) { // Kiểm tra trùng lặp
+                    const userListItem = document.createElement("li");
+                    userListItem.id = `user-${userId}`;
+                    userListItem.textContent = userEmail || `User ${userId}`; // Hiển thị email hoặc UserId dự phòng
+
+                    userListItem.onclick = () => {
+                        currentUserId = userId;
+                        if (!chatHistory[userId]) {
+                            chatHistory[userId] = [];
+                            loadChatHistory(userId); // Tải lịch sử khi chọn người dùng
+                        } else {
+                            displayMessages(userId);
+                        }
+                    };
+
+                    document.getElementById("userListItems").appendChild(userListItem);
+                }
+            }
+
+            // Hiển thị tin nhắn cho người dùng hiện tại
+            function displayMessages(userId) {
+                const chatBox = document.getElementById("chatBox");
+                chatBox.innerHTML = ""; // Xóa nội dung cũ
+                chatHistory[userId].forEach(msg => {
+                    const msgDiv = document.createElement("div");
+                    msgDiv.className = msg.sender === "Admin" ? "admin-message" : "user-message";
+                    msgDiv.innerHTML = `<strong>${msg.sender}:</strong> ${msg.message}`;
+                    chatBox.appendChild(msgDiv);
+                });
+                chatBox.scrollTop = chatBox.scrollHeight;
+            }
+
+            // Hàm gửi tin nhắn tới người dùng cụ thể
+            function sendMessageToUser() {
+                const message = document.getElementById("replyInput").value.trim();
+                if (currentUserId && message) {
+                    connection.invoke("SendMessageToUser", currentUserId, message)
+                        .then(() => {
+                            chatHistory[currentUserId].push({ sender: "Admin", message: message });
+                            displayMessages(currentUserId);
+                            document.getElementById("replyInput").value = ''; // Xóa input sau khi gửi
+                        })
+                        .catch(err => console.error("Failed to send message:", err));
+                } else if (!currentUserId) {
+                    alert("Vui lòng chọn một người dùng để gửi tin nhắn.");
+                } else {
+                    alert("Vui lòng nhập tin nhắn trước khi gửi.");
+                }
+            }
+
+            // Lắng nghe sự kiện nhấn phím Enter trên textarea
+            document.getElementById("replyInput").addEventListener("keydown", function (event) {
+                if (event.key === "Enter" && !event.shiftKey) {
+                    event.preventDefault();
+                    sendMessageToUser();
+                }
+            });
+        </script>
+
+    </div>
+</body>

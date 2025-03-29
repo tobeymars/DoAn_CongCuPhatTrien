@@ -1,0 +1,323 @@
+﻿@{
+    ViewData["Title"] = "Lịch Khám Nha Sĩ";
+    Layout = "~/Views/Shared/_LayoutDentist.cshtml";
+}
+<h2 class="page-title">Lịch Khám Nha Sĩ</h2>
+
+<div class="filter-container">
+    <form method="get" action="@Url.Action("Index", "HomeDT")" class="filter-form">
+        <div class="form-group">
+            <input type="month" id="searchMonth" name="monthYear" class="form-control"
+                   value="@ViewBag.SelectedMonthYear" placeholder="Tìm kiếm theo tháng và năm" />
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary">Lọc</button>
+        </div>
+    </form>
+</div>
+
+<div class="charts-container">
+    <!-- Biểu đồ 1 - Số ngày có lịch và chưa có lịch -->
+    <div class="chart-card">
+        <canvas id="appointmentsByDayChart" width="300" height="300"></canvas>
+        <p class="chart-title">Số Ngày Có Lịch</p>
+    </div>
+
+    <!-- Biểu đồ 2 - Số khung giờ có lịch và chưa có lịch -->
+    <div class="chart-card">
+        <canvas id="appointmentsByTimeSlotChart" width="300" height="300"></canvas>
+        <p class="chart-title">Số Khung Giờ Có Lịch</p>
+    </div>
+</div>
+
+<!-- Container chứa 2 bảng -->
+<div class="table-container">
+    <!-- Bảng dữ liệu - Nửa đầu tháng -->
+    <div class="data-table-container">
+        <h3>Nửa Đầu Tháng</h3>
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th>Ngày</th>
+                    <th>Số Giờ Làm Được</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in ViewBag.FirstHalf)
+                {
+                    <tr>
+                        <td>@item.Day.ToString("dd/MM/yyyy")</td>
+                        <td>@item.HoursWorked</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Bảng dữ liệu - Nửa cuối tháng -->
+    <div class="data-table-container">
+        <h3>Nửa Cuối Tháng</h3>
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th>Ngày</th>
+                    <th>Số Giờ Làm Được</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in ViewBag.SecondHalf)
+                {
+                    <tr>
+                        <td>@item.Day.ToString("dd/MM/yyyy")</td>
+                        <td>@item.HoursWorked</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- Nhận xét về giờ làm việc -->
+<div class="remarks-container">
+    @if (ViewBag.TotalHours >= 200)
+    {
+        <p class="remark-text remark-highlight">
+            Vượt tiêu chuẩn, chúc mừng bạn đã làm trên 200 giờ! Được thưởng!Bạn đã chứng tỏ sự cống hiến và chăm chỉ trong công việc. Tiếp tục duy trì phong độ và chúc bạn có thêm nhiều thành công trong thời gian tới!
+        </p>
+    }
+    else if (ViewBag.TotalHours >= 192)
+    {
+        <p class="remark-text remark-good">
+            Đạt tiêu chuẩn, làm tốt! Cố gắng duy trì.
+            Bạn đã hoàn thành tốt nhiệm vụ và đạt tiêu chuẩn yêu cầu. Tuy nhiên, vẫn có thể làm thêm một chút nữa để vượt qua mục tiêu. Chúc bạn tiếp tục duy trì năng suất công việc này!
+        </p>
+    }
+    else
+    {
+        <p class="remark-text remark-low">
+            Chưa đạt tiêu chuẩn, cần cải thiện giờ làm việc.
+            Bạn chưa đạt được tiêu chuẩn giờ làm việc yêu cầu. Hãy cố gắng sắp xếp thời gian hợp lý hơn để đạt được mục tiêu trong những tháng tới. Đừng bỏ cuộc, bạn hoàn toàn có thể cải thiện!
+        </p>
+    }
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    // Dữ liệu từ ViewBag
+    var totalDays = @ViewBag.TotalDaysWithAppointments;
+    var totalHours = @ViewBag.TotalHours;
+    var daynotwork = @ViewBag.TotalDaysWithoutAppointments;
+    var totalHoursInMonth = @ViewBag.TotalHoursInMonth;
+
+    // Biểu đồ tròn cho số ngày có lịch và chưa có lịch
+    var ctx1 = document.getElementById('appointmentsByDayChart').getContext('2d');
+    var appointmentsByDayChart = new Chart(ctx1, {
+        type: 'pie',
+        data: {
+            labels: ['Ngày làm được', 'Còn lại'],
+            datasets: [{
+                label: 'Ngày trong tháng',
+                data: [totalDays, daynotwork], // Tổng số ngày trong tháng trừ số ngày có lịch
+                backgroundColor: ['#81C784', '#FFB74D'], // Màu sắc nhẹ nhàng
+                borderColor: ['#81C784', '#FFB74D'],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    position: 'top',
+                    labels: {
+                        font: {
+                            size: 16,
+                            family: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif"
+                        },
+                        color: '#333'
+                    }
+                }
+            }
+        }
+    });
+
+    // Biểu đồ tròn cho số khung giờ có lịch và chưa có lịch
+    var ctx2 = document.getElementById('appointmentsByTimeSlotChart').getContext('2d');
+    var appointmentsByTimeSlotChart = new Chart(ctx2, {
+        type: 'pie',
+        data: {
+            labels: ['Giờ làm được', 'Còn lại'],
+            datasets: [{
+                label: 'Giờ trong tháng',
+                data: [totalHours, totalHoursInMonth - totalHours], // Tổng số khung giờ trong tháng trừ số khung giờ có lịchbackgroundColor: ['#FFB74D', '#81C784'], // Màu sắc nhẹ nhàng
+                borderColor: ['#FFB74D', '#81C784'],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    position: 'top',
+                    labels: {
+                        font: {
+                            size: 16,
+                            family: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif"
+                        },
+                        color: '#333'
+                    }
+                }
+            }
+        }
+    });
+</script>
+
+<style>
+    /* Trang trí cho tiêu đề */
+    .page-title {
+        text-align: center;
+        font-size: 36px;
+        font-weight: 700;
+        margin-bottom: 40px;
+        color: #333;
+        text-transform: uppercase;
+    }
+
+    /* Thiết kế cho phần lọc */
+    .filter-container {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 50px;
+    }
+
+    .filter-form {
+        display: flex;
+        justify-content: space-between;
+        gap: 20px;
+        align-items: center;
+    }
+
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+    .form-control {
+        padding: 10px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        width: 250px;
+    }
+
+    .btn-primary {
+        background-color: #007bff;
+        color: #fff;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    /* Thiết kế cho các biểu đồ */
+    .charts-container {
+        display: flex;
+        justify-content: space-evenly;
+        gap: 40px;
+        flex-wrap: wrap;
+    }
+
+    .chart-card {
+        flex: 1 1 45%;
+        max-width: 350px;
+        text-align: center;
+        border-radius: 12px;
+        background-color: #f4f4f4;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        padding: 30px;
+        transition: transform 0.3s;
+        margin-bottom: 20px;
+    }
+
+    .chart-title {
+        color: #333;
+        font-size: 20px;
+        font-weight: 600;
+        margin-top: 20px;
+    }
+
+    /* Container chứa 2 bảng, sử dụng Flexbox để sắp xếp ngang */
+    .table-container {
+        display: flex;
+        justify-content: space-between;
+        gap: 20px; /* Khoảng cách giữa hai bảng */
+    }
+
+    /* Căn chỉnh bảng trong mỗi container */
+    .data-table-container {
+        width: 48%; /* Mỗi bảng chiếm 1 nửa chiều rộng của container */
+        border: 1px solid #ccc;
+        padding: 10px;
+        box-sizing: border-box;
+    }
+
+    /* Căn chỉnh bảng */
+    .data-table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+        .data-table th, .data-table td {
+            padding: 8px;
+            text-align: center;
+            border: 1px solid #ddd;
+        }
+
+        .data-table th {
+            background-color: #f2f2f2;
+        }
+
+    .btn-primary:hover {
+        background-color: #0056b3;
+    }
+    /* Container cho phần nhận xét */
+    .remarks-container {
+        margin-top: 30px;
+        text-align: center;
+        padding: 20px;
+    }
+
+    /* Phần nhận xét chung */
+    .remark-text {
+        font-size: 18px;
+        font-weight: bold;
+        padding: 15px;
+        border-radius: 8px;
+        color: #fff;
+        transition: all 0.3s ease;
+    }
+
+    /* Khi đạt hoặc vượt tiêu chuẩn (hình thức nổi bật) */
+    .remark-highlight {
+        background-color: #4CAF50; /* Màu xanh lá tươi sáng */
+        border: 2px solid #388E3C; /* Màu xanh đậm cho viền */
+        box-shadow: 0 4px 12px rgba(0, 128, 0, 0.3);
+    }
+
+    /* Khi đạt tiêu chuẩn */
+    .remark-good {
+        background-color: #FF9800; /* Màu cam */
+        border: 2px solid #FB8C00; /* Màu cam đậm cho viền */
+        box-shadow: 0 4px 12px rgba(255, 152, 0, 0.3);
+    }
+
+    /* Khi chưa đạt tiêu chuẩn */
+    .remark-low {
+        background-color: #F44336; /* Màu đỏ */
+        border: 2px solid #D32F2F; /* Màu đỏ đậm cho viền */
+        box-shadow: 0 4px 12px rgba(244, 67, 54, 0.3);
+    }
+
+    /* Hiệu ứng hover để làm nổi bật khi di chuột vào */
+    .remark-text:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    }
+</style>

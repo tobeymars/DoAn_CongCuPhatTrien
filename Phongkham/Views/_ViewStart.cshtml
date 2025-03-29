@@ -1,0 +1,28 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using Phongkham.Models
+
+@{
+    var userManager = Context.RequestServices.GetService<UserManager<ApplicationUser>>();
+    var user = await userManager.GetUserAsync(User);
+    string selectedLayout = "~/Views/Shared/_LayoutVL.cshtml"; // Layout mặc định
+
+    if (user != null)
+    {
+        var roles = await userManager.GetRolesAsync(user);
+
+        if (roles.Contains("Admin"))
+        {
+            selectedLayout = "~/Views/Shared/_AdLayout.cshtml"; // Layout cho Admin
+        }
+        else if (roles.Contains("Dentist"))
+        {
+            selectedLayout = "~/Views/Shared/_LayoutDentist.cshtml"; // Layout cho Dentist
+        }
+        else if (roles.Contains("Patient"))
+        {
+            selectedLayout = "~/Views/Shared/_Layout.cshtml"; // Layout cho Patient
+        }
+    }
+
+    Layout = selectedLayout;
+}

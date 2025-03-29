@@ -1,0 +1,35 @@
+﻿@model List<Phongkham.ViewModels.QuestionWithAnswersViewModel>
+
+<h2>Questions and Answers</h2>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Ask a New Question</a>
+</p>
+
+@foreach (var question in Model)
+{
+    <div>
+        <h3>Question:</h3>
+        <p>@question.QuestionContent</p>
+        <p><strong>Asked by:</strong> @question.PatientName on @question.DateAsked.ToString("dd/MM/yyyy")</p>
+
+        @if (question.IsAnswered)
+        {
+            <h4>Answers:</h4>
+            @foreach (var answer in question.Answers)
+            {
+                <div>
+                    <p>@answer.Content</p>
+                    <p><strong>Answered by:</strong> @answer.DentistName on @answer.DateAnswered.ToString("dd/MM/yyyy")</p>
+                </div>
+            }
+        }
+        else
+        {
+            <p><em>This question has not been answered yet.</em></p>
+            <p>
+                <a asp-action="Answer" asp-route-questionId="@question.Id" class="btn btn-secondary">Answer this Question</a>
+            </p>
+        }
+    </div>
+}

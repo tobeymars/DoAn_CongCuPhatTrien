@@ -1,0 +1,83 @@
+﻿@{
+    ViewData["Title"] = "Danh Sách Lịch Khám Của Tôi";
+    Layout = "~/Views/Shared/_LayoutDentist.cshtml";
+    var currentUserFullName = ViewData["CurrentUserFullName"] as string;
+    var phieuKhams = ViewData["PhieuKhams"] as IEnumerable<dynamic>; // Danh sách phiếu khám
+}
+<div class="container mt-5">
+    <h2 class="text-center mb-4 text-primary font-weight-bold">Danh Sách Lịch Khám</h2>
+    <!-- Form lọc ngày -->
+    <div class="row justify-content-center mb-4">
+        <div class="col-md-8 pr-0">
+            <form method="get" action="@Url.Action("IndexLK")" class="d-flex align-items-center">
+                <div class="form-group mb-0 mr-2">
+                    <input type="date" id="ngayKham" name="ngayKham" class="form-control" value="@ViewData["SelectedDate"]" />
+                </div>
+                <button type="submit" class="btn btn-outline-primary ml-2"> <i class="fas fa-search"></i>  Lọc
+                    </button>
+                <!-- Nút 'Tất cả' để xem tất cả ca khám với icon -->
+                <a href="@Url.Action("IndexLK", "HomeDT")" class="btn btn-secondary ml-4" style="color:white;">
+                    <i class="fas fa-list"></i>  Tất cả
+                </a>
+            </form>
+        </div>
+    </div>
+    <!-- Card hiển thị danh sách lịch khám -->
+    <div class="card shadow-lg border-0">
+        <div class="card-body">
+            @if (ViewData["LichKhams"] == null || !((IEnumerable<dynamic>)ViewData["LichKhams"]).Any())
+            {
+                <div class="alert alert-info text-center">Chưa có lịch khám.</div>
+            }
+            else
+            {
+                var lichKhams = ViewData["LichKhams"] as IEnumerable<dynamic>;
+                <div class="table-responsive">
+                    <table class="table table-striped table-bordered">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th>Tên Bệnh Nhân</th>
+                                <th>Ngày Khám</th>
+                                <th>Giờ Khám</th>
+                                <th>Phòng Khám</th>
+                                <th>Số Điện Thoại</th>
+                                <th>Hành động</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in lichKhams)
+                            {
+                                <tr>
+                                    <td>@item.TenBenhNhan</td>
+                                    <td>@item.LichKhamNgay</td>
+                                    <td>@item.LichKhamGio</td>
+                                    <td>@item.PhongKham</td>
+                                    <td>@item.LichKhamPhone</td>
+                                    <td>
+                                        <div class="d-flex justify-content-start">
+                                            @* Tạo Phiếu Khám *@
+                                            @if (phieuKhams != null && !phieuKhams.Any(phieu => phieu.TenBenhNhan == item.TenBenhNhan
+                                           && phieu.TenNhaSi == currentUserFullName
+                                           && phieu.NgayKham == item.LichKhamNgay
+                                           && phieu.KhungGio == item.LichKhamGio))
+                                            {
+                                                <button class="btn btn-primary btn-sm me-2"
+                                                        onclick="window.location.href='@Url.Action("Create", "PhieuKham", new { tenBenhNhan = item.TenBenhNhan, tenNhaSi = currentUserFullName, khunggio = item.LichKhamGio, source = item.Source, lichKhamId = item.LichKhamId })'">
+                                                    Tạo Phiếu Khám
+                                                </button>
+                                            }
+                                            else
+                                            {
+                                                <span class="text-danger me-2">Đã có phiếu khám</span>
+                                            }
+                                        </div>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            }
+        </div>
+    </div>
+</div>

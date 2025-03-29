@@ -1,0 +1,199 @@
+﻿@model IEnumerable<dynamic>
+
+@{
+    ViewData["Title"] = "Danh Sách Phiếu Khám";
+    Layout = "~/Views/Shared/_LayoutStaff.cshtml";
+    var tenBenhNhan = Context.Request.Query["TenBenhNhan"].ToString();
+    var ngayKham = Context.Request.Query["NgayKham"].ToString();
+}
+
+<h2 class="pro-vip-title">@ViewData["Title"]</h2>
+<!-- Form Lọc -->
+<form method="get" asp-action="Index" class="filter-form">
+    <div class="form-group row">
+        <div class="col">
+            <label for="TenBenhNhan">Tên Bệnh Nhân</label>
+            <input type="text" id="TenBenhNhan" name="TenBenhNhan" class="form-control" value="@Context.Request.Query["TenBenhNhan"]" placeholder="Nhập tên bệnh nhân" />
+        </div>
+        <div class="col">
+            <label for="NgayKham">Ngày Khám</label>
+            <input type="date" id="NgayKham" name="NgayKham" class="form-control" value="@Context.Request.Query["NgayKham"]" />
+        </div>
+    </div>
+    <div class="form-group d-flex justify-content-center">
+        <button type="submit" class="btn btn-primary" style="margin-right:20px"><i class="fas fa-search"></i> Lọc</button>
+        <a href="@Url.Action("Index", "StaffPhieukham")" class="btn btn-secondary">
+            <i class="fas fa-list"></i> Tất cả
+        </a>
+    </div>
+</form>
+
+@if (Model == null || !Model.Any())
+{
+    <div class="alert alert-warning" role="alert">
+        Không có phiếu khám sau khi lọc!
+    </div>
+}
+else
+{
+    <table class="table pro-vip-table">
+        <thead>
+            <tr>
+                <th>Khách</th>
+                <th>Nha sĩ</th>
+                <th>Ngày Khám</th>
+                <th>Dịch Vụ</th>
+                <th>Giá</th>
+                <th>Tổng Tiền</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var group in Model)
+            {
+                <tr>
+                    <td>
+                        <p>@group.PhieuKham.TenBenhNhan</p>
+                    </td>
+                    <td>
+                        <p>@group.PhieuKham.TenNhaSi</p>
+                    </td>
+                    <td>
+                        <p>@group.PhieuKham.NgayKham.ToString("dd/MM/yyyy")</p>
+                    </td>
+                    <td>
+                        <ul>
+                            @foreach (var dichvu in group.Dichvus)
+                            {
+                                <li>@dichvu.ten</li>
+                            }
+                        </ul>
+                    </td>
+                    <td>
+                        <ul>
+                            @foreach (var dichvu in group.Dichvus)
+                            {
+                                <li>@dichvu.Price.ToString("C0", new System.Globalization.CultureInfo("vi-VN"))</li>
+                            }
+                        </ul>
+                    </td>
+                    <td>
+                        @group.TotalPrice.ToString("C0", new System.Globalization.CultureInfo("vi-VN"))
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+<style>
+    .pro-vip-title {
+        font-size: 2em;
+        color: #4CAF50;
+        margin: 10px;
+        text-align: center;
+        font-weight: bold;
+    }
+
+    .pro-vip-table {
+        width: 80%;
+        margin: 0 auto; /* Center the table */
+        border-collapse: collapse;
+        font-size: 1em; /* Smaller font size */
+        font-family: 'Arial', sans-serif;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    }
+
+        .pro-vip-table thead tr {
+            background-color: #009879;
+            color: #ffffff;
+            text-align: left;
+        }
+
+        .pro-vip-table th,
+        .pro-vip-table td {
+            padding: 8px 10px; /* Smaller padding */
+            border: 1px solid #dddddd; /* Add border to table cells */
+        }
+
+        .pro-vip-table tbody tr {
+            border-bottom: 1px solid #dddddd;
+        }
+
+            .pro-vip-table tbody tr:nth-of-type(even) {
+                background-color: #f3f3f3;
+            }
+
+            .pro-vip-table tbody tr:last-of-type {
+                border-bottom: 2px solid #009879;
+            }
+
+            .pro-vip-table tbody tr:hover {
+                background-color: #f1f1f1;
+            }
+
+    /* Form styling */
+    .filter-form {
+        max-width: 900px;
+        margin: 20px auto;
+        padding: 20px;
+        background-color: #f9f9f9;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+        .filter-form .form-group {
+            margin-bottom: 15px;
+        }
+
+            .filter-form .form-group.row {
+                display: flex;
+                justify-content: space-between;
+                gap: 20px;
+            }
+
+        .filter-form .col {
+            flex: 1;
+        }
+
+        .filter-form label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .filter-form .form-control {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 1em;
+        }
+
+            .filter-form .form-control:focus {
+                border-color: #4CAF50;
+                outline: none;
+            }
+
+        .filter-form .btn {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            font-size: 1.1em;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+            .filter-form .btn:hover {
+                background-color: #45a049;
+            }
+
+    .alert {
+        margin-top: 20px;
+        color: #856404;
+        background-color: #fff3cd;
+        border-color: #ffeeba;
+    }
+</style>

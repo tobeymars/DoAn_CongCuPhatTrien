@@ -1,0 +1,199 @@
+﻿@model List<Phongkham.Models.LichKhamVL>
+
+@{
+    ViewData["Title"] = "Tìm kiếm lịch khám";
+    var savedPhoneNumber = TempData["PhoneNumber"] as string;
+}
+
+<div class="container mt-5">
+    <h2 class="text-center">Tìm kiếm lịch khám</h2>
+    @if (ViewBag.Message != null)
+    {
+        <div class="alert alert-warning" role="alert">
+            @ViewBag.Message
+        </div>
+    }
+    <!-- Form tìm kiếm -->
+    <form asp-action="Search" method="post" class="mb-4" id="searchForm" style="max-width: 500px; margin: 0 auto;">
+        <div class="form-group">
+            <label for="phone" class="font-weight-bold">Nhập số điện thoại:</label>
+            <input type="text" name="phone" class="form-control" placeholder="Số điện thoại" value="@savedPhoneNumber" required />
+        </div>
+        <div class="d-flex justify-content-between mt-3">
+            <button type="submit" class="btn btn-primary w-48">
+                <i class="fas fa-search"></i> Tìm kiếm
+            </button>
+            <a class="btn btn-info w-48" href="/DLKVL/Create" style="color: white;">
+                <i class="fas fa-plus-circle"></i> Thêm mới
+            </a>
+        </div>
+    </form>
+
+    @if (ViewBag.SearchPerformed != null && ViewBag.SearchPerformed == true)
+    {
+        <h3 class="text-center mb-3">Kết quả tìm kiếm</h3>
+
+        @if (Model == null || !Model.Any())
+        {
+            <div class="alert alert-warning" role="alert">
+                Không tìm thấy lịch khám nào cho số điện thoại này.
+            </div>
+        }
+        else
+        {
+            <table class="table table-hover table-bordered" id="lichDatTable">
+                <thead class="thead-dark">
+                    <tr>
+                        <th class="text-left">
+                            Người đặt
+                            <button class="btn btn-link p-0" onclick="sortTable(1)" style="float: right;">
+                                <i class="fas fa-sort"></i>
+                            </button>
+                        </th>
+                        <th class="text-left">
+                            Ngày Đặt
+                            <button class="btn btn-link p-0" onclick="sortTable(2)" style="float: right;">
+                                <i class="fas fa-sort"></i>
+                            </button>
+                        </th>
+                        <th class="text-left">
+                            Số điện thoại
+                            <button class="btn btn-link p-0" onclick="sortTable(3)" style="float: right;">
+                                <i class="fas fa-sort"></i>
+                            </button>
+                        </th>
+                        <th class="text-left">
+                            Trạng thái
+                            <button class="btn btn-link p-0" onclick="sortTable(4)" style="float: right;">
+                                <i class="fas fa-sort"></i>
+                            </button>
+                        </th>
+                        <th class="text-left">
+                            Khung Giờ
+                            <button class="btn btn-link p-0" onclick="sortTable(5)" style="float: right;">
+                                <i class="fas fa-sort"></i>
+                            </button>
+                        </th>
+                        <th class="text-left">
+                            Nha sĩ
+                        </th>
+                        <!-- Thêm cột Thao tác -->
+                        <th class="text-center">Thao tác</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var lichKham in Model)
+                    {
+                        <tr>
+                            <td>@lichKham.UserName</td>
+                            <td>@lichKham.NgayDat.ToString("dd/MM/yyyy")</td>
+                            <td>@lichKham.phone</td>
+                            <td>@lichKham.TrangThai</td>
+                            <td>@(lichKham.KhungGio != null ? lichKham.KhungGio.TimeSlot : "Không có khung giờ")</td>
+                            <td>
+                                @if (lichKham.ClichkhamVL != null && lichKham.ClichkhamVL.Any())
+                                {
+                                    foreach (var ct in lichKham.ClichkhamVL)
+                                    {
+                                        <span>@ct.TenNhaSi</span>
+                                        <br /> <!-- Hiển thị từng tên nha sĩ, có thể có nhiều nha sĩ -->
+                                    }
+                                }
+                                else
+                                {
+                                    <span class="text-danger">Đang chờ</span> <!-- Hiển thị thông báo nếu không có nha sĩ nào -->
+                                }
+                            </td>
+                            <!-- Cột thao tác với nút sửa -->
+                            <td class="text-center">
+                                <a href="@Url.Action("Edit", "DLKVL", new { id = lichKham.Id })" class="btn btn-warning btn-sm" style=" color:white">
+                                    <i class="fas fa-edit"></i> Sửa
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+            <!-- CSS bổ sung cho bảng -->
+            <style>
+                table th, table td {
+                    vertical-align: middle;
+                    font-size: 14px;
+                }
+
+                /* Thêm màu nền cho các thẻ td */
+                table td {
+                    background-color: #f8f9fa; /* Màu nền cho thẻ td */
+                }
+
+                /* Tạo hiệu ứng cho nút Sửa */
+                .btn-warning {
+                    transition: background-color 0.3s ease;
+                }
+
+                    .btn-warning:hover {
+                        background-color: #ffcc00;
+                    }
+
+                /* Tăng độ nét cho các đầu bảng */
+                table th {
+                    font-weight: bold;
+                    background-color: #343a40;
+                    color: white;
+                }
+            </style>
+        }
+    }
+    else
+    {
+        <div class="alert alert-info" role="alert">
+            Vui lòng thực hiện tìm kiếm.
+        </div>
+    }
+</div>
+
+
+<script>
+    function sortTable(columnIndex) {
+        var table = document.getElementById("lichDatTable");
+        var tbody = table.getElementsByTagName("tbody")[0];
+        var rows = Array.from(tbody.getElementsByTagName("tr"));
+        var ascending = true;
+
+        // Kiểm tra xem có cần sắp xếp tăng dần hay không
+        if (tbody.getAttribute("data-sorted-column") == columnIndex && tbody.getAttribute("data-sorted-order") == "asc") {
+            ascending = false;
+        }
+
+        // Sắp xếp dựa vào chỉ số cột
+        rows.sort(function (a, b) {
+            var cellA = a.getElementsByTagName("td")[columnIndex].innerText;
+            var cellB = b.getElementsByTagName("td")[columnIndex].innerText;
+
+            // Xử lý định dạng ngày tháng nếu là cột ngày đặt
+            if (columnIndex === 2) {
+                var dateA = new Date(cellA.split('/').reverse().join('-'));
+                var dateB = new Date(cellB.split('/').reverse().join('-'));
+                return ascending ? dateA - dateB : dateB - dateA;
+            } else {
+                return ascending ? cellA.localeCompare(cellB) : cellB.localeCompare(cellA);
+            }
+        });
+
+        // Thêm lại các hàng đã sắp xếp vào tbody
+        rows.forEach(function (row) {
+            tbody.appendChild(row);
+        });
+
+        // Cập nhật thông tin cột đã sắp xếp
+        tbody.setAttribute("data-sorted-column", columnIndex);
+        tbody.setAttribute("data-sorted-order", ascending ? "asc" : "desc");
+    }
+    window.onload = function () {
+        var phoneInput = document.querySelector('input[name="phone"]');
+        if (phoneInput.value.trim() !== "") {
+            document.getElementById("searchForm").submit();
+        }
+    };
+</script>

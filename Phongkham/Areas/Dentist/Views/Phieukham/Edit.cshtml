@@ -1,0 +1,456 @@
+﻿@{
+    ViewData["Title"] = "Chỉnh sửa Phiếu Khám";
+    Layout = "~/Views/Shared/_LayoutDentist.cshtml";
+    var thuocIds = ViewData["ThuocIds"] as List<int> ?? new List<int>();
+    var lieuLuongs = ViewData["LieuLuongs"] as List<string> ?? new List<string>();
+}
+<style>
+    .card {
+        border-radius: 8px;
+        background: linear-gradient(135deg, #78d4c9, #455e88);
+        max-width: 500px; /* Giới hạn chiều rộng card */
+        margin: 0 auto; /* Căn giữa card */
+        padding: 20px;
+        color: #000000;
+    }
+    .form-control {
+        border-radius: 5px;
+        box-shadow: none;
+        border: 1px solid #ced4da;
+    }
+
+        .form-control:focus {
+            border-color: #80bdff;
+            box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);
+        }
+    .btn-primary {
+        background-color: #007bff;
+        border-color: #007bff;
+        border-radius: 5px;
+    }
+        .btn-primary:hover {
+            background-color: #0056b3;
+            border-color: #0056b3;
+        }
+    h2 {
+        font-weight: bold;
+    }
+    .form-group.text-center {
+        margin-top: 20px;
+    }
+
+    .form-check {
+        margin-left: 15px; 
+        padding-left: 10px; 
+    }
+    .form-check-label {
+        padding-left: 5px; 
+    }
+    textarea.form-control {
+        text-align: left !important;
+    }
+</style>
+<div class="container mt-4">
+    <h2 class="text-center mb-4" style=" font-family: 'Times New Roman', Times, serif;">Chỉnh sửa Phiếu Khám</h2>
+
+    <div class="card shadow-lg border-0">
+        <div class="card-body">
+            <form method="post">
+                @Html.AntiForgeryToken()
+
+                <div class="form-group">
+                    <label for="TenBenhNhan">Tên Bệnh Nhân</label>
+                    <input type="text" class="form-control" id="TenBenhNhan" name="TenBenhNhan" value="@Model.TenBenhNhan" readonly />
+                </div>
+
+                <div class="form-group">
+                    <label for="NgayKham">Ngày Khám</label>
+                    <input type="date" class="form-control" id="NgayKham" name="NgayKham" value="@Model.NgayKham.ToString("yyyy-MM-dd")" />
+                </div>
+                <div class="form-group">
+                    <label for="KhungGio">Thời gian:</label>
+                    <input type="text" id="KhungGio" name="KhungGio" value="@Model.TimeSlot" readonly />
+                </div>
+                <div class="form-group">
+                    <label for="DichVu">Dịch Vụ</label>
+                    <div>
+                        @foreach (var dichvu in (List<Phongkham.Models.dichvu>)ViewData["DichVuList"])
+                        {
+                            <div class="form-check">
+                                <input type="checkbox" class="form-check-input" id="DichVu_@dichvu.Id" name="SelectedDichVuIds" value="@dichvu.Id"
+                                @(ViewData["SelectedDichVuIds"] != null && ((List<int>)ViewData["SelectedDichVuIds"]).Contains(dichvu.Id) ? "checked" : "") />
+                                <label class="form-check-label" for="DichVu_@dichvu.Id">@dichvu.ten</label>
+                            </div>
+                        }
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="font-weight-bold">Tái Khám:</label>
+                    <div>
+                        <div class="form-check">
+                            <!-- Cập nhật radio button để bind giá trị TaiKham -->
+                            <input type="radio" class="form-check-input" id="TaiKhamYes" name="TaiKham" value="true"
+                            @(Model.TaiKham == true ? "checked" : "") />
+                            <label class="form-check-label" for="TaiKhamYes">Có</label>
+                        </div>
+                        <div class="form-check">
+                            <!-- Cập nhật radio button để bind giá trị TaiKham -->
+                            <input type="radio" class="form-check-input" id="TaiKhamNo" name="TaiKham" value="false"
+                            @(Model.TaiKham == false ? "checked" : "") />
+                            <label class="form-check-label" for="TaiKhamNo">Không</label>
+                        </div>
+                    </div>
+                </div>
+                <!-- Thêm trường nhập thời gian tái khám, chỉ hiển thị khi chọn "Có" -->
+                <div class="form-group" id="ThoiGianTaiKham" @(Model.TaiKham ? "" : "style='display:none;'")>
+                    <label for="ThoiGianTaiKhamInput" class="font-weight-bold">Thời gian tái khám:</label>
+                    <input type="text" class="form-control" id="ThoiGianTaiKhamInput" name="Thoigiantaikham"
+                           placeholder="Nhập thời gian tái khám"
+                           value="@Model.Thoigiantaikham" />
+                </div>
+
+                <div class="form-group">
+                    <label for="GhiChu">Chuẩn đoán</label>
+                    <textarea class="form-control" id="GhiChu" name="GhiChu">@Model.GhiChu</textarea>
+                </div>
+                <div class="form-group">
+                    <label for="thuoc" class="font-weight-bold">Chọn Thuốc</label>
+                    <button type="button" id="btnChonThuoc" class="btn btn-dark btn-block">Chọn Thuốc</button>
+                    <textarea class="form-control mt-2" id="thuocDaChon" name="thuocDaChon" rows="5" readonly placeholder="Thuốc đã chọn sẽ hiển thị ở đây">@if (ViewData["ThuocList"] != null)
+                        {
+                            var donThuoc = ViewData["ThuocList"] as Phongkham.Models.DonThuoc;
+
+                            if (donThuoc != null)
+                            {
+                                foreach (var chiTiet in donThuoc.ChiTietDonThuocs)
+                                {
+                                    @Html.Raw(chiTiet.Thuoc.TenThuoc + " - Liều lượng: " + chiTiet.LieuLuong+"\n")
+                                }
+                            }
+                        }</textarea>
+                </div>
+                <!-- Trường ẩn ThuocIds và LieuLuongs -->
+                <input type="hidden" id="ThuocIds" name="ThuocIds" value='@Newtonsoft.Json.JsonConvert.SerializeObject(thuocIds)' />
+                <input type="hidden" id="LieuLuongs" name="LieuLuongs" value='@Newtonsoft.Json.JsonConvert.SerializeObject(lieuLuongs)' />
+                <button type="submit" class="btn btn-primary">Cập nhật</button>
+                <a href="@Url.Action("ListPhieuKham")" class="btn btn-secondary" style="color:white">Hủy</a>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- Modal -->
+<div id="thuocModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Chọn Thuốc</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <input type="text" id="thuocSearch" class="form-control" placeholder="Nhập tên thuốc..." />
+                <ul id="thuocList" class="list-group mt-2"></ul>
+                <!-- Thông báo thành công khi thêm/xóa thuốc -->
+                <div id="messageBox" class="alert alert-success" style="display: none;">
+                    <strong>Thành công!</strong> Thuốc đã được thêm/xóa thành công.
+                </div>
+                <!-- Bảng thuốc đã chọn -->
+                <h5 class="mt-4">Thuốc đã chọn:</h5>
+                <table class="table table-bordered mt-2" id="thuocTable">
+                    <thead>
+                        <tr>
+                            <th>Tên Thuốc</th>
+                            <th>Liều Lượng</th>
+                            <th>Hành động</th>
+                        </tr>
+                    </thead>
+                    <tbody id="thuocTableBody">
+                        @if (ViewData["ThuocList"] != null)
+                        {
+                            var donThuoc = ViewData["ThuocList"] as Phongkham.Models.DonThuoc;
+                            if (donThuoc != null)
+                            {
+                                foreach (var chiTiet in donThuoc.ChiTietDonThuocs)
+                                {
+                                    <tr data-solieu="@chiTiet.Thuoc.SoLuong">
+                                        <!-- Thêm data-solieu chứa số lượng thuốc -->
+                                        <td>@chiTiet.Thuoc.TenThuoc</td>
+                                        <td class="lieuLuong">@chiTiet.LieuLuong</td>
+                                        <td>
+                                            <button class="btn btn-warning btn-sm edit-btn" data-id="@chiTiet.ThuocId" data-lieuluong="@chiTiet.LieuLuong">Sửa</button>
+                                            <button class="btn btn-danger btn-sm" data-id="@chiTiet.ThuocId">Xóa</button>
+                                        </td>
+                                    </tr>
+                                }
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal sửa liều lượng -->
+<div id="editModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Sửa Liều Lượng</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <input type="number" id="newLieuLuong" class="form-control" placeholder="Nhập liều lượng mới" />
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+                <button type="button" class="btn btn-primary" id="saveEditLieuLuong">Lưu</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            var thuocIds = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(thuocIds));
+            var lieuLuongs = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(lieuLuongs));
+
+            $('#ThuocIds').val(JSON.stringify(thuocIds));
+            $('#LieuLuongs').val(JSON.stringify(lieuLuongs));
+            // Hiển thị modal khi nhấn vào nút "Chọn Thuốc"
+            $("#btnChonThuoc").click(function () {
+                $("#thuocModal").modal("show");
+                $("#thuocModal").attr("aria-hidden", "false");  // Đảm bảo rằng modal không bị ẩn khi mở
+            });
+
+            // Tìm kiếm thuốc khi nhập vào ô tìm kiếm
+            $("#thuocSearch").on("input", function () {
+                var searchTerm = $(this).val().toLowerCase();
+                if (searchTerm.length > 0) {
+                    $.getJSON('@Url.Action("SearchThuoc", "Phieukham")', { term: searchTerm }, function (data) {
+                        if (data && data.$values && Array.isArray(data.$values)) {
+                            // Tạo danh sách thuốc với số lượng có sẵn
+                            var suggestions = data.$values.map(function (thuoc) {
+                                return `<li class="list-group-item d-flex justify-content-between align-items-center" data-id="${thuoc.id}" data-soLuong="${thuoc.soLuong}">
+                       <span>${thuoc.tenThuoc}</span>
+                       <input type="number" class="form-control ml-2" placeholder="Liều lượng" min="1" />
+                       <button type="button" class="btn btn-primary btn-sm ml-2">Thêm</button>
+                   </li>`;
+                            });
+                            $("#thuocList").html(suggestions.join(''));
+                        } else {
+                            console.error("Dữ liệu không có trường $values hoặc không phải là mảng:", data);
+                        }
+                    }).fail(function (jqXHR, textStatus, errorThrown) {
+                        console.error("Yêu cầu không thành công: ", textStatus, errorThrown);
+                    });
+                } else {
+                    $("#thuocList").empty();
+                }
+            });
+
+            // Khi nhấn "Thêm" vào một thuốc, thêm vào danh sách thuốc đã chọn
+            $("#thuocList").on("click", ".btn-primary", function () {
+                var thuocId = $(this).parent().data("id");  // Lấy id thuốc
+                var thuocTen = $(this).siblings("span").text();  // Lấy tên thuốc
+                var lieuLuong = $(this).siblings("input").val();  // Lấy liều lượng từ input
+                var soLuongThuoc = $(this).parent().data("soluong");  // Lấy số lượng thuốc từ data-soLuong
+
+                if (lieuLuong) {
+                    // Kiểm tra liều lượng không vượt quá số lượng thuốc có sẵn
+                    if (lieuLuong > soLuongThuoc) {
+                        alert(`Liều lượng không được vượt quá số lượng thuốc có sẵn: ${soLuongThuoc}`);
+                        return;
+                    }
+                    var thuocIds = JSON.parse($("#ThuocIds").val() || "[]");
+                    var lieuLuongs = JSON.parse($("#LieuLuongs").val() || "[]");
+
+                    // Kiểm tra xem thuốc này đã có trong danh sách với liều lượng tương ứng chưa
+                    var exists = thuocIds.some(function (id, index) {
+                        return id === thuocId;
+                    });
+
+                    if (exists) {
+                        alert("Thuốc này đã có trong danh sách.");
+                        return;
+                    }
+
+                    // Kiểm tra trong textarea (thuốc đã chọn)
+                    var currentText = $("#thuocDaChon").val();
+                    var thuocText = `${thuocTen}`;
+
+                    // Kiểm tra xem thuốc đã có trong danh sách trong textarea chưa
+                    if (currentText.includes(thuocText)) {
+                        alert("Thuốc này đã có trong danh sách thuốc đã chọn.");
+                        return;
+                    }
+
+                    // Cập nhật textarea với tên thuốc và liều lượng
+                    $("#thuocDaChon").val(function (i, val) {
+                        return val + thuocText + " - Liều lượng: " + lieuLuong + "\n";
+                    });
+
+                    thuocIds.push(thuocId);
+                    lieuLuongs.push(lieuLuong);
+                    $("#ThuocIds").val(JSON.stringify(thuocIds));
+                    $("#LieuLuongs").val(JSON.stringify(lieuLuongs));
+
+                    // Cập nhật bảng thuốc trong modal
+                    var newRow = `
+                <tr>
+                    <td>${thuocTen}</td>
+                    <td class="lieuLuong">${lieuLuong}</td>
+                    <td>
+                        <button class="btn btn-warning btn-sm edit-btn" data-id="${thuocId}" data-lieuluong="${lieuLuong}" data-solieu="${soLuongThuoc}">Sửa</button>
+                        <button class="btn btn-danger btn-sm" data-id="${thuocId}">Xóa</button>
+                    </td>
+                </tr>
+            `;
+                    $("#thuocTableBody").append(newRow);
+
+                    // Hiển thị thông báo thành công khi thêm thuốc
+                    $("#messageBox").text("Thuốc đã được thêm thành công.").show();
+                    setTimeout(function () {
+                        $("#messageBox").fadeOut();
+                    }, 3000); // Ẩn thông báo sau 3 giây
+                } else {
+                    alert("Vui lòng nhập liều lượng cho thuốc.");
+                }
+            });
+
+            // Khi nhấn "Xóa" thuốc khỏi danh sách
+            $("#thuocTable").on("click", ".btn-danger", function () {
+                var thuocId = $(this).data("id");
+                var thuocIds = JSON.parse($("#ThuocIds").val() || "[]");
+                var lieuLuongs = JSON.parse($("#LieuLuongs").val() || "[]");
+
+                // Tìm và xóa thuốc khỏi danh sách
+                var index = thuocIds.indexOf(thuocId);
+                if (index !== -1) {
+                    thuocIds.splice(index, 1);
+                    lieuLuongs.splice(index, 1);
+                }
+
+                // Cập nhật lại giá trị
+                $("#ThuocIds").val(JSON.stringify(thuocIds));
+                $("#LieuLuongs").val(JSON.stringify(lieuLuongs));
+
+                // Cập nhật lại nội dung textarea
+                var currentText = $("#thuocDaChon").val();
+                var thuocText = $(this).closest("tr").find("td:first").text(); // Lấy tên thuốc
+                var updatedText = currentText.replace(new RegExp(thuocText + " - Liều lượng: .*\\n"), "");
+
+                $("#thuocDaChon").val(updatedText);
+
+                // Xóa dòng thuốc khỏi bảng
+                $(this).closest("tr").remove();
+                // Hiển thị thông báo thành công khi xóa thuốc
+                $("#messageBox").text("Thuốc đã được xóa thành công.").show();
+                setTimeout(function () {
+                    $("#messageBox").fadeOut();
+                }, 3000); // Ẩn thông báo sau 3 giây
+            });
+            // Khi nhấn "Sửa" thuốc trong bảng
+            $("#thuocTable").on("click", ".edit-btn", function () {
+                var thuocId = $(this).data("id");
+                var thuocRow = $(this).closest("tr");
+                var currentLieuLuong = thuocRow.find(".lieuLuong").text();
+                var soLuongThuoc = thuocRow.data("solieu");  // Lấy số lượng thuốc từ data-solieu của dòng thuốc
+
+                // Kiểm tra nếu số lượng thuốc không được tìm thấy
+                if (soLuongThuoc === undefined) {
+                    alert("Không tìm thấy số lượng thuốc có sẵn.");
+                    return;
+                }
+
+                // Hiển thị giá trị liều lượng hiện tại vào input trong modal
+                $("#newLieuLuong").val(currentLieuLuong);
+
+                // Lưu lại dòng thuốc và số lượng để cập nhật sau
+                $("#saveEditLieuLuong").data("row", thuocRow);
+                // Lưu lại số lượng thuốc có sẵn để kiểm tra khi lưu
+                $("#saveEditLieuLuong").data("solieu", soLuongThuoc);
+                console.log("Số lượng thuốc có sẵn: ", soLuongThuoc);
+                $("#editModal").modal("show");
+
+                // Kiểm tra liều lượng nhập vào (khi người dùng thay đổi giá trị)
+                $("#newLieuLuong").on("input", function () {
+                    var newLieuLuong = $(this).val();
+
+                    // Kiểm tra liều lượng không vượt quá số lượng thuốc có sẵn
+                    if (newLieuLuong && newLieuLuong > soLuongThuoc) {
+                        alert(`Liều lượng không được vượt quá số lượng thuốc có sẵn: ${soLuongThuoc}`);
+                        $(this).val(currentLieuLuong);  // Khôi phục lại giá trị liều lượng ban đầu
+                    }
+                });
+            });
+
+            // Khi nhấn "Lưu" trong modal sửa
+            $("#saveEditLieuLuong").on("click", function () {
+                var newLieuLuong = $("#newLieuLuong").val();
+                var thuocRow = $(this).data("row");
+                var soLuongThuoc = $(this).data("solieu");  // Lấy số lượng thuốc từ data
+
+                if (newLieuLuong) {
+                    // Cập nhật liều lượng trong bảng
+                    thuocRow.find(".lieuLuong").text(newLieuLuong);
+
+                    // Cập nhật liều lượng trong danh sách thuốc đã chọn
+                    var thuocIds = JSON.parse($("#ThuocIds").val() || "[]");
+                    var lieuLuongs = JSON.parse($("#LieuLuongs").val() || "[]");
+                    var thuocId = thuocRow.find(".edit-btn").data("id");
+
+                    var index = thuocIds.indexOf(thuocId);
+                    if (index !== -1) {
+                        lieuLuongs[index] = newLieuLuong; // Cập nhật liều lượng
+                    }
+
+                    $("#LieuLuongs").val(JSON.stringify(lieuLuongs));
+
+                    // Cập nhật lại nội dung trong textarea: Xóa tất cả thông tin cũ
+                    var updatedText = "";
+                    $("#thuocTable tr").each(function () {
+                        var thuocName = $(this).find("td").eq(0).text(); // Lấy tên thuốc từ cột đầu tiên
+                        var lieuLuong = $(this).find(".lieuLuong").text(); // Lấy liều lượng từ cột thứ hai
+
+                        if (thuocName && lieuLuong) {
+                            updatedText += thuocName + " - Liều lượng: " + lieuLuong + "\n"; // Cập nhật lại nội dung textarea
+                        }
+                    });
+
+                    // Cập nhật giá trị cho textarea
+                    $("#thuocDaChon").val(updatedText);
+
+                    // Đóng modal sửa
+                    $("#editModal").modal("hide");
+
+                    // Hiển thị thông báo thành công khi sửa thuốc
+                    $("#messageBox").text("Liều lượng thuốc đã được cập nhật thành công.").show();
+                    setTimeout(function () {
+                        $("#messageBox").fadeOut();
+                    }, 3000);
+                } else {
+                    alert("Vui lòng nhập liều lượng mới.");
+                }
+            });
+            // Xử lý hiển thị form "Thời gian tái khám" khi chọn "Có" trong radio button
+            $("input[name='TaiKham']").change(function () {
+                if ($(this).val() == "true") {
+                    $("#ThoiGianTaiKham").show();
+                } else {
+                    $("#ThoiGianTaiKham").hide();
+                }
+            }).change(); // Đảm bảo hiển thị đúng form khi load trang
+            // Hiển thị thời gian tái khám nếu đã chọn "Có" trước đó
+            if ($('input[name="TaiKham"]:checked').val() === 'true') {
+                $('#ThoiGianTaiKham').show();
+            }
+        });
+    </script>
+}

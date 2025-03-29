@@ -1,0 +1,108 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chi tiết phòng khám</title>
+    <style>
+        .container1 {
+            margin-top: 50px;
+            margin-bottom: 50px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Xếp các card theo số cột tự động */
+            gap: 20px; /* Khoảng cách giữa các card */
+        }
+
+        .card1 {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        .card-header1 {
+            background-color: #007bff;
+            color: white;
+            font-weight: bold;
+            padding: 10px 15px;
+            border-top-left-radius: 5px;
+            border-top-right-radius: 5px;
+            text-align: center; /* Căn giữa nội dung trong header */
+        }
+
+        .card-body1 {
+            padding: 20px;
+            text-align: left; /* Căn trái nội dung trong body */
+        }
+
+        .card-img-right {
+            max-width: 100%;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container1">
+        <!-- Card 1 -->
+        <div class="card1">
+            <div class="card-header1" style="font-family:'Times New Roman', Times, serif">
+                Tầng 1
+            </div>
+            <div class="card-body1">
+                <h5 class="card-title">Thẩm mỹ</h5>
+                <p class="card-text">
+                    Nha khoa thẩm mỹ tập trung vào cải thiện ngoại hình răng miệng của bệnh nhân. Các dịch vụ chính bao gồm:
+                    <ul>
+                        <li>Trám răng sứ, sứ cao cấp</li>
+                        <li>Làm trắng răng</li>
+                        <li>Cắm răng implant</li>
+                        <li>Điều chỉnh răng, mắc cài niềng răng</li>
+                        <li>Chỉnh nha, nha khoa tổng quát</li>
+                    </ul>
+                </p>
+                <img src="@Url.Content("~/images/thẩm mỹ.jpg")" alt="" class="card-img-top card-img-right">
+            </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="card1">
+            <div class="card-header1" style=" font-family:'Times New Roman', Times, serif">
+                Tầng 2
+            </div>
+            <div class="card-body1">
+                <h5 class="card-title">Nha khoa tổng quát</h5>
+                <p class="card-text">
+                    Nha khoa tổng quát cung cấp các dịch vụ chăm sóc nha khoa cơ bản, bao gồm:
+                    <ul>
+                        <li>Nhổ răng, chữa viêm nướu</li>
+                        <li>Làm vệ sinh răng miệng định kỳ</li>
+                        <li>Điều trị sâu răng, hàn răng</li>
+                        <li>Tư vấn và hướng dẫn vệ sinh răng miệng</li>
+                    </ul>
+                </p>
+                <img src="@Url.Content("~/images/tongquat.jpg")" alt="" class="card-img-top card-img-right">
+            </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="card1">
+            <div class="card-header1" style=" font-family:'Times New Roman', Times, serif">
+                Tầng 3
+            </div>
+            <div class="card-body1">
+                <h5 class="card-title">Nha khoa trẻ em</h5>
+                <p class="card-text">
+                    Nha khoa trẻ em chuyên cung cấp dịch vụ chăm sóc răng miệng cho trẻ em, bao gồm:
+                    <ul>
+                        <li>Nhổ răng sữa, bảo vệ răng sữa</li>
+                        <li>Làm vệ sinh răng miệng cho trẻ</li>
+                        <li>Điều trị sâu răng, hàn răng cho trẻ</li>
+                        <li>Tư vấn và giáo dục về vệ sinh răng miệng cho trẻ</li>
+                    </ul>
+                </p>
+                <img src="@Url.Content("~/images/treem.jpg")" alt="" class="card-img-top card-img-right">
+            </div>
+        </div>
+    </div>
+</body>
+</html>

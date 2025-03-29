@@ -1,0 +1,55 @@
+﻿@model Phongkham.Models.lichKham
+
+@{
+    ViewData["Title"] = "Chỉnh Sửa Lịch Đặt";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container mt-5">
+    <h2 class="text-center mb-4">@ViewData["Title"]</h2>
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <form asp-action="Edit" method="post" class="shadow p-4 rounded bg-light">
+                <input type="hidden" asp-for="Id" />
+
+                <div class="form-group mb-3">
+                    <label asp-for="NgayDat" class="form-label">Ngày đặt</label>
+                    <input asp-for="NgayDat" class="form-control" type="date" />
+                    <span asp-validation-for="NgayDat" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="KhungGioId" class="font-weight-bold">Khung Giờ</label>
+                    <select asp-for="KhungGioId" class="form-control" required>
+                        <option value="">Chọn khung giờ</option>
+                        @foreach (var khungGio in ViewBag.KhungGios)
+                        {
+                            <option value="@khungGio.Id"
+                                    selected="@(khungGio.Id == Model.KhungGioId ? "selected" : null)">
+                                @khungGio.TimeSlot
+                            </option>
+                        }
+                    </select>
+
+                    <span asp-validation-for="KhungGioId" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="phone" class="font-weight-bold">Điện thoại</label>
+                    <input asp-for="phone" class="form-control" readonly />
+                    <span asp-validation-for="phone" class="text-danger"></span>
+                </div>
+
+                <div class="text-center mt-4">
+                    <button type="submit" class="btn btn-primary px-4">Cập Nhật</button>
+                    <a asp-action="Index" class="btn btn-secondary px-4 ml-2" style="color:white">Quay Lại</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

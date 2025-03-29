@@ -1,0 +1,173 @@
+﻿@model ApplicationUser
+
+@{
+    ViewData["Title"] = "Chỉnh Sửa Tài Khoản";
+    Layout = "~/Views/Shared/_AdLayout.cshtml";
+}
+
+<style>
+    body {
+        background: linear-gradient(135deg, #f7f8f9, #e9ecef); /* Nền gradient nhẹ */
+        font-family: 'Arial', sans-serif;
+    }
+
+    .container1 {
+        background-image: url('/images/bglog.jpg'); /* Đường dẫn đến hình nền */
+        background-repeat: no-repeat; /* Không lặp lại hình nền */
+        background-position: center center; /* Đặt hình nền ở giữa */
+        background-attachment: fixed; /* Giữ hình nền cố định khi cuộn */
+        background-size: cover; /* Đảm bảo hình ảnh phủ đầy không gian */
+        height: 100vh; /* Chiều cao 100% viewport */
+    }
+
+    .card {
+        border-radius: 15px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Đổ bóng cho thẻ */
+    }
+
+    .card-header {
+        background: linear-gradient(135deg, #6a11cb, #2575fc); /* Nền gradient cho header */
+        color: white; /* Màu chữ trắng */
+        border-top-left-radius: 15px;
+        border-top-right-radius: 15px;
+        padding: 20px; /* Thêm padding cho header */
+    }
+
+    h3 {
+        margin: 0; /* Xóa margin của tiêu đề */
+        font-weight: bold; /* Đậm chữ */
+    }
+
+    .form-group {
+        margin-bottom: 20px; /* Khoảng cách giữa các nhóm */
+    }
+
+    .form-control {
+        height: 50px; /* Chiều cao input */
+        border-radius: 5px; /* Đường viền mềm mại */
+        border: 1px solid #ced4da; /* Màu viền mặc định */
+        transition: border-color 0.2s;
+    }
+
+        .form-control:focus {
+            border-color: #80bdff; /* Màu viền khi focus */
+            box-shadow: 0 0 5px rgba(106, 17, 203, 0.5); /* Hiệu ứng đổ bóng khi focus */
+            outline: none; /* Không hiển thị outline */
+        }
+
+    label {
+        font-weight: bold; /* Đậm chữ cho label */
+        color: #495057; /* Màu chữ cho label */
+    }
+
+    .btn-success {
+        background-color: #28a745; /* Màu xanh cho nút Lưu */
+        border: none; /* Xóa viền */
+        transition: background-color 0.3s, transform 0.2s; /* Hiệu ứng cho nút */
+    }
+
+        .btn-success:hover {
+            background-color: #218838; /* Màu nút khi hover */
+            transform: scale(1.05); /* Tăng kích thước nút khi hover */
+        }
+
+    .btn-secondary {
+        background-color: #6c757d; /* Màu nút trở về danh sách */
+        border: none; /* Xóa viền */
+        transition: background-color 0.3s, transform 0.2s; /* Hiệu ứng cho nút */
+    }
+
+        .btn-secondary:hover {
+            background-color: #5a6268; /* Màu nút khi hover */
+            transform: scale(1.05);
+        }
+
+    .text-danger {
+        font-size: 0.875rem; /* Kích thước chữ cảnh báo */
+    }
+
+    .container1 {
+        background-image: url('/images/bglog.jpg'); /* Đường dẫn đến hình nền */
+        background-repeat: no-repeat; /* Không lặp lại hình nền */
+        background-position: center center; /* Đặt hình nền ở giữa */
+        background-attachment: fixed; /* Giữ hình nền cố định khi cuộn */
+        background-size: cover; /* Đảm bảo hình ảnh phủ đầy không gian */
+        height: 100vh; /* Chiều cao 100% viewport */
+    }
+</style>
+
+<div class="container1">
+    <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6">
+            <div class="card mt-5">
+                <div class="card-header text-center">
+                    <h3>Chỉnh Sửa Tài Khoản</h3>
+                </div>
+                <div class="card-body">
+                    <form id="editForm" asp-action="Edit" method="post">
+                        <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
+
+                        <input type="hidden" asp-for="Id" />
+
+                        <div class="form-group">
+                            <label for="fullName">Họ và Tên</label>
+                            <input id="fullName" asp-for="FullName" class="form-control" required placeholder="Nhập họ và tên của bạn" />
+                            <span asp-validation-for="FullName" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Địa Chỉ Email</label>
+                            <input id="email" asp-for="Email" class="form-control" required placeholder="name@example.com" />
+                            <span asp-validation-for="Email" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="role">Vai Trò</label>
+                            <select id="role" asp-for="SelectedRole" asp-items="ViewBag.Roles" class="form-control" required>
+                                <option value="">Chọn Vai Trò</option>
+                            </select>
+                            <span asp-validation-for="SelectedRole" class="text-danger"></span>
+                        </div>
+
+                        <div id="specialtyDiv" class="form-group" style="display: @(ViewBag.SelectedChuyenMonId != null ? "block" : "none")">
+                            <label for="chuyenMonId">Chuyên Môn</label>
+                            <select id="chuyenMonId" name="chuyenMonId" class="form-control">
+                                <option value="">Chọn Chuyên Môn</option>
+                                @foreach (var specialty in ViewBag.Specialties)
+                                {
+                                    var isSelected = specialty.Value == ViewBag.SelectedChuyenMonId?.ToString() ? "selected" : "";
+                                    <option value="@specialty.Value" selected="@isSelected">@specialty.Text</option>
+                                }
+                            </select>
+                            <span class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <button id="editSubmit" type="submit" class="btn btn-success btn-block">Lưu Thay Đổi</button>
+                            <a type="button" class="btn btn-secondary btn-block" asp-controller="ApplicationUser" asp-action="Index">Quay Lại Danh Sách</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var roleSelect = document.getElementById("role");
+            var specialtyDiv = document.getElementById("specialtyDiv");
+
+            function toggleSpecialtyVisibility() {
+                specialtyDiv.style.display = roleSelect.value === "Dentist" ? "block" : "none";
+            }
+
+            roleSelect.addEventListener("change", function () {
+                toggleSpecialtyVisibility();
+            });
+
+            toggleSpecialtyVisibility(); // Kiểm tra trạng thái ban đầu
+        });
+    </script>
+}

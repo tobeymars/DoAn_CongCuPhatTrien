@@ -1,0 +1,196 @@
+﻿@model IEnumerable<IGrouping<int, Phongkham.Models.PhieuKhamDichvu>>
+
+@{
+    ViewData["Title"] = "Danh sách Phiếu Khám và Dịch Vụ";
+    Layout = "~/Views/Shared/_LayoutStaff.cshtml";
+}
+<h2 class="text-center text-primary mb-4" style="margin-top:50px">@ViewData["Title"]</h2>
+
+<style>
+    .table {
+        font-size: 20px;
+        width: 90%;
+        margin: 0 auto;
+    }
+
+        .table th, .table td {
+            padding: 8px 10px;
+            vertical-align: middle;
+        }
+    /* Đảm bảo các dịch vụ và giá dịch vụ không bị lệch */
+    .service-item, .service-price {
+        font-size: 16px;
+        margin-bottom: 5px; /* Khoảng cách giữa các dịch vụ hoặc giá */
+    }
+
+    /* Gom tất cả các dịch vụ và giá vào cùng một ô mà không bị lệch */
+    .list-services, .list-prices {
+        padding-left: 0; /* Đảm bảo không có thụt đầu dòng */
+        margin: 0; /* Đảm bảo không có margin thừa */
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start; /* Căn trái để không bị thụt vào */
+    }
+
+    /* Đảm bảo các cột dịch vụ và giá dịch vụ căn chỉnh đúng */
+    .service-column, .price-column {
+        vertical-align: top;
+    }
+
+    /* Đảm bảo bảng hiển thị đúng */
+    .table td {
+        vertical-align: middle;
+    }
+
+    .modal-dialog {
+        max-width: 400px;
+    }
+
+    .modal-body select {
+        font-size: 16px;
+    }
+</style>
+<table class="table table-striped table-bordered table-hover">
+    <thead>
+        <tr>
+            <th style="display:none">Phiếu Khám ID</th>
+            <th>Bệnh Nhân</th>
+            <th>Dịch Vụ</th>
+            <th>Giá Dịch Vụ</th>
+            <th>Làm Dịch Vụ</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var group in Model)
+        {
+            <tr>
+                <td style="display:none">
+                    @group.First().PhieuKham.Id
+                </td>
+                <td class="align-middle">
+                    <strong>@group.First().PhieuKham.TenBenhNhan</strong>
+                </td>
+
+                <td class="service-column">
+                    <!-- Hiển thị tất cả dịch vụ trong cùng một ô -->
+                    <div class="list-services">
+                        @foreach (var dichvu in group)
+                        {
+                            <div class="service-item">• @dichvu.Dichvu.ten</div>
+                        }
+                    </div>
+                </td>
+
+                <td class="price-column">
+                    <!-- Hiển thị tất cả giá dịch vụ trong cùng một ô -->
+                    <div class="list-prices">
+                        @foreach (var dichvu in group)
+                        {
+                            <div class="service-price">@dichvu.Dichvu.Price.ToString("#,0") VNĐ</div>
+                        }
+                    </div>
+                </td>
+
+                <td>
+                    @if (ViewBag.DentistLookup != null && ViewBag.DentistLookup.ContainsKey(group.Key))
+                    {
+                        <p>@ViewBag.DentistLookup[group.Key]?.FullName</p>
+                    }
+                    else
+                    {
+                        <button class="btn btn-info btn-sm" data-toggle="modal" data-target="#selectDentistModal" data-phieuKhamId="@group.First().PhieuKham.Id">
+                            <i class="fa fa-user-md"></i> Chọn người thực hiện
+                        </button>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<!-- Modal chọn người thực hiện -->
+<div class="modal fade" id="selectDentistModal" tabindex="-1" role="dialog" aria-labelledby="selectDentistModalLabel" aria-hidden="true" style="margin-top:200px">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="selectDentistModalLabel">Chọn người thực hiện</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <select id="dentistSelect" class="form-control">
+                    <!-- Danh sách nha sĩ sẽ được tải qua AJAX -->
+                </select>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+                <button type="button" class="btn btn-primary" id="saveDentistBtn">Lưu</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Thêm các thư viện JS cần thiết cho modal -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+<script src="https://kit.fontawesome.com/a076d05399.js"></script>
+<script>
+    // Khi modal mở, tải danh sách nha sĩ
+    $('#selectDentistModal').on('show.bs.modal', function (event) {
+        var button = $(event.relatedTarget); // Lấy button đã nhấn
+        var phieuKhamId = button.data('phieukhamid'); // Lấy ID Phiếu Khám đúng cách
+
+        $.ajax({
+            url: '@Url.Action("GetDentistsForPhieuKham", "Thuchiendichvu")',
+            type: 'GET',
+            data: { phieuKhamId: phieuKhamId }, // Truyền ID Phiếu Khám vào
+            success: function (response) {
+                var dentists = response.$values; // Lấy danh sách nha sĩ từ phản hồi, truy cập vào $values
+                var select = $('#dentistSelect');
+                select.empty(); // Xóa các tùy chọn cũ
+                select.append($('<option>', {
+                    value: '', // Giá trị trống để người dùng không chọn bất kỳ nha sĩ nào
+                    text: 'Vui lòng chọn nha sĩ'
+                }));
+                // Kiểm tra nếu danh sách nha sĩ có dữ liệu
+                if (dentists && dentists.length > 0) {
+                    $.each(dentists, function (index, dentist) {
+                        select.append($('<option>', {
+                            value: dentist.id, // Đảm bảo id nha sĩ chính xác
+                            text: dentist.fullName // Đảm bảo fullName hiển thị đúng
+                        }));
+                    });
+                } else {
+                    select.append($('<option>', { text: 'Không có nha sĩ' }));
+                }
+
+                $('#saveDentistBtn').off('click').on('click', function () {
+                    var dentistId = $('#dentistSelect').val(); // DentistId là một GUID
+                    if (dentistId) {
+                        $.ajax({
+                            url: '@Url.Action("SaveDentist", "Thuchiendichvu")',
+                            type: 'POST',
+                            data: { phieuKhamId: phieuKhamId, dentistId: dentistId },
+                            success: function (response) {
+                                if (response.success) {
+                                    location.reload(); // Reload trang sau khi lưu
+                                } else {
+                                    alert('Có lỗi xảy ra khi lưu nha sĩ: ' + response.message); // Hiển thị thông báo lỗi chi tiết
+                                }
+                            },
+                            error: function () {
+                                alert('Có lỗi xảy ra khi lưu nha sĩ');
+                            }
+                        });
+                    } else {
+                        alert('Vui lòng chọn nha sĩ');
+                    }
+                });
+            },
+            error: function () {
+                alert('Có lỗi xảy ra khi tải danh sách nha sĩ');
+            }
+        });
+    });
+</script>

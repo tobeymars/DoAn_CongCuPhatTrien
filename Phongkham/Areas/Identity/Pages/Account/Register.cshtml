@@ -1,0 +1,208 @@
+﻿@page
+@model RegisterModel
+@{
+    ViewData["Title"] = "Đăng Ký";
+    Layout = "~/Views/Shared/_AdLayout.cshtml";
+}
+
+<style>
+    .container1 {
+        background-image: url('/images/bglog.jpg'); /* Đường dẫn đến hình nền */
+        background-repeat: no-repeat; /* Không lặp lại hình nền */
+        background-position: center center; /* Đặt hình nền ở giữa */
+        background-attachment: fixed; /* Giữ hình nền cố định khi cuộn */
+        background-size: cover; /* Đảm bảo hình ảnh phủ đầy không gian */
+        height: 100vh; /* Chiều cao 100% viewport */
+    }
+
+    .form-group {
+        position: relative;
+        margin-bottom: 20px;
+    }
+
+    .form-control {
+        height: 50px;
+        padding: 10px 10px;
+        border: 1px solid #ced4da;
+        border-radius: 5px;
+        transition: border-color 0.2s;
+    }
+
+        .form-control:focus {
+            border-color: #6a11cb;
+            box-shadow: 0 0 5px rgba(106, 17, 203, 0.5);
+            outline: none;
+        }
+
+    .floating-label {
+        position: relative;
+        margin-bottom: 1.5rem;
+    }
+
+        .floating-label input {
+            width: 100%;
+            padding: 1.2rem 1rem 0.5rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+
+            .floating-label input:focus {
+                border-color: #6a11cb; /* Thay đổi màu viền khi focus */
+                box-shadow: 0 0 5px rgba(106, 17, 203, 0.5); /* Hiệu ứng đổ bóng khi focus */
+                outline: none;
+            }
+
+        .floating-label label {
+            position: absolute;
+            top: 50%;
+            left: 1rem;
+            transform: translateY(-50%);
+            padding: 0 0.5rem;
+            color: #000000;
+            pointer-events: none;
+            transition: all 0.3s;
+        }
+
+        .floating-label input:focus + label,
+        .floating-label input:not(:placeholder-shown) + label {
+            top: 0;
+            left: 0.75rem;
+            font-size: 0.75rem;
+            color: #000000;
+            background: linear-gradient(178deg, #00c2ff, #fefefef2);
+            padding: 0 0.25rem;
+        }
+
+        .floating-label span {
+            position: absolute;
+            bottom: -1.5rem;
+            left: 1rem;
+            font-size: 0.875rem;
+            color: #dc3545;
+        }
+
+    .card-header1 {
+        border-top-left-radius: 15px;
+        border-top-right-radius: 15px;
+        background: linear-gradient(135deg, #6a11cb, #2575fc); /* Gradient background */
+        padding: 20px; /* Thêm khoảng cách cho phần header */
+    }
+
+    .btn-success {
+        background-color: #28a745; /* Màu xanh cho nút Lưu */
+        border: none; /* Xóa viền */
+        transition: background-color 0.3s, transform 0.2s; /* Hiệu ứng cho nút */
+    }
+
+        .btn-success:hover {
+            background-color: #218838; /* Màu nút khi hover */
+            transform: scale(1.05); /* Tăng kích thước nút khi hover */
+        }
+
+    .btn-secondary {
+        background-color: #6c757d; /* Màu nút trở về danh sách */
+        border: none; /* Xóa viền */
+        transition: background-color 0.3s, transform 0.2s; /* Hiệu ứng cho nút */
+    }
+
+        .btn-secondary:hover {
+            background-color: #5a6268; /* Màu nút khi hover */
+            transform: scale(1.05);
+        }
+
+    .card1 {
+        border-radius: 15px;
+        background: linear-gradient(143deg, #00c2ff 20%, #414345f2 100%);
+        padding: 2rem; /* Thêm padding cho card */
+        transition: transform 0.3s, box-shadow 0.3s; /* Hiệu ứng hover */
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Đổ bóng mờ */
+    }
+
+        .card1:hover {
+            transform: translateY(-5px); /* Nâng thẻ lên khi hover */
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2); /* Đổ bóng sâu hơn khi hover */
+        }
+
+</style>
+
+<div class="container1">
+    <div class="row justify-content-center">
+        <div class="col-md-4">
+            <div class="card1 mt-5">
+                <div class="card-header1 text-center mb-4">
+                    <h3>Đăng Ký Tài Khoản</h3>
+                </div>
+                <div class="card-body">
+                    <form id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="post">
+                        <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
+
+                        <div class="form-group floating-label mb-3">
+                            <input id="fullName" asp-for="Input.FullName" class="form-control" autocomplete="fullname" aria-required="true" placeholder=" " />
+                            <label class="floating-label" for="fullName">Họ và Tên</label>
+                            <span asp-validation-for="Input.FullName" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group floating-label mb-3">
+                            <input id="email" asp-for="Input.Email" class="form-control" autocomplete="username" aria-required="true" placeholder=" " />
+                            <label class="floating-label" for="email">Địa Chỉ Email</label>
+                            <span asp-validation-for="Input.Email" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group floating-label mb-3">
+                            <input id="password" asp-for="Input.Password" class="form-control" autocomplete="new-password" aria-required="true" placeholder=" " />
+                            <label class="floating-label" for="password">Mật Khẩu</label>
+                            <span asp-validation-for="Input.Password" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group floating-label mb-3">
+                            <input id="confirmPassword" asp-for="Input.ConfirmPassword" class="form-control" autocomplete="new-password" aria-required="true" placeholder=" " />
+                            <label class="floating-label" for="confirmPassword">Xác Nhận Mật Khẩu</label>
+                            <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="role">Vai Trò</label>
+                            <select id="role" asp-for="Input.Role" asp-items="@Model.Input.RoleList" class="form-control" aria-required="true">
+                                <option value="">Chọn Vai Trò</option>
+                            </select>
+                            <span asp-validation-for="Input.Role" class="text-danger"></span>
+                        </div>
+
+                        <div id="chuyenmonDiv" class="form-group" style="display: none;">
+                            <label for="chuyenMonId">Chuyên Môn</label>
+                            <select id="chuyenMonId" asp-for="Input.ChuyenMonId" asp-items="@Model.Input.ChuyenMonList" class="form-control" aria-required="true">
+                                <option value="">Chọn Chuyên Môn</option>
+                            </select>
+                            <span asp-validation-for="Input.ChuyenMonId" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <button id="registerSubmit" type="submit" class="btn btn-success btn-block">Đăng Ký</button>
+                            <a type="button" class="btn btn-secondary" asp-controller="ApplicationUser" asp-action="Index" asp-area="Admin">Quay Lại Danh Sách</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var roleSelect = document.getElementById("role");
+            var specializationDiv = document.getElementById("chuyenmonDiv");
+
+            function toggleSpecializationVisibility() {
+                specializationDiv.style.display = roleSelect.value === "Dentist" ? "block" : "none";
+            }
+
+            roleSelect.addEventListener("change", function () {
+                toggleSpecializationVisibility();
+            });
+
+            toggleSpecializationVisibility(); // Kiểm tra ban đầu
+        });
+    </script>
+}

@@ -1,0 +1,53 @@
+﻿@model Phongkham.Models.LichKhamVL
+
+@{
+    ViewData["Title"] = "Đăng Lịch Khám";
+}
+
+<div class="container mt-5">
+    <h1 class="text-center mb-4">Đặt lịch khám</h1>
+
+    <form asp-action="Create" method="post" class="border p-4 rounded shadow" style="background-color:white; max-width: 600px; margin: auto;">
+        <div class="form-group mb-3">
+            <label asp-for="UserName" class="form-label">Họ và tên</label>
+            <input asp-for="UserName" class="form-control" placeholder="Nhập họ và tên" />
+            <span asp-validation-for="UserName" class="text-danger"></span>
+        </div>
+
+        <div class="form-group mb-3">
+            <label asp-for="phone" class="form-label">Số điện thoại</label>
+            <input asp-for="phone" class="form-control" placeholder="Nhập số điện thoại" />
+            <span asp-validation-for="phone" class="text-danger"></span>
+        </div>
+
+        <div class="form-group mb-3">
+            <label asp-for="NgayDat" class="form-label">Ngày đặt</label>
+            <input asp-for="NgayDat" class="form-control" type="date" />
+            <span asp-validation-for="NgayDat" class="text-danger"></span>
+        </div>
+
+        <div class="form-group mb-3">
+            <label asp-for="KhungGioId" class="form-label">Chọn khung giờ</label>
+            <select asp-for="KhungGioId" class="form-select" required>
+                <option value="">Chọn khung giờ</option>
+                @if (ViewBag.KhungGios is List<KhungGio> khungGios && khungGios.Any())
+                {
+                    foreach (var khungGio in khungGios)
+                    {
+                        <option value="@khungGio.Id">@khungGio.TimeSlot</option>
+                    }
+                }
+                else
+                {
+                    <option disabled>Không có khung giờ nào khả dụng</option>
+                }
+            </select>
+            <span asp-validation-for="KhungGioId" class="text-danger"></span>
+        </div>
+
+        <div class="d-flex mt-4">
+            <button type="submit" class="btn btn-success px-4" style="margin-left:140px; margin-right:70px">Đặt Lịch</button>
+            <a asp-action="Search" class="btn btn-secondary px-4" style="color: white">Quay lại</a>
+        </div>
+    </form>
+</div>

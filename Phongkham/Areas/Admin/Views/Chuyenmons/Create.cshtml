@@ -1,0 +1,96 @@
+﻿@model Phongkham.Models.Chuyenmon
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_AdLayout.cshtml";
+}
+
+<style>
+    .form-container {
+        background: linear-gradient(135deg, #ed071c 0%, #e3d826 100%);
+        border-radius: 15px;
+        padding: 30px;
+        margin-top: 50px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        backdrop-filter: blur(10px);
+    }
+
+    .form-group {
+        margin-bottom: 25px;
+    }
+
+    .form-control {
+        border: none;
+        border-radius: 5px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+    }
+
+        .form-control:focus {
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            outline: none;
+        }
+
+    .btn-create {
+        margin-right: 10px;
+        padding: 10px 20px;
+        font-size: 1.1rem;
+        background: linear-gradient(135deg, #6a11cb, #2575fc);
+        border: none;
+        color: white;
+        transition: all 0.3s ease;
+    }
+
+        .btn-create:hover {
+            background: linear-gradient(135deg, #2575fc, #6a11cb);
+            transform: scale(1.05);
+        }
+
+    .btn-secondary {
+        padding: 10px 20px;
+        font-size: 1.1rem;
+        background: linear-gradient(135deg, #cfd9df, #e2ebf0);
+        border: none;
+        color: #333;
+        transition: all 0.3s ease;
+    }
+
+        .btn-secondary:hover {
+            background: linear-gradient(135deg, #e2ebf0, #cfd9df);
+            transform: scale(1.05);
+            color: black;
+        }
+
+    .text-center {
+        font-size: 2rem;
+        font-weight: bold;
+        color: #333;
+    }
+</style>
+
+<div class="container body"style="padding-top:100px">
+    <div class="row justify-content-center">
+        <div class="col-md-6 form-container">
+            <h1 class="mt-4 text-center">Tạo mới chuyên môn</h1>
+
+            <form asp-action="Create">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="Name" class="control-label">Tên chuyên môn</label>
+                    <input asp-for="Name" class="form-control" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+                <div class="form-group d-flex justify-content-center">
+                    <button type="submit" class="btn btn-primary btn-create mr-2">Create</button>
+                    <a type="button" class="btn btn-secondary" asp-action="Index">Back to List</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

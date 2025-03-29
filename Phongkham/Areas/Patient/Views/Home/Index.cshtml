@@ -1,0 +1,531 @@
+﻿@model IEnumerable<Phongkham.Models.Tintuc>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var services = ViewData["Services"] as List<Phongkham.Models.dichvu>;
+}
+<!-- Include Swiper's CSS -->
+<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+<link href="~/css/dichvu.css" rel="stylesheet" />
+<style>
+    /* Ẩn các tin tức ban đầu */
+    .news-card {
+        opacity: 0;
+        transform: translateY(50px); /* Di chuyển các tin tức xuống dưới */
+        transition: all 1s ease-out; /* Thời gian hiệu ứng là 1 giây */
+    }
+
+        /* Khi tin tức được hiển thị, nó sẽ di chuyển từ dưới lên */
+        .news-card.show {
+            opacity: 1;
+            transform: translateY(0); /* Di chuyển lên */
+        }
+
+        /* Đảm bảo các tin tức xuất hiện lần lượt theo thứ tự */
+        .news-card:nth-child(1) {
+            transition-delay: 0s;
+        }
+
+        .news-card:nth-child(2) {
+            transition-delay: 0.5s;
+        }
+
+        .news-card:nth-child(3) {
+            transition-delay: 1s;
+        }
+
+        .news-card:nth-child(4) {
+            transition-delay: 1.5s;
+        }
+
+        .news-card:nth-child(5) {
+            transition-delay: 2s;
+        }
+
+        .news-card:nth-child(6) {
+            transition-delay: 2.5s;
+        }
+
+    #wrapper {
+        max-width: 1500px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .image-container {
+        position: relative;
+        width: 80%;
+        height: auto;
+        max-height: 500px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0 auto;
+        padding: 20px;
+        box-sizing: border-box;
+    }
+
+    .slider {
+        position: relative;
+        width: 100%;
+        height: 500px;
+        overflow: hidden;
+    }
+
+    .caption {
+        position: absolute;
+        top: 50%;
+        left: 35%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+        color: white;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        padding: 0 20px;
+    }
+
+        .caption .content {
+            margin-bottom: 20px;
+            padding-right: 30px;
+        }
+
+        .caption h1 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .caption span {
+            font-weight: bold;
+        }
+
+        .caption .button {
+            display: flex;
+            justify-content: left;
+        }
+
+    .btn {
+        background-color: #007bff;
+        color: white;
+        padding: 10px 20px;
+        border-radius: 5px;
+        text-decoration: none;
+        transition: background-color 0.3s;
+    }
+
+        .btn:hover {
+            background-color: #0056b3;
+        }
+
+    .dentist-container {
+        display: flex;
+        flex-wrap: wrap; /* Cho phép các thẻ nằm trên nhiều hàng */
+        justify-content: center; /* Căn giữa các thẻ nha sĩ */
+        padding-left: 20px; /* Padding bên trái */
+        padding-right: 20px; /* Padding bên phải */
+        overflow: hidden; /* Đảm bảo không bị tràn khi chuyển slide */
+    }
+
+    .dentist-card {
+        width: calc(18% - 10px); /* Điều chỉnh lại kích thước để vừa 5 thẻ trên 1 hàng */
+        height: 300px; /* Chiều cao thẻ */
+        margin: 5px; /* Khoảng cách giữa các thẻ */
+        position: relative; /* Vị trí tương đối để sử dụng */
+        background-color: #ffffff; /* Màu nền thẻ */
+        border-radius: 10px; /* Bo tròn các góc */
+        box-shadow: 0 4px 8px rgb(5 0 27 / 60%); /* Đổ bóng cho thẻ */
+        padding: 10px; /* Giảm padding để tối ưu không gian */
+        display: flex; /* Sử dụng flexbox cho thẻ */
+        flex-direction: column; /* Sắp xếp theo chiều dọc */
+        align-items: center; /* Căn giữa các phần tử bên trong thẻ */
+        transition: transform 0.3s ease, box-shadow 0.3s ease; /* Hiệu ứng khi hover */
+    }
+
+    .dentist-info {
+        position: absolute; /* Đặt thông tin trên cùng của thẻ */
+        top: 0; /* Đặt ở vị trí trên cùng */
+        left: 0; /* Đặt ở phía trái */
+        right: 0; /* Đặt ở phía phải */
+        bottom: 0; /* Đặt ở phía dưới */
+        background: linear-gradient(97deg, #e24654 0%, #e3d826 100%); /* Màu nền gradient */
+        padding: 5px; /* Giảm padding cho thông tin */
+        border: 1px solid #ccc; /* Đường viền */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Đổ bóng cho thông tin */
+        width: 100%; /* Chiều rộng đầy đủ */
+        color: white; /* Màu chữ */
+        box-sizing: border-box; /* Đảm bảo padding không ảnh hưởng đến kích thước */
+        text-align: center; /* Căn giữa chữ */
+        display: none; /* Ẩn thông tin */
+        border-radius: 10px; /* Bo tròn các góc cho thông tin */
+        padding-top: 55px; /* Padding trên cùng */
+    }
+
+    .dentist-image {
+        height: 150px; /* Điều chỉnh chiều cao hình ảnh cho phù hợp */
+        padding-top: 40px; /* Khoảng cách trên cho hình ảnh */
+    }
+
+    .dentist-form h3, .dentist-form p {
+        margin: 10px 0;
+        color: #333;
+    }
+
+    .dentist-specialization {
+        font-style: italic;
+        color: #555;
+    }
+
+        .dentist-name span, .dentist-specialization span {
+            font-weight: bold;
+        }
+
+    .dentist-card {
+        transition: transform 0.3s; /* Thêm hiệu ứng chuyển tiếp */
+    }
+
+        /* Khi hover vào một thẻ, tăng kích thước card lên 5% */
+        .dentist-card:hover {
+            transform: scale(1.05); /* Tăng kích thước thẻ lên 5% */
+        }
+
+            /* Hiển thị thông tin khi hover vào thẻ */
+            .dentist-card:hover .dentist-info {
+                display: block;
+            }
+            /* Nghiêng các thẻ phía sau thẻ đang hover */
+            .dentist-card:hover ~ .dentist-card {
+                transform: perspective(1000px) rotateY(-25deg); /* Nghiêng các thẻ phía sau sang trái */
+            }
+
+        /* Nghiêng các thẻ phía trước thẻ đang hover */
+        .dentist-card.tilt-left {
+            transform: perspective(1000px) rotateY(25deg); /* Nghiêng các thẻ phía trước sang phải */
+        }
+
+        /* Nghiêng các thẻ phía sau thẻ đang hover */
+        .dentist-card.tilt-right {
+            transform: perspective(1000px) rotateY(-25deg); /* Nghiêng các thẻ sau sang trái */
+        }
+    button {
+        background-color: #007bff; /* Màu nền */
+        color: white; /* Màu chữ */
+        border: none;
+        border-radius: 5px; /* Đường viền bo tròn */
+        padding: 10px 20px; /* Khoảng cách trong nút */
+        margin: 0 10px; /* Khoảng cách giữa các nút */
+        cursor: pointer; /* Con trỏ khi hover */
+        display: flex; /* Hiển thị dạng flex */
+        align-items: center; /* Canh giữa dọc */
+    }
+
+        button img, button i {
+            margin-right: 5px; /* Khoảng cách giữa icon và chữ */
+        }
+</style>
+
+<section class="mb-3">
+    <section class="Feautes">
+        <div class="container1">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="section-title" style="padding-top: 20px; position: relative; height: 40px;text-align: center;">
+                        <h2 style="font-size:30px; font-family: 'Times New Roman', Times, serif; position: relative">
+                            Chúng tôi sẽ cung cấp cho bạn một lý do để mỉm cười!
+                        </h2>
+                        <img src="@Url.Content("~/Customer/img/section-img.png")" alt="#">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</section>
+<section class="slider mb-3">
+    <div class="swiper-container slider-1">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <div class="image-container">
+                    <img src="@Url.Content("~/Customer/img/slider3.jpg")" alt="">
+                    <div class="caption">
+                        <div class="content">
+                            <h1>We Provide <span>Dentistry</span> Services That You Can <span>Trust!</span></h1>
+                        </div>
+                        <div class="button">
+                            <a href="@Url.Action("create", "Danglich")" class="btn">Đặt lịch khám</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <div class="image-container">
+                    <img src="@Url.Content("~/Customer/img/slider.jpg")" alt="">
+                    <div class="caption">
+                        <div class="content">
+                            <h1>We Provide <span>Dentistry</span> Services That You Can <span>Trust!</span></h1>
+                        </div>
+                        <div class="button">
+                            <a href="@Url.Action("create", "Danglich")" class="btn">Đặt lịch khám</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <div class="image-container">
+                    <img src="@Url.Content("~/Customer/img/slider2.jpg")" alt="">
+                    <div class="caption">
+                        <div class="content">
+                            <h1>We Provide <span>Dentistry</span> Services That You Can <span>Trust!</span></h1>
+                        </div>
+                        <div class="button">
+                            <a href="@Url.Action("create", "Danglich")" class="btn">Đặt lịch khám</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Add Pagination -->
+        <div class="swiper-pagination"></div>
+    </div>
+</section>
+<!-- Danh sách nha sĩ -->
+<div>
+    <h2 class="text-center" style="font-family: 'Times New Roman', Times, serif; font-size:45px;">Nha sĩ</h2>
+    <div class="slider"style="height:375px">
+    <div class="swiper-container dentist-swiper">
+        <div class="swiper-wrapper">
+            @* Hiển thị nha sĩ *@
+            @{
+                var dentistsJson = ViewData["Dentists"] as string;
+                var dentists = Newtonsoft.Json.JsonConvert.DeserializeObject<List<dynamic>>(dentistsJson);
+
+                if (dentists == null || !dentists.Any())
+                {
+                    <p>Không có nha sĩ nào được tìm thấy.</p>
+                }
+                else
+                {
+                    // Lặp qua danh sách nha sĩ và tạo slide cho từng nhóm 5 nha sĩ
+                    for (int i = 0; i < dentists.Count; i += 5)
+                    {
+                        <div class="swiper-slide">
+                            <div class="dentist-container">
+                                @{
+                                    int end = Math.Min(i + 5, dentists.Count);
+                                    for (int j = i; j < end; j++)
+                                    {
+                                        var dentist = dentists[j];
+                                        var imageUrl = string.IsNullOrEmpty((string)dentist.ImageUrl)
+                                        ? Url.Content("~/images/daidien.png")
+                                        : Url.Content((string)dentist.ImageUrl);
+                                        var phoneNumber = string.IsNullOrEmpty((string)dentist.PhoneNumber)
+                                        ? "chưa có thông tin"
+                                        : (string)dentist.PhoneNumber;
+
+                                        <div class="dentist-card">
+                                            <img src="@imageUrl" alt="@dentist.FullName" class="dentist-image" />
+                                            <div class="dentist-info">
+                                                <div class="form-group">
+                                                    <label>Tên nha sĩ:</label>
+                                                    <span>@dentist.FullName</span>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>Chuyên môn:</label>
+                                                    <span>@dentist.Specialization</span>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>Số điện thoại:</label>
+                                                    <span>@phoneNumber</span>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>Email:</label>
+                                                    <span>@dentist.Email</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
+                                }
+                            </div>
+                        </div>
+                    }
+                }
+            }
+        </div>
+        <!-- Add Pagination -->
+        <div class="swiper-pagination"></div>
+    </div>
+</div>
+</div>
+<!-- Danh sách dịch vụ -->
+<div class="container mt-5">
+    <h2 class="text-center text-primary" style="padding-bottom:45px;font-family: 'Times New Roman', Times, serif;">Danh Sách Dịch Vụ</h2>
+    <div class="row" style="margin-left:65px">
+        @foreach (var service in services)
+        {
+            <div class="col-md-4" style="margin-bottom:70px">
+                <!-- Hình ảnh dịch vụ với hiệu ứng 3D -->
+                <div class="service-container">
+                    <!-- Khối 3D -->
+                    <div class="cube" id="cube-@service.Id">
+                        @for (int i = 0; i < 4; i++)
+                        {
+                            <div class="face" id="face-@service.Id-@i">
+                                @if (i < service.Images.Count)
+                                {
+                                    <img src="@service.Images[i].Url" class="card-img-top" alt="Ảnh dịch vụ" style="object-fit: cover; height: 100%;" />
+                                }
+                                else
+                                {
+                                    <!-- Nếu thiếu hình ảnh, thay mặt trống bằng hình ảnh đầu tiên hoặc thứ hai -->
+                                    @if (service.Images.Count == 1)
+                                    {
+                                        <img src="@service.Images[0].Url" class="card-img-top" alt="Ảnh dịch vụ" style="object-fit: cover; height: 100%;" />
+                                    }
+                                    else if (service.Images.Count == 2)
+                                    {
+                                        <img src="@service.Images[i % 2].Url" class="card-img-top" alt="Ảnh dịch vụ" style="object-fit: cover; height: 100%;" />
+                                    }
+                                }
+                                <!-- Nội dung dịch vụ -->
+                                <div class="service-content">
+                                    <h5>@service.ten</h5>
+                                    <p style="color:black">@service.Price.ToString("C0", new System.Globalization.CultureInfo("vi-VN"))</p>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+<!-- Danh sách tin tức -->
+<div class="container">
+    <h2 class="text-center" style="font-family: 'Times New Roman', Times, serif; font-size:45px">Tin tức</h2>
+    <div class="row">
+        @foreach (var tintuc in (List<Tintuc>)ViewData["TinTuc"])
+        {
+            <div class="col-md-4">
+                <div class="card mb-4 shadow-sm news-card">
+                    <a href="@Url.Action("Detail", "Home", new { id = tintuc.Id })">
+                        <img src="@tintuc.ImageUrl" class="card-img-top" alt="@tintuc.tieude">
+                    </a>
+                    <div class="card-body">
+                        <h5 class="card-title">@tintuc.tieude</h5>
+                        <p class="card-text">@tintuc.Noidung</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <small class="text-muted">@tintuc.NgayDang.ToShortDateString()</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+
+<!-- Include Swiper's JS -->
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+<script>
+    // Swiper cho slider hình ảnh
+    var swiper1 = new Swiper('.slider-1', {
+        loop: true,
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        },
+        autoplay: {
+            delay: 3000,
+            disableOnInteraction: false,
+        },
+        slidesPerView: 1,
+        spaceBetween: 30,
+    });
+    var dentistSwiper = new Swiper('.dentist-swiper', {
+        loop: true,
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        },
+        autoplay: {
+            delay: 3000,
+            disableOnInteraction: false,
+        },
+        slidesPerView: 1,
+        spaceBetween: 30,
+    });
+    // Lấy danh sách các thẻ dentist-card đã được render
+    const dentistCards = document.querySelectorAll('.dentist-card');
+
+    // Lặp qua từng thẻ và thêm sự kiện hover
+    dentistCards.forEach((card, index) => {
+        card.addEventListener('mouseenter', () => {
+            dentistCards.forEach((c, i) => {
+                if (i < index) { // Nếu thẻ đứng trước thẻ đang hover
+                    c.classList.add('tilt-left'); // Thêm lớp tilt-left
+                } else if (i > index) { // Nếu thẻ đứng sau thẻ đang hover
+                    c.classList.add('tilt-right'); // Thêm lớp tilt-right
+                }
+            });
+        });
+
+        card.addEventListener('mouseleave', () => {
+            // Khi rời khỏi thẻ, xóa lớp nghiêng
+            dentistCards.forEach(c => {
+                c.classList.remove('tilt-left'); // Xóa lớp tilt-left
+                c.classList.remove('tilt-right'); // Xóa lớp tilt-right
+            });
+        });
+    });
+
+    //danh sách dịch vụ
+    document.addEventListener("DOMContentLoaded", function () {
+        var cubes = document.querySelectorAll('.cube');
+        cubes.forEach(function (cube) {
+            var faces = cube.querySelectorAll('.face');
+            var images = cube.querySelectorAll('img');
+
+            // Kiểm tra số lượng hình ảnh và thay thế các mặt trống bằng hình ảnh đầu tiên hoặc thứ hai
+            if (images.length < 4) {
+                // Duyệt qua các mặt và thay thế mặt trống
+                for (var i = images.length; i < 4; i++) {
+                    if (images.length === 1) {
+                        faces[i].innerHTML = `<img src="${images[0].src}" class="card-img-top" alt="Ảnh dịch vụ" style="object-fit: cover; height: 100%;">`;
+                    } else if (images.length === 2) {
+                        faces[i].innerHTML = `<img src="${images[i % 2].src}" class="card-img-top" alt="Ảnh dịch vụ" style="object-fit: cover; height: 100%;">`;
+                    }
+                }
+            }
+        });
+    });
+
+    //danh sách tin tức
+    document.addEventListener('DOMContentLoaded', function () {
+        const newsCards = document.querySelectorAll('.news-card');
+
+        function checkVisibility() {
+            const windowHeight = window.innerHeight;
+
+            newsCards.forEach((card, index) => {
+                const cardRect = card.getBoundingClientRect();
+                const cardTop = cardRect.top;
+                const cardHeight = cardRect.height;
+
+                // Kiểm tra xem phần tử có chiếm ít nhất 50% chiều cao cửa sổ
+                if (cardTop < windowHeight && cardTop + cardHeight > 0) {
+                    // Nếu chưa có class 'show', thêm nó vào và thực hiện hiệu ứng
+                    if (!card.classList.contains('show')) {
+                        setTimeout(() => {
+                            card.classList.add('show');
+                        }, index * 500); // Delay theo thứ tự
+                    }
+                } else {
+                    // Xóa lớp 'show' khi tin tức không còn trong viewport
+                    card.classList.remove('show');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', checkVisibility);
+
+        // Kiểm tra ngay khi tải trang
+        checkVisibility();
+    });
+</script>

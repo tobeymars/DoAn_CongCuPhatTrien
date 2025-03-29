@@ -1,0 +1,65 @@
+﻿@model Phongkham.Models.lichKham
+@using Phongkham.Models;
+
+@{
+    ViewData["Title"] = "Đăng Lịch Khám";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var phone = ViewBag.Phone as string;
+    var phoneReadOnly = !string.IsNullOrEmpty(phone);
+}
+
+<div class="container mt-5">
+    <h1 class="text-center mb-4">@ViewData["Title"]</h1>
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <form asp-action="Create" method="post" class="p-4 border rounded shadow-sm bg-light">
+                <div class="form-group mb-3">
+                    <label asp-for="NgayDat" class="form-label">Ngày đặt</label>
+                    <input asp-for="NgayDat" class="form-control" type="date" />
+                    <span asp-validation-for="NgayDat" class="text-danger"></span>
+                </div>
+
+                <div class="form-group mb-3">
+                    <label asp-for="KhungGioId" class="form-label fw-bold">Chọn khung giờ</label>
+                    <select asp-for="KhungGioId" class="form-select" required>
+                        <option value="">Chọn khung giờ</option>
+                        @if (ViewBag.KhungGios is List<KhungGio> khungGios && khungGios.Any())
+                        {
+                            foreach (var khungGio in khungGios)
+                            {
+                                <option value="@khungGio.Id">@khungGio.TimeSlot</option>
+                            }
+                        }
+                        else
+                        {
+                            <option disabled>Không có khung giờ nào khả dụng</option>
+                        }
+                    </select>
+                    <span asp-validation-for="KhungGioId" class="text-danger"></span>
+                </div>
+
+                <div class="form-group mb-3">
+                    <label asp-for="phone" class="form-label fw-bold">Điện thoại</label>
+                    @if (phoneReadOnly)
+                    {
+                        <input asp-for="phone" class="form-control" value="@phone" readonly="readonly" />
+                    }
+                    else
+                    {
+                        <input asp-for="phone" class="form-control" />
+                    }
+                    <span asp-validation-for="phone" class="text-danger"></span>
+                </div>
+
+                <div class="d-flex justify-content-between mt-4">
+                    <button type="submit" class="btn btn-primary px-4">Đăng lịch</button>
+                    <a asp-action="Index" class="btn btn-secondary px-4" style="color: white">Hủy</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @Html.Partial("_ValidationScriptsPartial");
+}

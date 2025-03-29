@@ -1,0 +1,111 @@
+﻿@model IEnumerable<dynamic>
+
+@{
+    ViewData["Title"] = "Danh sách lịch khám";
+    Layout = "~/Views/Shared/_LayoutStaff.cshtml";
+}
+<style>
+    .btn-info:hover {
+        background-color: #17a2b8; /* Màu khi hover */
+        transform: scale(1.05); /* Tăng kích thước khi hover */
+    }
+</style>
+<div class="container">
+    <h1 class="text-center mb-4">Danh sách lịch khám</h1>
+    <div class="row justify-content-end mb-3">
+        <div class="col-auto" style="padding-right:325px;">
+            <a type="button" class="btn btn-primary btn-info" asp-action="Create"><i class="fas fa-plus-circle"></i> Tạo lịch khám</a>
+        </div>
+    </div>
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover" id="lichKhamTable">
+            <thead class="thead-light" style="background-color:black; color:white">
+                <tr>
+                    <th class="text-left">
+                        Tên Bệnh Nhân
+                        <button class="btn btn-link p-0" onclick="sortTable(0)" style="float: right;">
+                            <i class="fas fa-sort"></i>
+                        </button>
+                    </th>
+                    <th class="text-left">
+                        Tên Nha Sĩ
+                        <button class="btn btn-link p-0" onclick="sortTable(1)" style="float: right;">
+                            <i class="fas fa-sort"></i>
+                        </button>
+                    </th>
+                    <th class="text-left">
+                        Địa Điểm Khám
+                        <button class="btn btn-link p-0" onclick="sortTable(2)" style="float: right;">
+                            <i class="fas fa-sort"></i>
+                        </button>
+                    </th>
+                    <th class="text-left">
+                        Ngày Khám
+                        <button class="btn btn-link p-0" onclick="sortTable(3)" style="float: right;">
+                            <i class="fas fa-sort"></i>
+                        </button>
+                    </th>
+                    <th class="text-left">
+                        Khung Giờ
+                        <button class="btn btn-link p-0" onclick="sortTable(4)" style="float: right;">
+                            <i class="fas fa-sort"></i>
+                        </button>
+                    </th>
+                    <th class="text-left">
+                        Tài Khoản
+                        <button class="btn btn-link p-0" onclick="sortTable(5)" style="float: right;">
+                            <i class="fas fa-sort"></i>
+                        </button>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.FullName</td>
+                        <td>@item.TenNhaSi</td>
+                        <td>@item.PhongKham</td>
+                        <td>@item.NgayDat?.ToString("dd/MM/yyyy")</td>
+                        <td>@item.TimeSlot</td>
+                        <td>@(item.HasIdentity ? "Có" : "Không")</td> <!-- Thêm cột hiển thị tài khoản -->
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+<script>
+    function sortTable(columnIndex) {
+        var table = document.getElementById("lichKhamTable");
+        var tbody = table.getElementsByTagName("tbody")[0];
+        var rows = Array.from(tbody.getElementsByTagName("tr"));
+        var ascending = true;
+
+        // Kiểm tra xem có cần sắp xếp tăng dần hay không
+        if (tbody.getAttribute("data-sorted-column") == columnIndex && tbody.getAttribute("data-sorted-order") == "asc") {
+            ascending = false;
+        }
+
+        // Sắp xếp dựa vào chỉ số cột
+        rows.sort(function (a, b) {
+            var cellA = a.getElementsByTagName("td")[columnIndex].innerText;
+            var cellB = b.getElementsByTagName("td")[columnIndex].innerText;
+
+            if (columnIndex === 3) { // Ngày đặt
+                return ascending ? new Date(cellA) - new Date(cellB) : new Date(cellB) - new Date(cellA);
+            } else {
+                return ascending ? cellA.localeCompare(cellB) : cellB.localeCompare(cellA);
+            }
+        });
+
+        // Thêm lại các hàng đã sắp xếp vào tbody
+        rows.forEach(function (row) {
+            tbody.appendChild(row);
+        });
+
+        // Cập nhật thông tin cột đã sắp xếp
+        tbody.setAttribute("data-sorted-column", columnIndex);
+        tbody.setAttribute("data-sorted-order", ascending ? "asc" : "desc");
+    }
+</script>

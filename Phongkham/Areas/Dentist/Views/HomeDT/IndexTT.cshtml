@@ -1,0 +1,46 @@
+﻿@model IEnumerable<Phongkham.Models.Tintuc>
+
+@{
+    ViewData["Title"] = "Danh sách tin tức";
+    Layout = "~/Views/Shared/_LayoutDentist.cshtml";
+}
+
+<h1 class="text-center" style="font-family:Arial">@ViewData["Title"]</h1>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="list-group">
+                @if (Model != null && Model.Any())
+                {
+                    foreach (var tinTuc in Model)
+                    {
+                        <div class="list-group-item mb-4">
+                            <h4 class="font-weight-bold text-center">@tinTuc.tieude</h4>
+                            <div class="text-center my-3">
+                                <img src="@tinTuc.ImageUrl" alt="Image" class="img-fluid" style="max-width: 500px;" />
+                            </div>
+                            <p class="text-justify">@tinTuc.Noidung</p>
+                        </div>
+                    }
+                }
+                else
+                {
+                    <p class="text-center">Không có tin tức nào được tìm thấy.</p>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .list-group-item h4 {
+        font-family: 'Arial', sans-serif;
+        font-size: 1.5em;
+    }
+
+    .list-group-item p {
+        font-family: 'Arial', sans-serif;
+        font-size: 1.2em;
+    }
+</style>

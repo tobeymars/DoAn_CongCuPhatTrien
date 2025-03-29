@@ -1,0 +1,60 @@
+﻿@{
+    var serviceRevenueData = ViewData["ServiceRevenueData"] as List<dynamic>;
+
+    // Khởi tạo các danh sách mặc định cho labels và revenues
+    var labels = new List<string>();
+    var revenues = new List<decimal>();
+
+    // Kiểm tra nếu có dữ liệu
+    if (serviceRevenueData != null && serviceRevenueData.Any())
+    {
+        // Sử dụng Select để đảm bảo chuyển đổi đúng kiểu
+        labels = serviceRevenueData.Select(x => (string)x.ServiceName).ToList(); // Chuyển ServiceName sang string
+        revenues = serviceRevenueData.Select(x => (decimal)x.Revenue).ToList(); // Chuyển Revenue sang decimal
+    }
+    else
+    {
+        <p>Không có dữ liệu doanh thu cho các dịch vụ.</p>
+    }
+}
+
+@if (labels.Any() && revenues.Any())
+{
+    <h2>Biểu đồ doanh thu các dịch vụ</h2>
+    <canvas id="serviceRevenueChart"></canvas>
+
+    <!-- Thêm Chart.js từ CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script>
+        // Kiểm tra dữ liệu labels và revenues
+        console.log(labels);
+        console.log(revenues);
+
+        var labels = @Html.Raw(Json.Serialize(labels)); // Chuyển danh sách labels thành JSON
+        var revenues = @Html.Raw(Json.Serialize(revenues)); // Chuyển danh sách revenues thành JSON
+
+        var ctx = document.getElementById('serviceRevenueChart').getContext('2d');
+        var serviceRevenueChart = new Chart(ctx, {
+            type: 'bar', // Biểu đồ cột
+            data: {
+                labels: labels, // Dữ liệu X (Tên dịch vụ)
+                datasets: [{
+                    label: 'Doanh thu',
+                    data: revenues, // Dữ liệu Y (Doanh thu)
+                    backgroundColor: 'rgba(54, 162, 235, 0.2)', // Màu nền cho cột
+                    borderColor: 'rgba(54, 162, 235, 1)', // Màu viền cho cột
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    </script>
+}

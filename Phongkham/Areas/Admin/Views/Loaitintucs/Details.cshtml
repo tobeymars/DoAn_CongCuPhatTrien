@@ -1,0 +1,29 @@
+﻿@model Phongkham.Models.Loaitintuc
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_AdLayout.cshtml";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <div class="card shadow">
+                <div class="card-body">
+                    <h4 class="card-title text-center">Chi tiết loại tin tức</h4>
+                    <hr />
+
+                    <dl class="row">
+                        <dt class="col-sm-3">Tên loại tin tức:</dt>
+                        <dd class="col-sm-9">@Html.DisplayFor(model => model.Name)</dd>
+                    </dl>
+
+                    <div class="text-center">
+                        <a href="@Url.Action("Edit", new { id = Model.Id })" class="btn btn-primary">Chỉnh sửa</a>
+                        <a href="@Url.Action("Index")" class="btn btn-secondary">Quay lại danh sách</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

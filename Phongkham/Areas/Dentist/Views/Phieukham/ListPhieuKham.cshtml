@@ -1,0 +1,80 @@
+﻿@model dynamic
+
+@{
+    ViewData["Title"] = "Danh sách Phiếu Khám";
+    Layout = "~/Views/Shared/_LayoutDentist.cshtml";
+    var phieuKhams = Model.PhieuKhams as IEnumerable<Phongkham.Models.Phieukham>;
+    var donThuocs = Model.DonThuocs as IEnumerable<Phongkham.Models.DonThuoc>;
+}
+
+<style>
+    .service-item {
+        font-size: 14px;
+        margin-bottom: 5px;
+        /* Định dạng thêm cho mỗi dịch vụ */
+    }
+</style>
+
+<div class="container mt-4">
+    <h2 class="text-center mb-4">Danh sách Phiếu Khám</h2>
+
+    <div class="card shadow-lg border-0">
+        <div class="card-body">
+            @if (phieuKhams == null || !phieuKhams.Any())
+            {
+                <div class="alert alert-info text-center">Không có phiếu khám nào.</div>
+            }
+            else
+            {
+                <div class="table-responsive">
+                    <table class="table table-striped table-bordered">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th>Tên Bệnh Nhân</th>
+                                <th>Ngày Khám</th>
+                                <th>Dịch Vụ</th>
+                                <th>Ghi Chú</th>
+                                <th>Thuốc</th>
+                                <th>Hành Động</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in phieuKhams)
+                            {
+                                <tr>
+                                    <td>@item.TenBenhNhan</td>
+                                    <td>@item.NgayKham.ToString("dd/MM/yyyy")</td>
+                                    <td>
+                                        <div class="list-services">
+                                            @foreach (var dichvu in item.PhieuKhamDichvus)
+                                            {
+                                                <div class="service-item">• @dichvu.Dichvu.ten</div> <!-- Hiển thị dịch vụ với gạch đầu dòng -->
+                                            }
+                                        </div>
+                                    </td>
+                                    <td>@item.GhiChu</td>
+                                    <td>
+                                        @* Lọc đơn thuốc theo ngày và giờ phù hợp với phiếu khám *@
+                                        @foreach (var donThuoc in donThuocs.Where(dt => dt.NgayLap.Date == item.NgayKham.Date && dt.TimeSlot == item.TimeSlot && dt.CTlichkhamId == item.CTlichkhamId && dt.CtlichkhamVLId == item.CtlichkhamVLId))
+                                        {
+                                            <div>
+                                                @foreach (var chiTiet in donThuoc.ChiTietDonThuocs)
+                                                {
+                                                    <li>@chiTiet.Thuoc.TenThuoc - Liều lượng: @chiTiet.LieuLuong</li>
+                                                }
+                                            </div>
+                                        }
+                                    </td>
+                                    <td>
+                                        <a href="@Url.Action("Edit", "Phieukham", new { id = item.Id })" class="btn btn-warning" style="color:white">Sửa</a>
+                                        <a href="@Url.Action("Details", "Phieukham", new { id = item.Id })" class="btn btn-info" style="color:white">Chi tiết</a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            }
+        </div>
+    </div>
+</div>

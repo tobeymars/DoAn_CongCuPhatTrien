@@ -1,0 +1,13 @@
+﻿@model Phongkham.ViewModels.AnswerCreateViewModel
+
+<h2>Answer Question</h2>
+
+<form asp-action="Answer" method="post">
+    <input type="hidden" asp-for="QuestionId" />
+    <input type="hidden" asp-for="DentistId" />
+    <div class="form-group">
+        <label asp-for="Content"></label>
+        <textarea asp-for="Content" class="form-control"></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>

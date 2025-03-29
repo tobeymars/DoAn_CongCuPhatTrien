@@ -1,0 +1,139 @@
+﻿@model IEnumerable<dynamic>
+
+@{
+    ViewData["Title"] = "Danh sách lịch đặt";
+    Layout = "~/Views/Shared/_LayoutStaff.cshtml";
+}
+
+<div class="container mt-5">
+    <h1 class="text-center mb-4">Danh sách lịch đặt</h1>
+
+    <div class="row mb-3">
+        <div class="col-md-4">
+            <input type="date" id="searchDate" class="form-control" placeholder="Tìm kiếm theo ngày" />
+        </div>
+        <div class="col-md-4 text-right">
+            <button id="searchBtn" class="btn btn-primary"><i class="fas fa-search"></i> Tìm kiếm</button>
+        </div>
+    </div>
+
+    <div class="mb-3">
+        <button id="btnDaDat" class="btn btn-success mx-2">Đã Đặt</button>
+        <button id="btnChuaDat" class="btn btn-warning mx-2">Chưa Đặt</button>
+        <button id="btnXemTatCa" class="btn btn-info mx-2">Xem tất cả lịch đặt</button> <!-- Nút mới thêm vào -->
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover" id="lichDatTable">
+            <thead class="thead-light" style="background-color:black; color:white">
+                <tr>
+                    <th class="text-left">
+                        <i class="fas fa-user-injured"></i> Bệnh Nhân
+                        <button class="btn btn-link p-0" onclick="sortTable(0)" style="float: right;">
+                            <i class="fas fa-sort"></i>
+                        </button>
+                    </th>
+                    <th class="text-left">
+                        <i class="fas fa-calendar"></i> Ngày Đặt
+                        <button class="btn btn-link p-0" onclick="sortTable(1)" style="float: right;">
+                            <i class="fas fa-sort"></i>
+                        </button>
+                    </th>
+                    <th class="text-left">
+                        <i class="fas fa-clock"></i> Khung Giờ
+                        <button class="btn btn-link p-0" onclick="sortTable(2)" style="float: right;">
+                            <i class="fas fa-sort"></i>
+                        </button>
+                    </th>
+                    <th class="text-left">
+                        <i class="fas fa-phone-alt"></i>
+                        Số điện thoại
+                    </th>
+                    <th><i class="fas fa-user"></i> Tài khoản</th>
+                </tr>
+            </thead>
+            <tbody id="lichDatTableBody">
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@(item.FullName ?? item.UserName)</td>
+                        <td>@item.NgayDat.ToString("dd/MM/yyyy")</td>
+                        <td>@item.TimeSlot</td>
+                        <td>@item.phone</td>
+                        <td>@(item.HasIdentity ? "Có" : "Không")</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        document.getElementById("searchBtn").onclick = function () {
+            var date = document.getElementById("searchDate").value;
+
+            var url = '@Url.Action("Index", "StaffLichdat")';
+            if (date) {
+                url += "?date=" + date;
+            }
+            window.location.href = url;
+        };
+
+        document.getElementById("btnDaDat").onclick = function () {
+            var date = document.getElementById("searchDate").value;
+            var url = '@Url.Action("Index", "StaffLichdat")?trangThai=Đã_Đặt';
+            if (date) {
+                url += "&date=" + date;
+            }
+            window.location.href = url;
+        };
+
+        document.getElementById("btnChuaDat").onclick = function () {
+            var date = document.getElementById("searchDate").value;
+            var url = '@Url.Action("Index", "StaffLichdat")?trangThai=Chưa_Đặt';
+            if (date) {
+                url += "&date=" + date;
+            }
+            window.location.href = url;
+        };
+
+        // Thêm sự kiện cho nút "Xem tất cả lịch đặt"
+        document.getElementById("btnXemTatCa").onclick = function () {
+            window.location.href = '@Url.Action("Index", "StaffLichdat")'; // Điều hướng tới trang Index mà không có tham số
+        };
+
+        function sortTable(columnIndex) {
+            var table = document.getElementById("lichDatTable");
+            var tbody = table.getElementsByTagName("tbody")[0];
+            var rows = Array.from(tbody.getElementsByTagName("tr"));
+            var ascending = true;
+
+            // Kiểm tra xem có cần sắp xếp tăng dần hay không
+            if (tbody.getAttribute("data-sorted-column") == columnIndex && tbody.getAttribute("data-sorted-order") == "asc") {
+                ascending = false;
+            }
+
+            // Sắp xếp dựa vào chỉ số cột
+            rows.sort(function (a, b) {
+                var cellA = a.getElementsByTagName("td")[columnIndex].innerText;
+                var cellB = b.getElementsByTagName("td")[columnIndex].innerText;
+
+                if (columnIndex === 1) { // Ngày đặt
+                    return ascending ? new Date(cellA) - new Date(cellB) : new Date(cellB) - new Date(cellA);
+                } else {
+                    return ascending ? cellA.localeCompare(cellB) : cellB.localeCompare(cellA);
+                }
+            });
+
+            // Thêm lại các hàng đã sắp xếp vào tbody
+            rows.forEach(function (row) {
+                tbody.appendChild(row);
+            });
+
+            // Cập nhật thông tin cột đã sắp xếp
+            tbody.setAttribute("data-sorted-column", columnIndex);
+            tbody.setAttribute("data-sorted-order", ascending ? "asc" : "desc");
+        }
+    </script>
+}

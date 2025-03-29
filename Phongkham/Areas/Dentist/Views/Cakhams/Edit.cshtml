@@ -1,0 +1,73 @@
+﻿@model Phongkham.Models.Cakham
+
+@{
+    ViewData["Title"] = "Chỉnh Sửa Ca Khám";
+    Layout = "~/Views/Shared/_LayoutDentist.cshtml";
+}
+
+<style>
+    .form-container {
+        background-color: rgb(210 251 255 / 80%);
+        border-radius: 15px;
+        padding: 20px;
+        margin-top: 50px;
+        box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    .control-label1 {
+        color: black;
+    }
+
+    .btn-save {
+        margin-right: 10px;
+    }
+</style>
+
+<div class="container body">
+    <div class="row justify-content-center">
+        <div class="col-md-6 form-container">
+            <h1 class="mt-4 text-center">Chỉnh Sửa Ca Khám</h1>
+
+            <form asp-action="Edit">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                <div class="form-group">
+                    <label asp-for="NgayDang" class="control-label1">Ngày Khám</label>
+                    <input asp-for="NgayDang" class="form-control" id="NgayDang" type="date" name="selectedDate" readonly />
+                    <span asp-validation-for="NgayDang" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label1">Khung Giờ</label>
+                    @foreach (var khungGio in ViewBag.KhungGios)
+                    {
+                        <div>
+                            <input type="checkbox" name="selectedKhungGioIds" value="@khungGio.Id"
+                                   class="khung-gio-checkbox" id="khungGio_@khungGio.Id"
+                            @(ViewBag.SelectedKhungGioIds.Contains(khungGio.Id) ? "checked" : "") />
+                            <label for="khungGio_@khungGio.Id" style="color: black;">@khungGio.TimeSlot</label>
+                        </div>
+                    }
+                </div>
+
+                <div class="form-group" style="display:none;">
+                    <label asp-for="DentistId" class="control-label"></label>
+                    <select asp-for="DentistId" class="form-control" asp-items="ViewBag.DentistId"></select>
+                </div>
+
+                <div class="form-group d-flex justify-content-center">
+                    <button type="submit" class="btn btn-primary btn-save mr-2">Lưu</button>
+                    <a type="button" class="btn btn-secondary" style="color: white;" asp-action="Index">Trở Về Danh Sách</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @Html.Partial("_ValidationScriptsPartial");
+}

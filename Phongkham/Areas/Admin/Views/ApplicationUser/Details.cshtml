@@ -1,0 +1,28 @@
+﻿@model Phongkham.Models.ApplicationUser
+
+@{
+    ViewBag.Title = "User Details";
+    Layout = "~/Views/Shared/_AdLayout.cshtml";
+    var userRoles = ViewBag.UserRoles as IList<string>;
+}
+
+<h2>Chi tiết danh sách tài khoản</h2>
+
+<div>
+    <h4>@Model.FullName</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">Email</dt>
+        <dd class="col-sm-10">@Model.Email</dd>
+
+        <dt class="col-sm-2">Full Name</dt>
+        <dd class="col-sm-10">@Model.FullName</dd>
+
+        <dt class="col-sm-2">Roles</dt>
+        <dd class="col-sm-10">@string.Join(", ", userRoles)</dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary">Edit</a>
+    <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+</div>

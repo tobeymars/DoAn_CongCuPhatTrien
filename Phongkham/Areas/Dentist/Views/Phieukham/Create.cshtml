@@ -1,0 +1,257 @@
+﻿@{
+    ViewData["Title"] = "Tạo Phiếu Khám";
+    Layout = "~/Views/Shared/_LayoutDentist.cshtml";
+}
+<style>
+    /* Tạo hiệu ứng card nổi bật */
+    .card {
+        border-radius: 8px;
+        background: linear-gradient(135deg, #78d4c9, #455e88);
+        max-width: 500px; /* Giới hạn chiều rộng card */
+        margin: 0 auto; /* Căn giữa card */
+        padding: 20px;
+        color: #000000;
+    }
+
+    /* Các trường input trong form */
+    .form-control {
+        border-radius: 5px;
+        box-shadow: none;
+        border: 1px solid #ced4da;
+    }
+
+        .form-control:focus {
+            border-color: #80bdff;
+            box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);
+        }
+
+    /* Nút button */
+    .btn-primary {
+        background-color: #007bff;
+        border-color: #007bff;
+        border-radius: 5px;
+    }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+            border-color: #0056b3;
+        }
+
+    /* Tiêu đề */
+    h2 {
+        font-weight: bold;
+    }
+
+    /* Căn giữa các nút trong form */
+    .form-group.text-center {
+        margin-top: 20px;
+    }
+
+    .form-check {
+        margin-left: 15px; /* Điều chỉnh khoảng cách từ trái */
+        padding-left: 10px; /* Thêm padding nếu cần */
+    }
+
+    .form-check-label {
+        padding-left: 5px; /* Khoảng cách giữa checkbox và label */
+    }
+</style>
+<h2 class="text-center mb-4">Tạo Phiếu Khám</h2>
+
+<form asp-action="Create" method="post">
+    <div class="card shadow-sm p-4">
+        <div class="form-group">
+            <label for="TenBenhNhan" class="font-weight-bold">Tên Bệnh Nhân:</label>
+            <input type="text" class="form-control" id="TenBenhNhan" name="TenBenhNhan" value="@ViewData["TenBenhNhan"]" readonly />
+        </div>
+
+        <!-- Ẩn trường Tên Nha Sĩ -->
+        <div class="form-group" style="display:none;">
+            <label for="TenNhaSi">Tên Nha Sĩ:</label>
+            <input type="text" id="TenNhaSi" name="TenNhaSi" value="@ViewData["TenNhaSi"]" />
+        </div>
+
+        <input type="hidden" id="source" name="source" value="@ViewData["source"]" />
+        <input type="hidden" id="lichKhamId" name="lichKhamId" value="@ViewData["lichKhamId"]" />
+
+        <div class="form-group">
+            <label for="NgayKham" class="font-weight-bold">Ngày Khám:</label>
+            <input type="date" class="form-control" id="NgayKham" name="NgayKham" value="@DateTime.Now.ToString("yyyy-MM-dd")" readonly />
+        </div>
+        <div class="form-group">
+            <label for="KhungGio">Thời gian:</label>
+            <input type="text" id="KhungGio" name="KhungGio" value="@ViewData["KhungGio"]" readonly />
+        </div>
+
+        <div class="form-group">
+            <label class="font-weight-bold">Dịch Vụ:</label>
+            <div>
+                @foreach (var dichvu in ViewData["DichVuList"] as List<Phongkham.Models.dichvu>)
+                {
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input" id="DichvuId_@dichvu.Id" name="DichvuIds" value="@dichvu.Id" />
+                        <label class="form-check-label" for="DichvuId_@dichvu.Id">@dichvu.ten</label>
+                    </div>
+                }
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="font-weight-bold">Tái Khám:</label>
+            <div>
+                <div class="form-check">
+                    <input type="radio" class="form-check-input" id="TaiKhamYes" name="TaiKham" value="true" />
+                    <label class="form-check-label" for="TaiKhamYes">Có</label>
+                </div>
+                <div class="form-check">
+                    <input type="radio" class="form-check-input" id="TaiKhamNo" name="TaiKham" value="false" checked />
+                    <label class="form-check-label" for="TaiKhamNo">Không</label>
+                </div>
+            </div>
+        </div>
+        <!-- Thêm trường nhập thời gian tái khám, chỉ hiển thị khi chọn "Có" -->
+        <div class="form-group" id="ThoiGianTaiKham" style="display:none;">
+            <label for="ThoiGianTaiKhamInput" class="font-weight-bold">Thời gian tái khám:</label>
+            <input type="text" class="form-control" id="ThoiGianTaiKhamInput" name="ThoiGianTaiKham" placeholder="Nhập thời gian tái khám" />
+        </div>
+
+        <div class="form-group">
+            <label for="GhiChu" class="font-weight-bold">Chuẩn đoán:</label>
+            <textarea class="form-control" id="GhiChu" name="GhiChu" rows="4"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="thuoc" class="font-weight-bold">Chọn Thuốc</label>
+            <button type="button" id="btnChonThuoc" class="btn btn-dark btn-block">Chọn Thuốc</button>
+            <textarea class="form-control mt-2" id="thuocDaChon" name="thuocDaChon" rows="5" readonly placeholder="Thuốc đã chọn sẽ hiển thị ở đây"></textarea>
+        </div>
+
+        <!-- Các trường ẩn để lưu ID thuốc và liều lượng -->
+        <input type="hidden" id="ThuocIds" name="ThuocIds" />
+        <input type="hidden" id="LieuLuongs" name="LieuLuongs" />
+        <div class="form-group text-center">
+            <button type="submit" class="btn btn-primary btn-lg">Tạo Phiếu Khám</button>
+        </div>
+    </div>
+</form>
+
+<!-- Modal -->
+<div id="thuocModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Chọn Thuốc</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <input type="text" id="thuocSearch" class="form-control" placeholder="Nhập tên thuốc..." />
+                <ul id="thuocList" class="list-group mt-2"></ul>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            // Hiển thị modal khi nhấn vào nút "Chọn Thuốc"
+            $("#btnChonThuoc").click(function () {
+                $("#thuocModal").modal("show");
+                $("#thuocModal").attr("aria-hidden", "false");  // Đảm bảo rằng modal không bị ẩn khi mở
+            });
+
+            // Tìm kiếm thuốc khi nhập vào ô tìm kiếm
+            $("#thuocSearch").on("input", function () {
+                var searchTerm = $(this).val().toLowerCase();
+                if (searchTerm.length > 0) {
+                    $.getJSON('@Url.Action("SearchThuoc", "Phieukham")', { term: searchTerm }, function (data) {
+                        if (data && data.$values && Array.isArray(data.$values)) {
+                            var suggestions = data.$values.map(function (thuoc) {
+                                return `<li class="list-group-item d-flex justify-content-between align-items-center">
+                                                                        <span data-id="${thuoc.id}">${thuoc.tenThuoc}</span>
+                                                                        <input type="number" class="form-control ml-2" placeholder="Liều lượng" min="1" />
+                                                                        <button type="button" class="btn btn-primary btn-sm ml-2">Thêm</button>
+                                                                    </li>`;
+                            });
+                            $("#thuocList").html(suggestions.join(''));
+                        } else {
+                            console.error("Dữ liệu không có trường $values hoặc không phải là mảng:", data);
+                        }
+                    }).fail(function (jqXHR, textStatus, errorThrown) {
+                        console.error("Yêu cầu không thành công: ", textStatus, errorThrown);
+                    });
+                } else {
+                    $("#thuocList").empty();
+                }
+            });
+
+            // Khi nhấn "Thêm" vào một thuốc, thêm vào danh sách thuốc đã chọn
+            $("#thuocList").on("click", ".btn-primary", function () {
+                var thuocTen = $(this).siblings("span").text();
+                var thuocId = $(this).siblings("span").data("id");
+                var lieuLuong = $(this).siblings("input").val();
+
+                if (lieuLuong) {
+                    var thuocIds = JSON.parse($("#ThuocIds").val() || "[]");
+                    var lieuLuongs = JSON.parse($("#LieuLuongs").val() || "[]");
+
+                    // Kiểm tra xem thuốc này đã có trong danh sách với liều lượng tương ứng chưa
+                    var exists = thuocIds.some(function (id, index) {
+                        return id === thuocId;
+                    });
+
+                    if (exists) {
+                        alert("Thuốc này đã có trong danh sách.");
+                        return;
+                    }
+
+                    // Kiểm tra trong textarea (thuốc đã chọn)
+                    var currentText = $("#thuocDaChon").val();
+                    var thuocText = `${thuocTen} - Liều lượng: ${lieuLuong}\n`;
+
+                    // Kiểm tra xem thuốc đã có trong danh sách trong textarea chưa
+                    if (currentText.includes(thuocText)) {
+                        alert("Thuốc này đã có trong danh sách thuốc đã chọn.");
+                        return;
+                    }
+
+                    // Thêm thuốc vào danh sách hiển thị
+                    $("#thuocDaChon").val(function (i, val) {
+                        return val + thuocText;
+                    });
+
+                    thuocIds.push(thuocId);  // Thêm ID thuốc
+                    lieuLuongs.push(lieuLuong);  // Thêm liều lượng
+
+                    // Cập nhật giá trị cho các trường JSON
+                    $("#ThuocIds").val(JSON.stringify(thuocIds));
+                    $("#LieuLuongs").val(JSON.stringify(lieuLuongs));
+
+                    // Đóng modal
+                    $("#thuocModal").modal("hide");
+                } else {
+                    alert("Vui lòng nhập liều lượng thuốc.");
+                }
+            });
+
+            // Khi modal đóng lại, đảm bảo aria-hidden trở lại là true
+            $('#thuocModal').on('hidden.bs.modal', function () {
+                $(this).attr('aria-hidden', 'true');
+            });
+        });
+        $(document).ready(function () {
+            // Lắng nghe sự kiện chọn "Có" hoặc "Không" cho tái khám
+            $("input[name='TaiKham']").on("change", function () {
+                if ($("#TaiKhamYes").prop("checked")) {
+                    // Hiển thị ô nhập thời gian tái khám khi chọn "Có"
+                    $("#ThoiGianTaiKham").show();
+                } else {
+                    // Ẩn ô nhập thời gian tái khám khi chọn "Không"
+                    $("#ThoiGianTaiKham").hide();
+                }
+            });
+        });
+    </script>
+}

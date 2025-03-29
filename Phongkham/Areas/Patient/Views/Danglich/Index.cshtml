@@ -1,0 +1,100 @@
+﻿@model IEnumerable<Phongkham.Models.lichKham>
+
+@{
+    ViewData["Title"] = "Danh Sách Lịch Đặt";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<!-- CSS bổ sung cho bảng -->
+<style>
+    table th, table td {
+        vertical-align: middle;
+        font-size: 14px;
+    }
+
+    /* Thêm màu nền cho các thẻ td */
+    table td {
+        background-color: #f8f9fa; /* Màu nền cho thẻ td */
+    }
+
+    /* Tạo hiệu ứng cho nút Sửa */
+    .btn-warning {
+        transition: background-color 0.3s ease;
+    }
+
+        .btn-warning:hover {
+            background-color: #ffcc00;
+        }
+
+    /* Tăng độ nét cho các đầu bảng */
+    table th {
+        font-weight: bold;
+        background-color: #343a40;
+        color: white;
+    }
+
+    .disabled-btn {
+        pointer-events: none;
+        opacity: 0.6;
+    }
+</style>
+
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger">@TempData["ErrorMessage"]</div>
+}
+
+<div class="container mt-4">
+    <div class="text-center mb-4">
+        <h1 class="fw-bold text-primary">@ViewData["Title"]</h1>
+    </div>
+    <div class="row mb-3" style="padding-left:750px;">
+        <div class="col-auto">
+            <a asp-action="Create" class="btn btn-success btn-lg text-white">Đăng Lịch Khám Mới</a>
+        </div>
+    </div>
+    <div class="table-responsive shadow-sm">
+        <table class="table table-hover align-middle text-center">
+            <thead class="table-dark">
+                <tr>
+                    <th scope="col">Ngày Đặt</th>
+                    <th scope="col">Khung Giờ</th>
+                    <th scope="col">Số Điện Thoại</th>
+                    <th scope="col">Thao Tác</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (!Model.Any())
+                {
+                    <tr>
+                        <td colspan="4" class="text-muted">Chưa có lịch khám nào được đăng ký.</td>
+                    </tr>
+                }
+                else
+                {
+                    @foreach (var lichKham in Model)
+                    {
+                        // Kiểm tra nếu ngày hiện tại đã qua ngày đặt lịch
+                        var isPastDate = lichKham.NgayDat.Date == DateTime.Now.Date;
+
+                        <tr>
+                            <td>@lichKham.NgayDat.ToString("dd/MM/yyyy")</td>
+                            <td>@lichKham.KhungGio?.TimeSlot</td>
+                            <td>@lichKham.phone</td>
+                            <td>
+                                @if (!isPastDate)
+                                {
+                                    <a asp-action="Edit" asp-route-id="@lichKham.Id" class="btn btn-outline-warning btn-sm me-2" style="color:white"><i class="fas fa-edit"></i> Sửa</a>
+                                    <a asp-action="Delete" asp-route-id="@lichKham.Id" class="btn btn-outline-danger btn-sm" style="color:white" onclick="return confirm('Bạn có chắc muốn xóa lịch này?');"><i class="fas fa-trash-alt"></i> Xóa</a>
+                                }
+                                else
+                                {
+                                    <span class="text-muted">Không chỉnh sửa khi đến và qua ngày</span>
+                                }
+                            </td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

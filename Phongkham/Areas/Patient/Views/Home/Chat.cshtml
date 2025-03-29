@@ -1,0 +1,206 @@
+﻿<head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/3.1.12/signalr.min.js"></script>
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+        }
+
+        .center-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh; /* Chiều cao bao phủ toàn màn hình */
+            overflow: hidden;
+        }
+
+        .chat-container {
+            display: flex;
+            flex-direction: column;
+            height: 80vh;
+            width: 80%;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            overflow: hidden;
+            background-color: #ffffff;
+        }
+
+        /* Khung nhập tin nhắn */
+        .chat-input-container {
+            display: flex;
+            padding: 10px;
+            border-top: 1px solid #ddd;
+            background-color: #f9f9f9;
+        }
+
+        /* Ô nhập và nút gửi */
+        #messageInput {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 15px;
+            outline: none;
+        }
+
+        .send-button {
+            padding: 10px;
+            margin-left: 5px;
+            border: none;
+            background-color: #0078ff;
+            color: #ffffff;
+            border-radius: 15px;
+            cursor: pointer;
+        }
+
+        /* Khung hiển thị tin nhắn */
+        #messagesList {
+            flex: 1;
+            padding: 10px;
+            overflow-y: auto;
+            background-color: #f9f9f9;
+        }
+
+        /* Tin nhắn của người dùng (bên phải) */
+        .user-message {
+            background-color: #0078ff;
+            color: white;
+            padding: 8px 12px;
+            border-radius: 15px;
+            margin: 5px 0;
+            max-width: 70%;
+            text-align: left;
+            margin-left: auto;
+            border-top-right-radius: 0;
+        }
+
+        /* Tin nhắn của admin (bên trái) */
+        .admin-message {
+            background-color: #e1e1e1;
+            color: #333;
+            padding: 8px 12px;
+            border-radius: 15px;
+            margin: 5px 0;
+            max-width: 70%;
+            text-align: left;
+            align-self: flex-start;
+            border-top-left-radius: 0;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="center-wrapper">
+        <div class="chat-container">
+            <!-- Khung hiển thị tin nhắn -->
+            <div id="messagesList"></div>
+            <div id="unreadMessageCount" style="display:none; position: absolute; top: 10px; right: 10px; background-color: red; color: white; border-radius: 50%; padding: 10px; font-size: 14px;"></div>
+            <!-- Khung nhập tin nhắn -->
+            <div class="chat-input-container">
+<textarea type="text" id="messageInput" placeholder="Nhập tin nhắn của bạn"></textarea>
+                <button class="send-button" onclick="sendMessageToAdmin()">Gửi</button>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        // Lấy userId từ ViewBag
+        const userId = '@ViewBag.UserId';
+        console.log("User ID:", userId); // Kiểm tra userId trong console
+
+        const connection = new signalR.HubConnectionBuilder().withUrl("/chathub").build();
+
+        // Hàm tải lịch sử tin nhắn
+        function loadChatHistory() {
+            $.getJSON(`/Chat/GetChatHistory?userId=${userId}`, function (data) {
+                const messagesList = document.getElementById("messagesList");
+                messagesList.innerHTML = ''; // Xóa nội dung cũ
+
+                data.forEach(function (message) {
+                    const msg = document.createElement("div");
+
+                    // Kiểm tra ai là người gửi và thêm CSS phù hợp
+                    if (message.senderId === userId) {
+                        msg.className = "user-message";
+                        msg.innerHTML = `<strong>Bạn:</strong> ${message.messageContent}`;
+                    } else {
+                        msg.className = "admin-message";
+                        msg.innerHTML = `<strong>Admin:</strong> ${message.messageContent}`;
+                    }
+
+                    messagesList.appendChild(msg);
+                });
+
+                // Cuộn xuống cuối cùng sau khi tải lịch sử
+                scrollToBottom();
+            }).fail(function (jqxhr, textStatus, error) {
+                console.error("Lỗi khi tải lịch sử tin nhắn:", textStatus, error);
+            });
+        }
+
+        // Nhận tin nhắn từ admin
+        connection.on("ReceiveMessageFromAdmin", (sender, message) => {
+            const msg = document.createElement("div");
+            msg.className = "admin-message";
+            msg.innerHTML = `<strong>${sender}:</strong> ${message}`;
+            document.getElementById("messagesList").appendChild(msg);
+            scrollToBottom(); // Cuộn xuống cuối khi có tin nhắn mới
+        });
+
+        // Khởi động kết nối SignalR và tải lịch sử tin nhắn khi trang được tải
+        connection.start().then(() => {
+            console.log("Connected to SignalR");
+            loadChatHistory(); // Gọi hàm để tải lịch sử tin nhắn
+        }).catch(err => console.error("Connection failed:", err));
+
+        // Lắng nghe sự kiện nhấn phím trên textarea
+        document.getElementById("messageInput").addEventListener("keydown", function (event) {
+            if (event.key === "Enter" && !event.shiftKey) {
+                event.preventDefault();
+                sendMessageToAdmin();
+            }
+        });
+
+        // Hàm gửi tin nhắn tới admin
+        function sendMessageToAdmin() {
+            const messageInput = document.getElementById("messageInput");
+            const message = messageInput.value.trim();
+
+            if (message) {
+                connection.invoke("SendMessageToAdmin", message)
+                    .then(() => {
+                        const userMsg = document.createElement("div");
+                        userMsg.className = "user-message";
+                        userMsg.innerHTML = `<strong>Bạn:</strong> ${message}`;
+                        document.getElementById("messagesList").appendChild(userMsg);
+                        messageInput.value = '';
+                        scrollToBottom();
+                    })
+                    .catch(err => console.error("Failed to send message:", err));
+            } else {
+                alert("Vui lòng nhập tin nhắn trước khi gửi.");
+            }
+        }
+
+        // Hàm lấy số lượng tin nhắn chưa đọc và hiển thị thông báo
+        function checkUnreadMessages() {
+            $.getJSON(`/Chat/GetUnreadMessagesCount?userId=${userId}`, function (unreadCount) {
+                if (unreadCount > 0) {
+                    // Hiển thị thông báo nếu có tin nhắn chưa đọc
+                    $('#unreadMessageCount').text(unreadCount).show();
+                } else {
+                    $('#unreadMessageCount').hide();
+                }
+            }).fail(function (jqxhr, textStatus, error) {
+                console.error("Lỗi khi kiểm tra tin nhắn chưa đọc:", textStatus, error);
+            });
+        }
+
+
+        // Hàm cuộn xuống cuối khung tin nhắn
+        function scrollToBottom() {
+            const messagesList = document.getElementById("messagesList");
+            messagesList.scrollTop = messagesList.scrollHeight;
+        }
+    </script>
+
+</body>

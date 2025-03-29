@@ -1,0 +1,825 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\Phongkham.bundle.scp.css",
+      "PackagePath": "staticwebassets\\Phongkham.bundle.scp.css"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\wwwroot\\.rescache",
+      "PackagePath": "staticwebassets\\.rescache"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\wwwroot\\Admin\\assets\\demo\\chart-area-demo.js",
+      "PackagePath": "staticwebassets\\Admin\\assets\\demo\\chart-area-demo.js"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\wwwroot\\Admin\\assets\\demo\\chart-bar-demo.js",
+      "PackagePath": "staticwebassets\\Admin\\assets\\demo\\chart-bar-demo.js"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\wwwroot\\Admin\\assets\\demo\\chart-pie-demo.js",
+      "PackagePath": "staticwebassets\\Admin\\assets\\demo\\chart-pie-demo.js"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\wwwroot\\Admin\\assets\\demo\\datatables-demo.js",
+      "PackagePath": "staticwebassets\\Admin\\assets\\demo\\datatables-demo.js"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\wwwroot\\Admin\\css\\styles.css",
+      "PackagePath": "staticwebassets\\Admin\\css\\styles.css"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\wwwroot\\Admin\\js\\datatables-simple-demo.js",
+      "PackagePath": "staticwebassets\\Admin\\js\\datatables-simple-demo.js"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\wwwroot\\Admin\\js\\scripts.js",
+      "PackagePath": "staticwebassets\\Admin\\js\\scripts.js"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\wwwroot\\Customer\\css\\animate.min.css",
+      "PackagePath": "staticwebassets\\Customer\\css\\animate.min.css"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\wwwroot\\Customer\\css\\bootstrap.min.css",
+      "PackagePath": "staticwebassets\\Customer\\css\\bootstrap.min.css"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\wwwroot\\Customer\\css\\datepicker.css",
+      "PackagePath": "staticwebassets\\Customer\\css\\datepicker.css"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\wwwroot\\Customer\\css\\font-awesome.min.css",
+      "PackagePath": "staticwebassets\\Customer\\css\\font-awesome.min.css"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\wwwroot\\Customer\\css\\icofont.css",
+      "PackagePath": "staticwebassets\\Customer\\css\\icofont.css"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\wwwroot\\Customer\\css\\magnific-popup.css",
+      "PackagePath": "staticwebassets\\Customer\\css\\magnific-popup.css"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\wwwroot\\Customer\\css\\nice-select.css",
+      "PackagePath": "staticwebassets\\Customer\\css\\nice-select.css"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\wwwroot\\Customer\\css\\normalize.css",
+      "PackagePath": "staticwebassets\\Customer\\css\\normalize.css"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\wwwroot\\Customer\\css\\owl-carousel.css",
+      "PackagePath": "staticwebassets\\Customer\\css\\owl-carousel.css"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\wwwroot\\Customer\\css\\responsive.css",
+      "PackagePath": "staticwebassets\\Customer\\css\\responsive.css"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\wwwroot\\Customer\\css\\slicknav.min.css",
+      "PackagePath": "staticwebassets\\Customer\\css\\slicknav.min.css"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\wwwroot\\Customer\\css\\style.css",
+      "PackagePath": "staticwebassets\\Customer\\css\\style.css"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\wwwroot\\Customer\\fonts\\fontawesome-webfont.eot",
+      "PackagePath": "staticwebassets\\Customer\\fonts\\fontawesome-webfont.eot"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\wwwroot\\Customer\\fonts\\fontawesome-webfont.svg",
+      "PackagePath": "staticwebassets\\Customer\\fonts\\fontawesome-webfont.svg"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\wwwroot\\Customer\\fonts\\fontawesome-webfont.ttf",
+      "PackagePath": "staticwebassets\\Customer\\fonts\\fontawesome-webfont.ttf"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\wwwroot\\Customer\\fonts\\fontawesome-webfont.woff",
+      "PackagePath": "staticwebassets\\Customer\\fonts\\fontawesome-webfont.woff"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\wwwroot\\Customer\\fonts\\fontawesome-webfont.woff2",
+      "PackagePath": "staticwebassets\\Customer\\fonts\\fontawesome-webfont.woff2"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\wwwroot\\Customer\\fonts\\icofont.eot",
+      "PackagePath": "staticwebassets\\Customer\\fonts\\icofont.eot"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\wwwroot\\Customer\\fonts\\icofont.svg",
+      "PackagePath": "staticwebassets\\Customer\\fonts\\icofont.svg"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\wwwroot\\Customer\\fonts\\icofont.ttf",
+      "PackagePath": "staticwebassets\\Customer\\fonts\\icofont.ttf"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\wwwroot\\Customer\\fonts\\icofont.woff",
+      "PackagePath": "staticwebassets\\Customer\\fonts\\icofont.woff"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\wwwroot\\Customer\\fonts\\icofont.woff2",
+      "PackagePath": "staticwebassets\\Customer\\fonts\\icofont.woff2"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\wwwroot\\Customer\\img\\0sazv2m-Vector-Logo-Bieu-Tuong-034.jpg",
+      "PackagePath": "staticwebassets\\Customer\\img\\0sazv2m-Vector-Logo-Bieu-Tuong-034.jpg"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\wwwroot\\Customer\\img\\about-img.jpg",
+      "PackagePath": "staticwebassets\\Customer\\img\\about-img.jpg"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\wwwroot\\Customer\\img\\author1.jpg",
+      "PackagePath": "staticwebassets\\Customer\\img\\author1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\wwwroot\\Customer\\img\\author2.jpg",
+      "PackagePath": "staticwebassets\\Customer\\img\\author2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\wwwroot\\Customer\\img\\author3.jpg",
+      "PackagePath": "staticwebassets\\Customer\\img\\author3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\wwwroot\\Customer\\img\\blockqoute-bg.jpg",
+      "PackagePath": "staticwebassets\\Customer\\img\\blockqoute-bg.jpg"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\wwwroot\\Customer\\img\\blog-sidebar1.jpg",
+      "PackagePath": "staticwebassets\\Customer\\img\\blog-sidebar1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\wwwroot\\Customer\\img\\blog-sidebar2.jpg",
+      "PackagePath": "staticwebassets\\Customer\\img\\blog-sidebar2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\wwwroot\\Customer\\img\\blog-sidebar3.jpg",
+      "PackagePath": "staticwebassets\\Customer\\img\\blog-sidebar3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\wwwroot\\Customer\\img\\blog1.jpg",
+      "PackagePath": "staticwebassets\\Customer\\img\\blog1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\wwwroot\\Customer\\img\\blog2.jpg",
+      "PackagePath": "staticwebassets\\Customer\\img\\blog2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\wwwroot\\Customer\\img\\blog3.jpg",
+      "PackagePath": "staticwebassets\\Customer\\img\\blog3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\wwwroot\\Customer\\img\\bread-bg.jpg",
+      "PackagePath": "staticwebassets\\Customer\\img\\bread-bg.jpg"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\wwwroot\\Customer\\img\\call-bg.jpg",
+      "PackagePath": "staticwebassets\\Customer\\img\\call-bg.jpg"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\wwwroot\\Customer\\img\\client-bg.jpg",
+      "PackagePath": "staticwebassets\\Customer\\img\\client-bg.jpg"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\wwwroot\\Customer\\img\\client1.png",
+      "PackagePath": "staticwebassets\\Customer\\img\\client1.png"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\wwwroot\\Customer\\img\\client2.png",
+      "PackagePath": "staticwebassets\\Customer\\img\\client2.png"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\wwwroot\\Customer\\img\\client3.png",
+      "PackagePath": "staticwebassets\\Customer\\img\\client3.png"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\wwwroot\\Customer\\img\\client4.png",
+      "PackagePath": "staticwebassets\\Customer\\img\\client4.png"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\wwwroot\\Customer\\img\\client5.png",
+      "PackagePath": "staticwebassets\\Customer\\img\\client5.png"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\wwwroot\\Customer\\img\\contact-img.png",
+      "PackagePath": "staticwebassets\\Customer\\img\\contact-img.png"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\wwwroot\\Customer\\img\\favicon.png",
+      "PackagePath": "staticwebassets\\Customer\\img\\favicon.png"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\wwwroot\\Customer\\img\\fun-bg.jpg",
+      "PackagePath": "staticwebassets\\Customer\\img\\fun-bg.jpg"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\wwwroot\\Customer\\img\\logo.png",
+      "PackagePath": "staticwebassets\\Customer\\img\\logo.png"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\wwwroot\\Customer\\img\\map-marker.png",
+      "PackagePath": "staticwebassets\\Customer\\img\\map-marker.png"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\wwwroot\\Customer\\img\\mission-img.jpg",
+      "PackagePath": "staticwebassets\\Customer\\img\\mission-img.jpg"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\wwwroot\\Customer\\img\\pf1.jpg",
+      "PackagePath": "staticwebassets\\Customer\\img\\pf1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\wwwroot\\Customer\\img\\pf2.jpg",
+      "PackagePath": "staticwebassets\\Customer\\img\\pf2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\wwwroot\\Customer\\img\\pf3.jpg",
+      "PackagePath": "staticwebassets\\Customer\\img\\pf3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\wwwroot\\Customer\\img\\pf4.jpg",
+      "PackagePath": "staticwebassets\\Customer\\img\\pf4.jpg"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\wwwroot\\Customer\\img\\section-img.png",
+      "PackagePath": "staticwebassets\\Customer\\img\\section-img.png"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\wwwroot\\Customer\\img\\signup-bg.jpg",
+      "PackagePath": "staticwebassets\\Customer\\img\\signup-bg.jpg"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\wwwroot\\Customer\\img\\slider.jpg",
+      "PackagePath": "staticwebassets\\Customer\\img\\slider.jpg"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\wwwroot\\Customer\\img\\slider2.jpg",
+      "PackagePath": "staticwebassets\\Customer\\img\\slider2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\wwwroot\\Customer\\img\\slider3.jpg",
+      "PackagePath": "staticwebassets\\Customer\\img\\slider3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\wwwroot\\Customer\\img\\testi-bg.jpg",
+      "PackagePath": "staticwebassets\\Customer\\img\\testi-bg.jpg"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\wwwroot\\Customer\\img\\video-bg.jpg",
+      "PackagePath": "staticwebassets\\Customer\\img\\video-bg.jpg"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\wwwroot\\Customer\\js\\bootstrap-datepicker.js",
+      "PackagePath": "staticwebassets\\Customer\\js\\bootstrap-datepicker.js"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\wwwroot\\Customer\\js\\bootstrap.min.js",
+      "PackagePath": "staticwebassets\\Customer\\js\\bootstrap.min.js"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\wwwroot\\Customer\\js\\colors.js",
+      "PackagePath": "staticwebassets\\Customer\\js\\colors.js"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\wwwroot\\Customer\\js\\easing.js",
+      "PackagePath": "staticwebassets\\Customer\\js\\easing.js"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\wwwroot\\Customer\\js\\gmaps.min.js",
+      "PackagePath": "staticwebassets\\Customer\\js\\gmaps.min.js"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\wwwroot\\Customer\\js\\jquery-migrate-3.0.0.js",
+      "PackagePath": "staticwebassets\\Customer\\js\\jquery-migrate-3.0.0.js"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\wwwroot\\Customer\\js\\jquery-ui.min.js",
+      "PackagePath": "staticwebassets\\Customer\\js\\jquery-ui.min.js"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\wwwroot\\Customer\\js\\jquery.counterup.min.js",
+      "PackagePath": "staticwebassets\\Customer\\js\\jquery.counterup.min.js"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\wwwroot\\Customer\\js\\jquery.magnific-popup.min.js",
+      "PackagePath": "staticwebassets\\Customer\\js\\jquery.magnific-popup.min.js"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\wwwroot\\Customer\\js\\jquery.min.js",
+      "PackagePath": "staticwebassets\\Customer\\js\\jquery.min.js"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\wwwroot\\Customer\\js\\jquery.nav.js",
+      "PackagePath": "staticwebassets\\Customer\\js\\jquery.nav.js"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\wwwroot\\Customer\\js\\jquery.scrollUp.min.js",
+      "PackagePath": "staticwebassets\\Customer\\js\\jquery.scrollUp.min.js"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\wwwroot\\Customer\\js\\main.js",
+      "PackagePath": "staticwebassets\\Customer\\js\\main.js"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\wwwroot\\Customer\\js\\map-active.js",
+      "PackagePath": "staticwebassets\\Customer\\js\\map-active.js"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\wwwroot\\Customer\\js\\niceselect.js",
+      "PackagePath": "staticwebassets\\Customer\\js\\niceselect.js"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\wwwroot\\Customer\\js\\owl-carousel.js",
+      "PackagePath": "staticwebassets\\Customer\\js\\owl-carousel.js"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\wwwroot\\Customer\\js\\popper.min.js",
+      "PackagePath": "staticwebassets\\Customer\\js\\popper.min.js"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\wwwroot\\Customer\\js\\slicknav.min.js",
+      "PackagePath": "staticwebassets\\Customer\\js\\slicknav.min.js"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\wwwroot\\Customer\\js\\steller.js",
+      "PackagePath": "staticwebassets\\Customer\\js\\steller.js"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\wwwroot\\Customer\\js\\tilt.jquery.min.js",
+      "PackagePath": "staticwebassets\\Customer\\js\\tilt.jquery.min.js"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\wwwroot\\Customer\\js\\wow.min.js",
+      "PackagePath": "staticwebassets\\Customer\\js\\wow.min.js"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\wwwroot\\css\\.rescache",
+      "PackagePath": "staticwebassets\\css\\.rescache"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\wwwroot\\css\\dichvu.css",
+      "PackagePath": "staticwebassets\\css\\dichvu.css"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\wwwroot\\css\\site.css",
+      "PackagePath": "staticwebassets\\css\\site.css"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\wwwroot\\css\\styles.css",
+      "PackagePath": "staticwebassets\\css\\styles.css"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\wwwroot\\favicon.ico",
+      "PackagePath": "staticwebassets\\favicon.ico"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\wwwroot\\images\\.rescache",
+      "PackagePath": "staticwebassets\\images\\.rescache"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\wwwroot\\images\\11.11SGMRTHIENHAI12H4292-done.webp",
+      "PackagePath": "staticwebassets\\images\\11.11SGMRTHIENHAI12H4292-done.webp"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\wwwroot\\images\\1140x760-2-4-scaled.jpg",
+      "PackagePath": "staticwebassets\\images\\1140x760-2-4-scaled.jpg"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\wwwroot\\images\\155618-1bsi-nghi-hung-viet.png",
+      "PackagePath": "staticwebassets\\images\\155618-1bsi-nghi-hung-viet.png"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\wwwroot\\images\\471562662-1130107588470077-407-9770-4444-1735313678.jpg",
+      "PackagePath": "staticwebassets\\images\\471562662-1130107588470077-407-9770-4444-1735313678.jpg"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\wwwroot\\images\\BS-Doan-Thi-Hong-Giang.webp",
+      "PackagePath": "staticwebassets\\images\\BS-Doan-Thi-Hong-Giang.webp"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\wwwroot\\images\\BS-Nguyen-Thi-Ngoc-Uyen.webp",
+      "PackagePath": "staticwebassets\\images\\BS-Nguyen-Thi-Ngoc-Uyen.webp"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\wwwroot\\images\\BS-Nguyen-Trong-Nghia.webp",
+      "PackagePath": "staticwebassets\\images\\BS-Nguyen-Trong-Nghia.webp"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\wwwroot\\images\\BS-Võ-Văn-Xang-done.webp",
+      "PackagePath": "staticwebassets\\images\\BS-Võ-Văn-Xang-done.webp"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\wwwroot\\images\\BS.THs_.Nguyen-Huu-Nam.webp",
+      "PackagePath": "staticwebassets\\images\\BS.THs_.Nguyen-Huu-Nam.webp"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\wwwroot\\images\\BSCKI-Phan-Sĩ-Trung-done.webp",
+      "PackagePath": "staticwebassets\\images\\BSCKI-Phan-Sĩ-Trung-done.webp"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\wwwroot\\images\\Screenshot 2024-10-16 182901.png",
+      "PackagePath": "staticwebassets\\images\\Screenshot 2024-10-16 182901.png"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\wwwroot\\images\\bglog.jpg",
+      "PackagePath": "staticwebassets\\images\\bglog.jpg"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\wwwroot\\images\\c51122e97b17c0499906-173218411-3947-6828-1732184150.jpg",
+      "PackagePath": "staticwebassets\\images\\c51122e97b17c0499906-173218411-3947-6828-1732184150.jpg"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\wwwroot\\images\\cach-ve-sinh-rang-mieng-khi-nieng-rang-3.jpg",
+      "PackagePath": "staticwebassets\\images\\cach-ve-sinh-rang-mieng-khi-nieng-rang-3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\wwwroot\\images\\cao-voi-rang-1.jpg",
+      "PackagePath": "staticwebassets\\images\\cao-voi-rang-1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\wwwroot\\images\\daidien.png",
+      "PackagePath": "staticwebassets\\images\\daidien.png"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\wwwroot\\images\\e8ed2ed3e42859760039-173530320-9472-3978-1735309363.jpg",
+      "PackagePath": "staticwebassets\\images\\e8ed2ed3e42859760039-173530320-9472-3978-1735309363.jpg"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\wwwroot\\images\\header.png",
+      "PackagePath": "staticwebassets\\images\\header.png"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\wwwroot\\images\\images2.jpg",
+      "PackagePath": "staticwebassets\\images\\images2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\wwwroot\\images\\nho-rang-8.jpg",
+      "PackagePath": "staticwebassets\\images\\nho-rang-8.jpg"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\wwwroot\\images\\ns1.jpg",
+      "PackagePath": "staticwebassets\\images\\ns1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\wwwroot\\images\\ns2.jpg",
+      "PackagePath": "staticwebassets\\images\\ns2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\wwwroot\\images\\rang.png",
+      "PackagePath": "staticwebassets\\images\\rang.png"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\wwwroot\\images\\th (1).jpeg",
+      "PackagePath": "staticwebassets\\images\\th (1).jpeg"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\wwwroot\\images\\th.jpeg",
+      "PackagePath": "staticwebassets\\images\\th.jpeg"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\wwwroot\\images\\thay-rang-sua-tre-em.webp",
+      "PackagePath": "staticwebassets\\images\\thay-rang-sua-tre-em.webp"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\wwwroot\\images\\thẩm mỹ.jpg",
+      "PackagePath": "staticwebassets\\images\\thẩm mỹ.jpg"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\wwwroot\\images\\tongquat.jpg",
+      "PackagePath": "staticwebassets\\images\\tongquat.jpg"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\wwwroot\\images\\tram-rang-tham-my-laser-composite-1.jpg",
+      "PackagePath": "staticwebassets\\images\\tram-rang-tham-my-laser-composite-1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\wwwroot\\images\\tramrang.jpg",
+      "PackagePath": "staticwebassets\\images\\tramrang.jpg"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\wwwroot\\images\\treem.jpg",
+      "PackagePath": "staticwebassets\\images\\treem.jpg"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\wwwroot\\images\\viem-nha-chu-cap-1.jpg",
+      "PackagePath": "staticwebassets\\images\\viem-nha-chu-cap-1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\wwwroot\\js\\.rescache",
+      "PackagePath": "staticwebassets\\js\\.rescache"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\wwwroot\\js\\site.js",
+      "PackagePath": "staticwebassets\\js\\site.js"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\wwwroot\\lib\\.rescache",
+      "PackagePath": "staticwebassets\\lib\\.rescache"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\wwwroot\\lib\\bootstrap\\.rescache",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\.rescache"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\wwwroot\\lib\\bootstrap\\LICENSE",
+      "PackagePath": "staticwebassets\\lib\\bootstrap"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\wwwroot\\lib\\bootstrap\\dist\\.rescache",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\.rescache"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\wwwroot\\lib\\bootstrap\\dist\\css\\.rescache",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\.rescache"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-theme.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-theme.css"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-theme.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-theme.css.map"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-theme.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-theme.min.css"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-theme.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-theme.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.css"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.css.map"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.min.css"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\wwwroot\\lib\\bootstrap\\dist\\js\\.rescache",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\.rescache"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.js"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.js.map"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.min.js"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\wwwroot\\lib\\jquery-validation-unobtrusive\\.rescache",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\.rescache"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\wwwroot\\lib\\jquery-validation\\.rescache",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\.rescache"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\wwwroot\\lib\\jquery-validation\\LICENSE.md",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\LICENSE.md"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\wwwroot\\lib\\jquery-validation\\dist\\.rescache",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\.rescache"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\additional-methods.js"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\additional-methods.min.js"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\jquery.validate.js"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\jquery.validate.min.js"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\wwwroot\\lib\\jquery\\.rescache",
+      "PackagePath": "staticwebassets\\lib\\jquery\\.rescache"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\wwwroot\\lib\\jquery\\LICENSE.txt",
+      "PackagePath": "staticwebassets\\lib\\jquery\\LICENSE.txt"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\wwwroot\\lib\\jquery\\dist\\.rescache",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\.rescache"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\wwwroot\\lib\\jquery\\dist\\jquery.js",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.js"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\wwwroot\\lib\\jquery\\dist\\jquery.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.js"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\wwwroot\\mp3\\J2TEAM-TTS-1732190895001.mp3",
+      "PackagePath": "staticwebassets\\mp3\\J2TEAM-TTS-1732190895001.mp3"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.Phongkham.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.Phongkham.props",
+      "PackagePath": "build\\Phongkham.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.Phongkham.props",
+      "PackagePath": "buildMultiTargeting\\Phongkham.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.Phongkham.props",
+      "PackagePath": "buildTransitive\\Phongkham.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

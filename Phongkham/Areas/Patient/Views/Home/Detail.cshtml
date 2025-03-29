@@ -1,0 +1,19 @@
+﻿@model Phongkham.Models.Tintuc
+
+@{
+    ViewData["Title"] = Model.tieude;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-12">
+            <h2>@Model.tieude</h2>
+            <p><small>@Model.NgayDang.ToShortDateString()</small></p>
+            <img src="@Model.ImageUrl" class="img-fluid" alt="@Model.tieude">
+            <div class="mt-3">
+                <p>@Model.Noidung</p>
+            </div>
+        </div>
+    </div>
+</div>

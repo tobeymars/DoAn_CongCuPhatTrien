@@ -1,0 +1,106 @@
+﻿@model IEnumerable<Phongkham.Models.Phieukham>
+
+@{
+    ViewData["Title"] = "Danh Sách Tái Khám";
+    Layout = "~/Views/Shared/_AdLayout.cshtml";
+}
+
+<h2 class="text-center mt-4 mb-4">Danh sách tái khám</h2>
+<div class="d-flex justify-content-start mb-3" style="margin-left: 25px;">
+    <form method="get" action="@Url.Action("Index", "AdTaikham")">
+        <button type="submit" class="btn btn-secondary" name="reminder" value="false">
+            Tất cả
+            <i class="fa fa-list"></i>
+        </button>
+    </form>
+    <form method="get" action="@Url.Action("Index", "AdTaikham")" style="margin-left: 10px;">
+        <button type="submit" class="btn btn-warning position-relative" name="reminder" value="true">
+            Nhắc nhở
+            <i class="fa fa-bell"></i>
+            <span class="badge bg-danger position-absolute top-0 start-100 translate-middle rounded-circle">
+                @ViewBag.ReminderCount
+            </span>
+        </button>
+    </form>
+</div>
+
+<div class="table-responsive">
+    <table class="table table-hover table-striped table-bordered align-middle">
+        <thead class="table-dark">
+            <tr>
+                <th scope="col">Ngày Khám</th>
+                <th scope="col">Thời Gian Tái Khám</th>
+                <th scope="col">Tên Nha Sĩ</th>
+                <th scope="col">Tên Bệnh Nhân</th>
+                <th scope="col">Số Điện Thoại</th>
+                <th scope="col">Trạng Thái</th>
+                <th scope="col">Xác Nhận</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var phieukham in Model)
+            {
+                <tr>
+                    <td>@phieukham.NgayKham.ToString("dd/MM/yyyy")</td>
+                    <td>@phieukham.Thoigiantaikham</td>
+                    <td>@phieukham.TenNhaSi</td>
+                    <td>@phieukham.TenBenhNhan</td>
+                    <td>@ViewBag.PhoneNumbers[phieukham.Id]</td> <!-- Hiển thị số điện thoại -->
+                    <!-- Trạng thái tái khám -->
+                    <td>
+                        <div class="status-radio" style="background-color: @(phieukham.TrangThaiTaiKham ? "green" : "red");"></div>
+                    </td>
+
+                    <!-- Button xác nhận -->
+                    <td>
+                        @if (!phieukham.TrangThaiTaiKham) // Chỉ hiển thị nút nếu trạng thái tái khám chưa được xác nhận
+                        {
+                            <form method="get" action="@Url.Action("Index", "AdTaikham")">
+                                <input type="hidden" name="id" value="@phieukham.Id" />
+                                <button type="submit" class="btn btn-success">Xác Nhận</button>
+                            </form>
+                        }
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<style>
+    .table-responsive {
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+    }
+
+    .table thead {
+        background-color: #343a40;
+        color: #fff;
+    }
+
+    .table-hover tbody tr:hover {
+        background-color: #f1f1f1;
+    }
+
+    h2 {
+        color: #333;
+        font-weight: 600;
+    }
+
+    /* Kiểu dáng cho trạng thái tái khám */
+    .status-radio {
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        display: inline-block;
+        margin: 0 auto;
+        border: 2px solid #ccc;
+    }
+
+    /* Thêm hiệu ứng khi hover lên hàng trong bảng */
+    .table-hover tbody tr:hover {
+        background-color: #f1f1f1;
+    }
+</style>

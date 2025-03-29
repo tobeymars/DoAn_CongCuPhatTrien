@@ -1,0 +1,92 @@
+﻿@model Phongkham.Models.Tintuc
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_LayoutStaff.cshtml";
+}
+
+<style>
+    .form-container {
+        background-color: rgba(255, 255, 0, 0.8); /* Màu nền của form với độ trong suốt */
+        border-radius: 15px; /* Bo tròn góc của form */
+        padding: 20px;
+        margin-top: 50px; /* Khoảng cách giữa form và top của trang */
+        box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5); /* Hiệu ứng bóng đổ */
+    }
+</style>
+<div class="container body">
+    <div class="row justify-content-center">
+        <div class="col-md-6 form-container">
+            <h1 class="mt-4 text-center">Cập nhật tin tức</h1>
+            <form asp-action="Edit" method="post" enctype="multipart/form-data">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="Id" />
+                <div class="form-group">
+                    <label asp-for="tieude" class="control-label">Tiêu đề</label>
+                    <input asp-for="tieude" class="form-control" />
+                    <span asp-validation-for="tieude" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Noidung" class="control-label">Nội dung</label>
+                    <input asp-for="Noidung" class="form-control" />
+                    <span asp-validation-for="Noidung" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Mp3Url" class="control-label">MP3</label>
+                    <input type="file" asp-for="Mp3Url" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label asp-for="NgayDang" class="control-label">Ngày Đăng</label>
+                    <input asp-for="NgayDang" class="form-control" />
+                    <span asp-validation-for="NgayDang" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="ImageUrl">Ảnh</label>
+                    <input type="file" asp-for="ImageUrl" class="form-control" />
+                </div>
+                <div class="col-8">
+                    <img src="@Model.ImageUrl" alt="Image" style="max-width:200px;"
+                         id="previewImage" />
+                </div>
+                <div class="form-group">
+                    <label asp-for="LoaitintucId" class="control-label">Loại tin</label>
+                    <select asp-for="LoaitintucId" class="form-control" asp-items="ViewBag.LoaitintucId"></select>
+                    <span asp-validation-for="LoaitintucId" class="text-danger"></span>
+                </div>
+                <div class="form-group d-flex justify-content-center" style="margin-top: 20px;">
+                    <!-- Sử dụng lớp d-flex và justify-content-center để căn giữa nút -->
+                    <input type="submit" value="Lưu" class="btn btn-primary mx-4" /> <!-- Sử dụng lớp mr-2 để tạo khoảng cách nhỏ giữa các nút -->
+                    <a type="button" class="btn btn-danger" asp-action="Index">Quay lại danh sách</a>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
+@if (!string.IsNullOrEmpty(Model.Mp3Url))
+{
+    <audio controls>
+        <source src="@Model.Mp3Url" type="audio/mp3">
+        Your browser does not support the audio element.
+    </audio>
+}
+<script>
+    document.querySelectorAll('input[type="file"]').forEach(input => {
+        input.addEventListener('change', function (event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    const img = document.getElementById("previewImage")
+                    img.src = e.target.result
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+    });
+</script>

@@ -1,0 +1,151 @@
+﻿@model Phongkham.Models.Tintuc
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_AdLayout.cshtml";
+}
+
+<style>
+    .form-container {
+        background-color: rgba(255, 255, 0, 0.8); /* Màu nền của form với độ trong suốt */
+        border-radius: 15px; /* Bo tròn góc của form */
+        padding: 20px;
+        margin-top: 50px; /* Khoảng cách giữa form và top của trang */
+        box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5); /* Hiệu ứng bóng đổ */
+    }
+
+    .form-group {
+        margin-bottom: 20px; /* Khoảng cách giữa các trường */
+    }
+
+    .btn-create {
+        margin-right: 10px; /* Khoảng cách giữa nút Create và Back */
+    }
+
+    /* Căn giữa phần xem trước ảnh và MP3 */
+    .img-preview-container,
+    .audio-preview-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 20px;
+    }
+</style>
+
+<div class="container body">
+    <div class="row justify-content-center">
+        <div class="col-md-6 form-container">
+            <h1 class="mt-4 text-center">Đăng tin tức</h1>
+
+            <form asp-action="Create" method="post" enctype="multipart/form-data">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                <!-- Tiêu đề -->
+                <div class="form-group">
+                    <label asp-for="tieude" class="control-label">Tiêu đề</label>
+                    <input asp-for="tieude" class="form-control" />
+                    <span asp-validation-for="tieude" class="text-danger"></span>
+                </div>
+
+                <!-- Nội dung -->
+                <div class="form-group">
+                    <label asp-for="Noidung" class="control-label">Nội dung</label>
+                    <textarea asp-for="Noidung" class="form-control" rows="6"></textarea>
+                    <span asp-validation-for="Noidung" class="text-danger"></span>
+                </div>
+
+                <!-- Ngày đăng -->
+                <div class="form-group">
+                    <label asp-for="NgayDang" class="control-label">Ngày Đăng</label>
+                    <input asp-for="NgayDang" class="form-control" />
+                    <span asp-validation-for="NgayDang" class="text-danger"></span>
+                </div>
+
+                <!-- Ảnh -->
+                <div class="form-group">
+                    <label asp-for="ImageUrl">Ảnh</label>
+                    <input type="file" asp-for="ImageUrl" class="form-control" />
+                </div>
+
+                <!-- Loại tin -->
+                <div class="form-group">
+                    <label asp-for="LoaitintucId" class="control-label">Loại tin</label>
+                    <select asp-for="LoaitintucId" class="form-control" asp-items="ViewBag.LoaitintucId"></select>
+                    <span asp-validation-for="LoaitintucId" class="text-danger"></span>
+                </div>
+                <!-- Nút Submit và Back -->
+                <div class="form-group d-flex justify-content-center">
+                    <button type="submit" class="btn btn-primary btn-create mr-2">Create</button>
+                    <a type="button" class="btn btn-secondary" asp-action="Index">Back to List</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
+<script src="https://code.responsivevoice.org/responsivevoice.js?key=xAJjpFBx"></script>
+
+<script>
+    async function textToSpeechAndUpload() {
+        const text = document.querySelector('textarea[name="Noidung"]').value;
+
+        if (text.trim() === "") {
+            alert("Nội dung không được để trống.");
+            return false;
+        }
+
+        // Khởi tạo một AudioContext và MediaRecorder để ghi lại âm thanh
+        const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+        const mediaRecorder = new MediaRecorder(audioContext.createMediaStreamDestination().stream);
+        let audioChunks = [];
+
+        mediaRecorder.ondataavailable = event => {
+            audioChunks.push(event.data);
+        };
+
+        mediaRecorder.onstop = async () => {
+            // Khi dừng ghi âm, tạo file Blob MP3
+            const audioBlob = new Blob(audioChunks, { type: 'audio/mpeg' });
+
+            // Tạo URL cho Blob và gửi file lên server
+            const formData = new FormData();
+            formData.append('Mp3File', audioBlob, 'noidung.mp3');
+
+            const response = await fetch('/Tintucs/Create', {
+                method: 'POST',
+                body: formData
+            });
+
+            if (response.ok) {
+                alert("Dữ liệu đã được gửi thành công!");
+                document.querySelector('form').submit();
+            } else {
+                alert("Có lỗi xảy ra khi gửi dữ liệu.");
+            }
+        };
+
+        mediaRecorder.start();
+
+        // Sử dụng responsiveVoice để phát giọng nói
+        responsiveVoice.speak(text, "Vietnamese Female", {
+            onend: function () {
+                // Dừng ghi âm khi giọng nói kết thúc
+                mediaRecorder.stop();
+            }
+        });
+
+        return false; // Ngăn form submit truyền thống
+    }
+
+    // Xử lý sự kiện submit form
+    document.querySelector('form').addEventListener('submit', function (event) {
+        event.preventDefault();
+        textToSpeechAndUpload();
+    });
+</script>
+

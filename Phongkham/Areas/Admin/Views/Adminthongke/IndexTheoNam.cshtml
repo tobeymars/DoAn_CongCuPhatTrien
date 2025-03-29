@@ -1,0 +1,269 @@
+﻿@model List<dynamic>
+
+@{
+    ViewData["Title"] = "Thống kê thu nhập theo năm";
+    Layout = "~/Views/Shared/_AdLayout.cshtml";
+    var selectedYear = ViewData["SelectedYear"] as string;
+    decimal tongTatCaTien = 0;
+}
+<style>
+    h1 {
+        text-align: center;
+        margin-top: 20px;
+        font-size: 2rem;
+    }
+
+    .container {
+        display: flex;
+        flex-direction: column; /* Đặt các phần tử theo chiều dọc */
+        align-items: center; /* Căn giữa các phần tử */
+        margin: auto;
+        width: 90%;
+        margin-top: 30px;
+    }
+
+    .table-container, .chart-container {
+        width: 100%; /* Chiếm hết chiều rộng */
+        margin-bottom: 30px; /* Khoảng cách giữa bảng và biểu đồ */
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    table, th, td {
+        border: 1px solid black;
+    }
+
+    th, td {
+        padding: 8px;
+        text-align: left;
+    }
+
+    canvas {
+        width: 100% !important;
+        height: 500px !important; /* Điều chỉnh chiều cao biểu đồ */
+    }
+
+    .filter-container {
+        margin-bottom: 20px;
+        display: flex;
+        justify-content: center;
+    }
+
+    .form-control {
+        margin-right: 10px;
+    }
+
+    .form-group {
+        display: inline-block;
+        margin-right: 10px;
+    }
+
+    #searchYear {
+        width: 200px;
+    }
+
+    button {
+        height: 38px;
+        font-size: 1rem;
+    }
+
+    .stat-comments {
+        margin-top: 20px;
+        padding: 10px;
+        background-color: #f8f9fa;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+    }
+
+        .stat-comments p {
+            font-size: 14px;
+            color: #333;
+        }
+
+        .stat-comments strong {
+            color: #007bff;
+        }
+</style>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>@ViewData["Title"]</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="table-container">
+            <h2 style="text-align: center;">Thống kê dịch vụ theo năm</h2>
+            <div class="filter-container">
+                <form method="get" action="@Url.Action("IndexTheoNam", "ThongKe")">
+                    <div class="form-group">
+                        <input type="number" id="searchYear" name="year" class="form-control" value="@ViewData["SelectedYear"]" min="2000" max="@DateTime.Now.Year" />
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary">Lọc</button>
+                    </div>
+                </form>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th></th>
+                        @foreach (var month in Enumerable.Range(1, 12))
+                        {
+                            <th>Tháng @month</th>
+                        }
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Tổng Doanh Thu</td>
+                        @foreach (var month in Enumerable.Range(1, 12))
+                        {
+                            var monthData = Model.FirstOrDefault(m => m.Month == month);
+
+                            // Kiểm tra xem dữ liệu cho tháng có tồn tại không
+                            decimal monthIncome = monthData != null ? monthData.TongTien : 0;
+
+                            // Cộng dồn doanh thu cho tổng doanh thu
+                            tongTatCaTien += monthIncome;
+
+                            // Hiển thị doanh thu cho từng tháng
+                            <td>@(monthIncome.ToString("N0") + "đ")</td>
+                        }
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="13" style="text-align: center; font-weight: bold;">Doanh thu năm: @tongTatCaTien.ToString("N0")đ</td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+
+        <div class="chart-container">
+            <h2 style="text-align: center;">Biểu đồ thu nhập theo năm</h2>
+            <canvas id="thuNhapChart"></canvas>
+        </div>
+
+        <div class="stat-comments">
+            <p><strong>Nhận xét:</strong></p>
+            <p>- Đây là tổng hợp doanh thu từ các tháng trong năm. Tổng doanh thu đạt được là <strong>@tongTatCaTien.ToString("N0")đ</strong></p>
+            <p id="maxRevenueMonth"></p>
+            <p id="minRevenueMonth"></p>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
+    <script>
+        var ctx = document.getElementById('thuNhapChart').getContext('2d');
+        var thuNhapData = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model));
+
+        // Đảm bảo rằng chúng ta luôn có dữ liệu cho tất cả 12 tháng
+        var months = Array.from({ length: 12 }, (_, i) => i + 1); // Tạo mảng [1, 2, ..., 12]
+
+        var labels = months.map(function (month) {
+            return 'Tháng ' + month; // Tạo nhãn cho mỗi tháng
+        });
+
+        // Dữ liệu cho các tháng, đảm bảo rằng nếu không có doanh thu, sẽ là 0
+        var data = months.map(function (month) {
+            var monthData = thuNhapData.find(function (item) {
+                return item.Month === month; // Tìm dữ liệu cho tháng hiện tại
+            });
+            return monthData ? monthData.TongTien : 0; // Nếu không có dữ liệu, trả về 0
+        });
+
+        // Tính doanh thu cao nhất và thấp nhất
+        var maxRevenue = Math.max(...data);  // Doanh thu cao nhất
+        var minRevenue = Math.min(...data);  // Doanh thu thấp nhất
+
+        // Tìm các tháng có doanh thu cao nhất
+        var maxRevenueMonths = months.filter(function (month) {
+            return data[month - 1] === maxRevenue; // Tìm các tháng có doanh thu bằng doanh thu cao nhất
+        });
+
+        // Tìm các tháng có doanh thu thấp nhất
+        var minRevenueMonths = months.filter(function (month) {
+            return data[month - 1] === minRevenue; // Tìm các tháng có doanh thu bằng doanh thu thấp nhất
+        });
+
+        // Nếu chỉ có một tháng có doanh thu, các tháng còn lại sẽ là tháng thấp nhất
+        if (minRevenueMonths.length === 1) {
+            minRevenueMonths = months.filter(function (month) {
+                return data[month - 1] === 0; // Các tháng còn lại có doanh thu = 0
+            });
+        }
+
+        // Tạo dataset cho biểu đồ
+        var chart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: labels,
+                datasets: [
+                    {
+                        label: 'Thu nhập (VND)',
+                        data: data,
+                        backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                        borderColor: 'rgba(75, 192, 192, 1)',
+                        borderWidth: 1
+                    },
+                    {
+                        label: 'Biến động Doanh Thu',
+                        data: data,
+                        type: 'line', // Sử dụng loại line để vẽ đường
+                        fill: false, // Không điền vào giữa các điểm dữ liệu
+                        borderColor: 'rgba(255, 99, 132, 1)', // Màu của đường line
+                        borderWidth: 2,
+                        tension: 0.4 // Điều chỉnh độ cong của đường line
+                    }
+                ]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        ticks: {
+                            callback: function (value) {
+                                return value === 0 ? '0đ' : value.toLocaleString() + 'đ';
+                            }
+                        }
+                    }
+                },
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    tooltip: {
+                        callbacks: {
+                            label: function (tooltipItem) {
+                                var value = tooltipItem.raw;
+                                return value === 0 ? '0đ' : value.toLocaleString() + 'đ';
+                            }
+                        }
+                    },
+                    // Sử dụng plugin datalabels để hiển thị giá trị trên các cột
+                    datalabels: {
+                        display: true,
+                        color: 'black',
+                        font: {
+                            weight: 'bold',
+                            size: 12
+                        },
+                        formatter: function (value) {
+                            return value === 0 ? '0đ' : value.toLocaleString() + 'đ'; // Hiển thị giá trị kèm đơn vị "đ"
+                        },
+                        anchor: 'end',
+                        align: 'top'
+                    }
+                }
+            }
+        });
+
+        // Hiển thị thông tin về doanh thu cao nhất và thấp nhất
+        document.getElementById('maxRevenueMonth').innerText = '- Các tháng có doanh thu cao nhất: ' + maxRevenueMonths.join(', ') + ' (' + maxRevenue.toLocaleString() + 'đ)';
+        document.getElementById('minRevenueMonth').innerText = '- Các tháng có doanh thu thấp nhất: ' + minRevenueMonths.join(', ') + ' (' + minRevenue.toLocaleString() + 'đ)';
+    </script>
+</body>
+</html>

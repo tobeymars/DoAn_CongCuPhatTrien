@@ -1,0 +1,50 @@
+﻿@model IEnumerable<Phongkham.Models.Tintuc>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_LayoutDentist.cshtml";
+}
+
+<div class="container">
+    <h1 class="mt-4">Danh sách tin tức</h1>
+
+    <div class="row justify-content-end">
+        <div class="col-auto">
+            <a type="button" class="btn btn-primary" asp-action="Create">Thêm mới</a>
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <div class="col">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">Tiêu đề</th>
+                        <th scope="col">Ngày đăng</th>
+                        <th scope="col">Ảnh</th>
+                        <th scope="col">Loại tin</th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var tintuc in Model)
+                    {
+                        <tr>
+                            <td>@tintuc.tieude</td>
+                            <td>@tintuc.NgayDang.ToString("dd/MM/yyyy")</td>
+                            <td><img src="@tintuc.ImageUrl" alt="Image" style="max-width: 100px;" /></td>
+                            <td>@tintuc.Loaitintuc?.Name</td>
+                            <td>
+                                <div class="btn-group" role="group">
+                                    <a type="button" class="btn btn-info" asp-action="Details" asp-route-id="@tintuc.Id">Xem</a>
+                                    <a type="button" class="btn btn-success" asp-action="Edit" asp-route-id="@tintuc.Id">Sửa</a>
+                                    <a type="button" class="btn btn-danger" asp-action="Delete" asp-route-id="@tintuc.Id">Xóa</a>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

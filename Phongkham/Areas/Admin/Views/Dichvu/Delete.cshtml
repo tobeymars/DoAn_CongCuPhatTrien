@@ -1,0 +1,26 @@
+﻿@model Phongkham.Models.dichvu
+
+@{
+    ViewData["Title"] = "Xác Nhận Xóa Dịch Vụ";
+    Layout = "~/Views/Shared/_AdLayout.cshtml";
+}
+
+<div class="container mt-4">
+    <h2 class="text-center mb-4">Xác Nhận Xóa Dịch Vụ</h2>
+
+    <div class="card shadow-lg border-0">
+        <div class="card-body">
+            <h4>Bạn có chắc muốn xóa dịch vụ này không?</h4>
+            <p><strong>Tên Dịch Vụ:</strong> @Model.ten</p>
+            <p><strong>Mô Tả:</strong> @Model.Description</p>
+            <p><strong>Giá:</strong> @Model.Price</p>
+
+            <!-- Form xác nhận xóa, không cần deleteconfirmed -->
+            <form asp-action="Delete" method="post">
+                <input type="hidden" name="id" value="@Model.Id" />
+                <button type="submit" class="btn btn-danger">Xóa</button>
+                <a href="@Url.Action("Index", "DichVu")" class="btn btn-secondary">Hủy</a>
+            </form>
+        </div>
+    </div>
+</div>

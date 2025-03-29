@@ -1,0 +1,169 @@
+﻿@model List<Phongkham.Models.Cakham>
+
+@{
+    ViewData["Title"] = "Danh sách ca khám";
+    Layout = "~/Views/Shared/_AdLayout.cshtml";
+}
+
+<div class="container mt-5">
+    <h1 class="text-center mb-4">Danh sách ca khám</h1>
+
+    <div class="row mb-3">
+        <div class="col-md-4">
+            <input type="date" id="searchDate" class="form-control" placeholder="Tìm kiếm theo ngày" />
+        </div>
+        <div class="col-md-4">
+            <select id="chuyenMonSelect" class="form-control">
+                <option value="">Chọn chuyên môn</option>
+                @foreach (var chuyenMon in ViewBag.ChuyenMons)
+                {
+                    <option value="@chuyenMon.Id">@chuyenMon.Name</option>
+                }
+            </select>
+        </div>
+        <div class="col-md-4 text-right">
+            <button id="searchBtn" class="btn btn-primary"><i class="fas fa-search"></i>  Tìm kiếm</button>
+        </div>
+    </div>
+
+    <div class="mb-3">
+        <button id="btnDaDat" class="btn btn-success mx-2">Đã Đặt</button>
+        <button id="btnChuaDat" class="btn btn-warning mx-2">Chưa Đặt</button>
+        <button id="btnAll" class="btn btn-info mx-2">Xem Tất Cả Ca Khám</button>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover" id="khungGioTable">
+            <thead class="thead-light" style="background-color:black; color:white">
+                <tr>
+                    <th class="text-left">
+                        Nha Sĩ
+                        <button class="btn btn-link p-0" onclick="sortTable(0)" style="float: right;">
+                            <i class="fas fa-sort"></i>
+                        </button>
+                    </th>
+                    <th class="text-left">
+                        Ngày Khám
+                        <button class="btn btn-link p-0" onclick="sortTable(1)" style="float: right;">
+                            <i class="fas fa-sort"></i>
+                        </button>
+                    </th>
+                    <th>Khung Giờ</th>
+                    <th>Chuyên Môn</th>
+                </tr>
+            </thead>
+            <tbody id="khungGioTableBody">
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.Dentist?.FullName</td>
+                        <td>@item.NgayDang.ToString("dd/MM/yyyy")</td>
+                        <td>
+                            @if (item.CakhamKhungGios != null && item.CakhamKhungGios.Count > 0)
+                            {
+                                <ul class="list-unstyled mb-0">
+                                    @foreach (var khungGio in item.CakhamKhungGios)
+                                    {
+                                        <li>@khungGio.KhungGio?.TimeSlot</li>
+                                    }
+                                </ul>
+                            }
+                            else
+                            {
+                                <span class="text-muted">Không có khung giờ</span>
+                            }
+                        </td>
+                        <td>
+                            @if (item.Dentist?.cTnhasis != null && item.Dentist.cTnhasis.Count > 0)
+                            {
+                                @foreach (var ct in item.Dentist.cTnhasis)
+                                {
+                                    <div>@ct.Chuyenmon?.Name</div>
+                                }
+                            }
+                            else
+                            {
+                                <span class="text-muted">Không có chuyên môn</span>
+                            }
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        document.getElementById("searchBtn").onclick = function () {
+            var date = document.getElementById("searchDate").value;
+            var chuyenMonId = document.getElementById("chuyenMonSelect").value;
+
+            var url = '@Url.Action("Index", "AdminCakhams")';
+            if (date || chuyenMonId) {
+                url += "?date=" + date + (chuyenMonId ? "&chuyenMonId=" + chuyenMonId : "");
+            }
+            window.location.href = url;
+        };
+
+        // Lọc theo trạng thái "Đã Đặt"
+        document.getElementById("btnDaDat").onclick = function () {
+            var date = document.getElementById("searchDate").value;
+            var chuyenMonId = document.getElementById("chuyenMonSelect").value;
+
+            var url = '@Url.Action("Index", "AdminCakhams")?trangThai=Đã_Đặt';
+            if (date) {
+                url += "&date=" + date;
+            }
+            if (chuyenMonId) {
+                url += "&chuyenMonId=" + chuyenMonId;
+            }
+            window.location.href = url;
+        };
+
+        // Lọc theo trạng thái "Chưa Đặt"
+        document.getElementById("btnChuaDat").onclick = function () {
+            var date = document.getElementById("searchDate").value;
+            var chuyenMonId = document.getElementById("chuyenMonSelect").value;
+
+            var url = '@Url.Action("Index", "AdminCakhams")?trangThai=Chưa_Đặt';
+            if (date) {
+                url += "&date=" + date;
+            }
+            if (chuyenMonId) {
+                url += "&chuyenMonId=" + chuyenMonId;
+            }
+            window.location.href = url;
+        };
+
+        // Xem tất cả các ca khám
+        document.getElementById("btnAll").onclick = function () {
+            window.location.href = '@Url.Action("Index", "AdminCakhams")';
+        };
+
+        function sortTable(columnIndex) {
+            const table = document.getElementById("khungGioTable");
+            const tbody = table.querySelector("tbody");
+            const rows = Array.from(tbody.rows);
+
+            const isAscending = table.getAttribute("data-sort-order") === "asc";
+            const direction = isAscending ? 1 : -1;
+
+            rows.sort((a, b) => {
+                const aText = a.cells[columnIndex].textContent.trim();
+                const bText = b.cells[columnIndex].textContent.trim();
+
+                if (columnIndex === 1) { // Nếu cột là Ngày Khám
+                    return (new Date(aText.split("/").reverse().join("-")) - new Date(bText.split("/").reverse().join("-"))) * direction;
+                }
+                return aText.localeCompare(bText) * direction;
+            });
+
+            // Xóa các hàng cũ và thêm hàng đã sắp xếp
+            rows.forEach(row => tbody.appendChild(row));
+
+            // Đổi chiều sắp xếp cho lần sau
+            table.setAttribute("data-sort-order", isAscending ? "desc" : "asc");
+        }
+    </script>
+}

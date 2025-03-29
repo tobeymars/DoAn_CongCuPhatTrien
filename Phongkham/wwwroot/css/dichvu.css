@@ -1,0 +1,97 @@
+﻿/* Khối 3D với hiệu ứng xoay */
+.service-container {
+    width: 78%; /* Giảm chiều rộng để khối nhỏ hơn */
+    height: 220px; /* Giảm chiều cao cho khối 3D */
+    position: relative;
+    perspective: 1000px; /* Thêm perspective cho hiệu ứng 3D */
+}
+
+/* Khối 3D */
+.cube {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    transform-style: preserve-3d;
+    animation: rotateCube 16s infinite reverse; /* Thêm reverse để xoay ngược chiều kim đồng hồ */
+}
+
+/* Các mặt của khối 3D */
+.face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Nội dung dịch vụ với hiệu ứng kính mờ và chiều rộng bằng hình ảnh */
+.service-content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%; /* Chiều rộng của nội dung bằng chiều rộng của hình ảnh */
+    height: auto; /* Chiều cao của nội dung tự động điều chỉnh */
+    background: rgb(44 171 255 / 76%); /* Nền tối để nội dung dễ đọc */
+    backdrop-filter: blur(8px); /* Hiệu ứng kính mờ */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 10px;
+    color: white;
+    border-radius: 5px 5px 5px 5px; /* Góc dưới của card sẽ bo tròn */
+    box-sizing: border-box;
+}
+
+/* Các mặt của khối 3D */
+.cube .face:nth-child(1) {
+    transform: rotateY(0deg) translateZ(125px); /* Giảm khoảng cách */
+}
+
+.cube .face:nth-child(2) {
+    transform: rotateY(90deg) translateZ(125px); /* Giảm khoảng cách */
+}
+
+.cube .face:nth-child(3) {
+    transform: rotateY(180deg) translateZ(125px); /* Giảm khoảng cách */
+}
+
+.cube .face:nth-child(4) {
+    transform: rotateY(270deg) translateZ(125px); /* Giảm khoảng cách */
+}
+
+/* Animation xoay với dừng sau mỗi mặt */
+@keyframes rotateCube {
+    0% {
+        transform: rotateY(360deg); /* Bắt đầu từ 360 độ */
+    }
+
+    25% {
+        transform: rotateY(270deg); /* Dừng lại sau mặt 1 */
+    }
+
+    30% {
+        transform: rotateY(270deg); /* Dừng lại thêm 4 giây */
+    }
+
+    50% {
+        transform: rotateY(180deg); /* Dừng lại sau mặt 2 */
+    }
+
+    55% {
+        transform: rotateY(180deg); /* Dừng lại thêm 4 giây */
+    }
+
+    75% {
+        transform: rotateY(90deg); /* Dừng lại sau mặt 3 */
+    }
+
+    80% {
+        transform: rotateY(90deg); /* Dừng lại thêm 4 giây */
+    }
+
+    100% {
+        transform: rotateY(0deg); /* Dừng lại sau mặt 4 */
+    }
+}

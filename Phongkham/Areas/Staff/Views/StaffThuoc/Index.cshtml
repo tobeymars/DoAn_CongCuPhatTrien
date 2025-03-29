@@ -1,0 +1,149 @@
+﻿@model IEnumerable<Phongkham.Models.Thuoc>
+
+@{
+    ViewData["Title"] = "Danh Sách Các Loại Thuốc";
+    Layout = "~/Views/Shared/_LayoutStaff.cshtml";
+}
+
+<style>
+    .btn-primary:hover {
+        background-color: #0056b3; /* Darker blue on hover */
+        transform: scale(1.05); /* Slight zoom on hover */
+    }
+
+    .alert {
+        display: flex; /* Sử dụng Flexbox để căn chỉnh các phần tử con */
+        align-items: center; /* Căn giữa theo chiều dọc */
+        justify-content: center; /* Căn giữa toàn bộ phần tử .alert */
+    }
+
+    .alert i {
+        font-size: 20px; /* Kích thước của icon */
+        margin-right: 10px; /* Khoảng cách giữa icon và văn bản */
+    }
+
+    .alert-text {
+        text-align: center; /* Căn giữa văn bản trong alert */
+    }
+
+    .btn-outline-purple {
+        color: #6f42c1; /* Màu tím */
+        border-color: #6f42c1; /* Đổi màu viền của nút thành tím */
+    }
+
+    .btn-outline-purple:hover {
+            background-color: #6f42c1; /* Màu nền khi hover */
+            color: white; /* Màu chữ khi hover */
+    }
+
+</style>
+
+<div class="container mt-5">
+    <h1 class="text-center mb-4">@ViewData["Title"]</h1>
+
+    <div class="row justify-content-end mb-3">
+        <div class="col-auto">
+            <a class="btn btn-primary btn-info" asp-action="Create"><i class="fas fa-plus-circle"></i> Thêm Thuốc Mới</a>
+        </div>
+    </div>
+
+    @if (TempData["ErrorMessage"] != null)
+    {
+        <div class="alert alert-danger" id="error-alert">
+            <i class="fas fa-times-circle me-2"></i>
+            <span class="alert-text">@TempData["ErrorMessage"]</span>
+        </div>
+    }
+
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div class="alert alert-success" id="success-alert">
+            <i class="fas fa-check-circle me-2"></i>
+            <span class="alert-text">@TempData["SuccessMessage"]</span>
+        </div>
+    }
+
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover text-center">
+            <thead class="thead-light" style="background-color: black; color: white;">
+                <tr>
+                    <th>Tên Thuốc</th>
+                    <th>Mô Tả</th>
+                    <th>Số Lượng</th>
+                    <th>Giá</th>
+                    <th>Trạng Thái</th>
+                    <th>Hành Động</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (!Model.Any())
+                {
+                    <tr>
+                        <td colspan="6" class="text-muted">Chưa có thuốc nào được tạo.</td>
+                    </tr>
+                }
+                else
+                {
+                    @foreach (var thuoc in Model)
+                    {
+                        <tr>
+                            <td>@thuoc.TenThuoc</td>
+                            <td>@thuoc.MoTa</td>
+                            <td>@thuoc.SoLuong</td>
+                            <td>@thuoc.Price.ToString("#,0")</td>
+                            <td>@(thuoc.IsDeleted ? "Đã xóa" : "Đang tồn tại")</td>
+                            <td>
+                                <a asp-action="Edit" asp-route-id="@thuoc.Id" class="btn btn-outline-purple btn-sm me-2">
+                                    <i class="fas fa-edit"></i> Chỉnh Sửa
+                                </a>
+                                @if (!thuoc.IsDeleted)
+                                {
+                                    <a asp-action="Delete" asp-route-id="@thuoc.Id" class="btn btn-outline-danger btn-sm">
+                                        <i class="fas fa-trash-alt"></i> Xóa
+                                    </a>
+                                }
+                                else
+                                {
+                                    <a asp-action="Restore" asp-route-id="@thuoc.Id" class="btn btn-outline-success btn-sm">
+                                        <i class="fas fa-undo"></i> Khôi Phục
+                                    </a>
+                                }
+                            </td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+<script>
+    // JavaScript để thông báo tự động biến mất sau 5 giây
+    document.addEventListener("DOMContentLoaded", function () {
+        var successAlert = document.getElementById('success-alert');
+        var errorAlert = document.getElementById('error-alert');
+
+        // Hàm để thêm hiệu ứng fade-out
+        function fadeOut(element) {
+            if (element) {
+                element.style.transition = 'opacity 1s ease-out';
+                element.style.opacity = 0;
+                setTimeout(function () {
+                    element.style.display = 'none';
+                }, 1000); // Đảm bảo ẩn sau khi fade-out
+            }
+        }
+        // Nếu có thông báo thành công, sẽ áp dụng fade-out sau 5 giây
+        if (successAlert) {
+            setTimeout(function () {
+                fadeOut(successAlert);
+            }, 5000); // Sau 5 giây
+        }
+
+        // Nếu có thông báo lỗi, sẽ áp dụng fade-out sau 5 giây
+        if (errorAlert) {
+            setTimeout(function () {
+                fadeOut(errorAlert);
+            }, 5000); // Sau 5 giây
+        }
+    });
+</script>

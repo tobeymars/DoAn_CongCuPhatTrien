@@ -1,0 +1,115 @@
+﻿.custom-alert {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+    width: 400px;
+    max-width: 300px;
+    border-radius: 10px;
+    background-color: #dff0d8;
+    color: #3c763d;
+    border: 1px solid #d6e9c6;
+    padding: 20px;
+    font-size:18px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    animation: slide-in 1s ease-out, fade-out 5s forwards 3s;
+    display: none;
+}
+
+@keyframes slide-in {
+    from {
+        transform: translateX(100%);
+    }
+
+    to {
+        transform: translateX(0);
+    }
+}
+
+@keyframes fade-out {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+    }
+}
+/* Đổi màu và hiệu ứng cho menu */
+.nav.menu {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+    .nav.menu > li {
+        position: relative; /* Để các phần tử con có thể sử dụng position absolute */
+    }
+
+        /* Hiệu ứng cho các nút */
+        .nav.menu > li > a.nav-link {
+            position: relative; /* Cần để tạo vị trí cho pseudo-element */
+            color: white; /* Màu chữ mặc định */
+            text-decoration: none; /* Bỏ gạch chân */
+            padding: 10px 15px; /* Khoảng cách cho nút */
+            overflow: hidden; /* Để ẩn các phần tử vượt ra ngoài */
+            background-color: transparent; /* Nền trong suốt ban đầu */
+            border-radius: 5px; /* Bo góc để tạo cảm giác nút */
+        }
+
+        /* Đường viền chạy quanh nút chỉ hiển thị cho nút đang được đánh dấu */
+        .nav.menu > li.active > a.nav-link::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%; /* Để đường viền bao quanh nút */
+            height: 100%; /* Để đường viền bao quanh nút */
+            border-radius: 5px; /* Bo góc để giống như button */
+            border: 2px solid transparent; /* Đường viền bắt đầu trong suốt */
+            animation: snake-border 1s steps(2) infinite; /* Animation chạy liên tục và mượt mà */
+        }
+
+/* Keyframes cho hiệu ứng đường viền con rắn */
+@keyframes snake-border {
+    0% {
+        border-top-color: #30CED8; /* Màu neon xanh lá */
+        border-right-color: transparent;
+        border-bottom-color: transparent;
+        border-left-color: transparent;
+    }
+
+    20% {
+        border-top-color: transparent; /* Ẩn cạnh trên */
+        border-right-color: #30CED8; /* Màu neon cho cạnh phải */
+    }
+
+    50% {
+        border-right-color: transparent; /* Ẩn cạnh phải */
+        border-bottom-color: #30CED8; /* Màu neon cho cạnh dưới */
+    }
+
+    80% {
+        border-bottom-color: transparent; /* Ẩn cạnh dưới */
+        border-left-color: #30CED8; /* Màu neon cho cạnh trái */
+    }
+
+    100% {
+        border-left-color: transparent; /* Ẩn cạnh trái */
+        border-top-color: #30CED8; /* Quay lại cạnh trên với màu neon */
+    }
+}
+
+/* Hiệu ứng khi hover - không thay đổi màu nền */
+.nav.menu > li > a.nav-link:hover {
+    color: #FFFFFF; /* Màu chữ khi hover */
+    background-color: #1c1c1c; /* Nền khi hover */
+}
+
+/* Thiết lập cho nút button khi được nhấn */
+.nav.menu > li.active > a.nav-link {
+    background-color: transparent; /* Không có màu nền khi được đánh dấu */
+    color: #FFFFFF; /* Màu chữ khi được đánh dấu */
+}
