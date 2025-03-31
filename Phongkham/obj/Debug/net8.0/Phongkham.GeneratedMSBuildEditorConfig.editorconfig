@@ -17,587 +17,587 @@ build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = Phongkham
 build_property.RootNamespace = Phongkham
-build_property.ProjectDir = C:\Users\lenovo\Desktop\Phongkham\Phongkham\
+build_property.ProjectDir = C:\Users\ADMIN\DoAn_CongCuPhatTrien\Phongkham\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 8.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\lenovo\Desktop\Phongkham\Phongkham
+build_property.MSBuildProjectDirectory = C:\Users\ADMIN\DoAn_CongCuPhatTrien\Phongkham
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/lenovo/Desktop/Phongkham/Phongkham/Areas/Admin/Views/AdminCakhams/Index.cshtml]
+[C:/Users/ADMIN/DoAn_CongCuPhatTrien/Phongkham/Areas/Admin/Views/AdminCakhams/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQWRtaW5DYWtoYW1zXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/lenovo/Desktop/Phongkham/Phongkham/Areas/Admin/Views/AdminLichdat/Index.cshtml]
+[C:/Users/ADMIN/DoAn_CongCuPhatTrien/Phongkham/Areas/Admin/Views/AdminLichdat/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQWRtaW5MaWNoZGF0XEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/lenovo/Desktop/Phongkham/Phongkham/Areas/Admin/Views/Adminthongke/Index.cshtml]
+[C:/Users/ADMIN/DoAn_CongCuPhatTrien/Phongkham/Areas/Admin/Views/Adminthongke/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQWRtaW50aG9uZ2tlXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/lenovo/Desktop/Phongkham/Phongkham/Areas/Admin/Views/Adminthongke/IndexNgay.cshtml]
+[C:/Users/ADMIN/DoAn_CongCuPhatTrien/Phongkham/Areas/Admin/Views/Adminthongke/IndexNgay.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQWRtaW50aG9uZ2tlXEluZGV4TmdheS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/lenovo/Desktop/Phongkham/Phongkham/Areas/Admin/Views/Adminthongke/IndexTheoNam.cshtml]
+[C:/Users/ADMIN/DoAn_CongCuPhatTrien/Phongkham/Areas/Admin/Views/Adminthongke/IndexTheoNam.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQWRtaW50aG9uZ2tlXEluZGV4VGhlb05hbS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/lenovo/Desktop/Phongkham/Phongkham/Areas/Admin/Views/Adminthongke/PieChartThang1.cshtml]
+[C:/Users/ADMIN/DoAn_CongCuPhatTrien/Phongkham/Areas/Admin/Views/Adminthongke/PieChartThang1.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQWRtaW50aG9uZ2tlXFBpZUNoYXJ0VGhhbmcxLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/lenovo/Desktop/Phongkham/Phongkham/Areas/Admin/Views/AdTaikham/Index.cshtml]
+[C:/Users/ADMIN/DoAn_CongCuPhatTrien/Phongkham/Areas/Admin/Views/AdTaikham/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQWRUYWlraGFtXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/lenovo/Desktop/Phongkham/Phongkham/Areas/Admin/Views/ApplicationUser/Delete.cshtml]
+[C:/Users/ADMIN/DoAn_CongCuPhatTrien/Phongkham/Areas/Admin/Views/ApplicationUser/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQXBwbGljYXRpb25Vc2VyXERlbGV0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/lenovo/Desktop/Phongkham/Phongkham/Areas/Admin/Views/ApplicationUser/Details.cshtml]
+[C:/Users/ADMIN/DoAn_CongCuPhatTrien/Phongkham/Areas/Admin/Views/ApplicationUser/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQXBwbGljYXRpb25Vc2VyXERldGFpbHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/lenovo/Desktop/Phongkham/Phongkham/Areas/Admin/Views/ApplicationUser/Edit.cshtml]
+[C:/Users/ADMIN/DoAn_CongCuPhatTrien/Phongkham/Areas/Admin/Views/ApplicationUser/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQXBwbGljYXRpb25Vc2VyXEVkaXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/lenovo/Desktop/Phongkham/Phongkham/Areas/Admin/Views/ApplicationUser/Index.cshtml]
+[C:/Users/ADMIN/DoAn_CongCuPhatTrien/Phongkham/Areas/Admin/Views/ApplicationUser/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQXBwbGljYXRpb25Vc2VyXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/lenovo/Desktop/Phongkham/Phongkham/Areas/Admin/Views/Chuyenmons/Create.cshtml]
+[C:/Users/ADMIN/DoAn_CongCuPhatTrien/Phongkham/Areas/Admin/Views/Chuyenmons/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQ2h1eWVubW9uc1xDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/lenovo/Desktop/Phongkham/Phongkham/Areas/Admin/Views/Chuyenmons/Delete.cshtml]
+[C:/Users/ADMIN/DoAn_CongCuPhatTrien/Phongkham/Areas/Admin/Views/Chuyenmons/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQ2h1eWVubW9uc1xEZWxldGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/lenovo/Desktop/Phongkham/Phongkham/Areas/Admin/Views/Chuyenmons/Edit.cshtml]
+[C:/Users/ADMIN/DoAn_CongCuPhatTrien/Phongkham/Areas/Admin/Views/Chuyenmons/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQ2h1eWVubW9uc1xFZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/lenovo/Desktop/Phongkham/Phongkham/Areas/Admin/Views/Chuyenmons/Index.cshtml]
+[C:/Users/ADMIN/DoAn_CongCuPhatTrien/Phongkham/Areas/Admin/Views/Chuyenmons/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQ2h1eWVubW9uc1xJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/lenovo/Desktop/Phongkham/Phongkham/Areas/Admin/Views/Dichvu/create.cshtml]
+[C:/Users/ADMIN/DoAn_CongCuPhatTrien/Phongkham/Areas/Admin/Views/Dichvu/create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcRGljaHZ1XGNyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/lenovo/Desktop/Phongkham/Phongkham/Areas/Admin/Views/Dichvu/Delete.cshtml]
+[C:/Users/ADMIN/DoAn_CongCuPhatTrien/Phongkham/Areas/Admin/Views/Dichvu/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcRGljaHZ1XERlbGV0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/lenovo/Desktop/Phongkham/Phongkham/Areas/Admin/Views/Dichvu/Edit.cshtml]
+[C:/Users/ADMIN/DoAn_CongCuPhatTrien/Phongkham/Areas/Admin/Views/Dichvu/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcRGljaHZ1XEVkaXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/lenovo/Desktop/Phongkham/Phongkham/Areas/Admin/Views/Dichvu/Index.cshtml]
+[C:/Users/ADMIN/DoAn_CongCuPhatTrien/Phongkham/Areas/Admin/Views/Dichvu/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcRGljaHZ1XEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/lenovo/Desktop/Phongkham/Phongkham/Areas/Admin/Views/Lichkham/Create.cshtml]
+[C:/Users/ADMIN/DoAn_CongCuPhatTrien/Phongkham/Areas/Admin/Views/Lichkham/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcTGljaGtoYW1cQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/lenovo/Desktop/Phongkham/Phongkham/Areas/Admin/Views/Lichkham/Index.cshtml]
+[C:/Users/ADMIN/DoAn_CongCuPhatTrien/Phongkham/Areas/Admin/Views/Lichkham/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcTGljaGtoYW1cSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/lenovo/Desktop/Phongkham/Phongkham/Areas/Admin/Views/Loaitintucs/Create.cshtml]
+[C:/Users/ADMIN/DoAn_CongCuPhatTrien/Phongkham/Areas/Admin/Views/Loaitintucs/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcTG9haXRpbnR1Y3NcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/lenovo/Desktop/Phongkham/Phongkham/Areas/Admin/Views/Loaitintucs/Delete.cshtml]
+[C:/Users/ADMIN/DoAn_CongCuPhatTrien/Phongkham/Areas/Admin/Views/Loaitintucs/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcTG9haXRpbnR1Y3NcRGVsZXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/lenovo/Desktop/Phongkham/Phongkham/Areas/Admin/Views/Loaitintucs/Details.cshtml]
+[C:/Users/ADMIN/DoAn_CongCuPhatTrien/Phongkham/Areas/Admin/Views/Loaitintucs/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcTG9haXRpbnR1Y3NcRGV0YWlscy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/lenovo/Desktop/Phongkham/Phongkham/Areas/Admin/Views/Loaitintucs/Edit.cshtml]
+[C:/Users/ADMIN/DoAn_CongCuPhatTrien/Phongkham/Areas/Admin/Views/Loaitintucs/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcTG9haXRpbnR1Y3NcRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/lenovo/Desktop/Phongkham/Phongkham/Areas/Admin/Views/Loaitintucs/Index.cshtml]
+[C:/Users/ADMIN/DoAn_CongCuPhatTrien/Phongkham/Areas/Admin/Views/Loaitintucs/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcTG9haXRpbnR1Y3NcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/lenovo/Desktop/Phongkham/Phongkham/Areas/Admin/Views/Thuoc/Create.cshtml]
+[C:/Users/ADMIN/DoAn_CongCuPhatTrien/Phongkham/Areas/Admin/Views/Thuoc/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcVGh1b2NcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/lenovo/Desktop/Phongkham/Phongkham/Areas/Admin/Views/Thuoc/Delete.cshtml]
+[C:/Users/ADMIN/DoAn_CongCuPhatTrien/Phongkham/Areas/Admin/Views/Thuoc/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcVGh1b2NcRGVsZXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/lenovo/Desktop/Phongkham/Phongkham/Areas/Admin/Views/Thuoc/Edit.cshtml]
+[C:/Users/ADMIN/DoAn_CongCuPhatTrien/Phongkham/Areas/Admin/Views/Thuoc/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcVGh1b2NcRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/lenovo/Desktop/Phongkham/Phongkham/Areas/Admin/Views/Thuoc/Index.cshtml]
+[C:/Users/ADMIN/DoAn_CongCuPhatTrien/Phongkham/Areas/Admin/Views/Thuoc/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcVGh1b2NcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/lenovo/Desktop/Phongkham/Phongkham/Areas/Admin/Views/Thuoc/Restore.cshtml]
+[C:/Users/ADMIN/DoAn_CongCuPhatTrien/Phongkham/Areas/Admin/Views/Thuoc/Restore.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcVGh1b2NcUmVzdG9yZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/lenovo/Desktop/Phongkham/Phongkham/Areas/Admin/Views/Tintucs/Create.cshtml]
+[C:/Users/ADMIN/DoAn_CongCuPhatTrien/Phongkham/Areas/Admin/Views/Tintucs/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcVGludHVjc1xDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/lenovo/Desktop/Phongkham/Phongkham/Areas/Admin/Views/Tintucs/Delete.cshtml]
+[C:/Users/ADMIN/DoAn_CongCuPhatTrien/Phongkham/Areas/Admin/Views/Tintucs/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcVGludHVjc1xEZWxldGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/lenovo/Desktop/Phongkham/Phongkham/Areas/Admin/Views/Tintucs/Details.cshtml]
+[C:/Users/ADMIN/DoAn_CongCuPhatTrien/Phongkham/Areas/Admin/Views/Tintucs/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcVGludHVjc1xEZXRhaWxzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/lenovo/Desktop/Phongkham/Phongkham/Areas/Admin/Views/Tintucs/Edit.cshtml]
+[C:/Users/ADMIN/DoAn_CongCuPhatTrien/Phongkham/Areas/Admin/Views/Tintucs/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcVGludHVjc1xFZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/lenovo/Desktop/Phongkham/Phongkham/Areas/Admin/Views/Tintucs/Index.cshtml]
+[C:/Users/ADMIN/DoAn_CongCuPhatTrien/Phongkham/Areas/Admin/Views/Tintucs/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcVGludHVjc1xJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/lenovo/Desktop/Phongkham/Phongkham/Areas/Admin/Views/_ViewImports.cshtml]
+[C:/Users/ADMIN/DoAn_CongCuPhatTrien/Phongkham/Areas/Admin/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/lenovo/Desktop/Phongkham/Phongkham/Areas/Dentist/Views/Cakhams/Create.cshtml]
+[C:/Users/ADMIN/DoAn_CongCuPhatTrien/Phongkham/Areas/Dentist/Views/Cakhams/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRGVudGlzdFxWaWV3c1xDYWtoYW1zXENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/lenovo/Desktop/Phongkham/Phongkham/Areas/Dentist/Views/Cakhams/Delete.cshtml]
+[C:/Users/ADMIN/DoAn_CongCuPhatTrien/Phongkham/Areas/Dentist/Views/Cakhams/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRGVudGlzdFxWaWV3c1xDYWtoYW1zXERlbGV0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/lenovo/Desktop/Phongkham/Phongkham/Areas/Dentist/Views/Cakhams/Edit.cshtml]
+[C:/Users/ADMIN/DoAn_CongCuPhatTrien/Phongkham/Areas/Dentist/Views/Cakhams/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRGVudGlzdFxWaWV3c1xDYWtoYW1zXEVkaXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/lenovo/Desktop/Phongkham/Phongkham/Areas/Dentist/Views/Cakhams/Index.cshtml]
+[C:/Users/ADMIN/DoAn_CongCuPhatTrien/Phongkham/Areas/Dentist/Views/Cakhams/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRGVudGlzdFxWaWV3c1xDYWtoYW1zXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/lenovo/Desktop/Phongkham/Phongkham/Areas/Dentist/Views/HomeDT/Index.cshtml]
+[C:/Users/ADMIN/DoAn_CongCuPhatTrien/Phongkham/Areas/Dentist/Views/HomeDT/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRGVudGlzdFxWaWV3c1xIb21lRFRcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/lenovo/Desktop/Phongkham/Phongkham/Areas/Dentist/Views/HomeDT/IndexLK.cshtml]
+[C:/Users/ADMIN/DoAn_CongCuPhatTrien/Phongkham/Areas/Dentist/Views/HomeDT/IndexLK.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRGVudGlzdFxWaWV3c1xIb21lRFRcSW5kZXhMSy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/lenovo/Desktop/Phongkham/Phongkham/Areas/Dentist/Views/HomeDT/IndexTT.cshtml]
+[C:/Users/ADMIN/DoAn_CongCuPhatTrien/Phongkham/Areas/Dentist/Views/HomeDT/IndexTT.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRGVudGlzdFxWaWV3c1xIb21lRFRcSW5kZXhUVC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/lenovo/Desktop/Phongkham/Phongkham/Areas/Dentist/Views/Image/Index.cshtml]
+[C:/Users/ADMIN/DoAn_CongCuPhatTrien/Phongkham/Areas/Dentist/Views/Image/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRGVudGlzdFxWaWV3c1xJbWFnZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/lenovo/Desktop/Phongkham/Phongkham/Areas/Dentist/Views/Phieukham/Create.cshtml]
+[C:/Users/ADMIN/DoAn_CongCuPhatTrien/Phongkham/Areas/Dentist/Views/Phieukham/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRGVudGlzdFxWaWV3c1xQaGlldWtoYW1cQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/lenovo/Desktop/Phongkham/Phongkham/Areas/Dentist/Views/Phieukham/Details.cshtml]
+[C:/Users/ADMIN/DoAn_CongCuPhatTrien/Phongkham/Areas/Dentist/Views/Phieukham/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRGVudGlzdFxWaWV3c1xQaGlldWtoYW1cRGV0YWlscy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/lenovo/Desktop/Phongkham/Phongkham/Areas/Dentist/Views/Phieukham/Edit.cshtml]
+[C:/Users/ADMIN/DoAn_CongCuPhatTrien/Phongkham/Areas/Dentist/Views/Phieukham/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRGVudGlzdFxWaWV3c1xQaGlldWtoYW1cRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/lenovo/Desktop/Phongkham/Phongkham/Areas/Dentist/Views/Phieukham/ListPhieuKham.cshtml]
+[C:/Users/ADMIN/DoAn_CongCuPhatTrien/Phongkham/Areas/Dentist/Views/Phieukham/ListPhieuKham.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRGVudGlzdFxWaWV3c1xQaGlldWtoYW1cTGlzdFBoaWV1S2hhbS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/lenovo/Desktop/Phongkham/Phongkham/Areas/Dentist/Views/Tintucs/Details.cshtml]
+[C:/Users/ADMIN/DoAn_CongCuPhatTrien/Phongkham/Areas/Dentist/Views/Tintucs/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRGVudGlzdFxWaWV3c1xUaW50dWNzXERldGFpbHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/lenovo/Desktop/Phongkham/Phongkham/Areas/Dentist/Views/Tintucs/Index.cshtml]
+[C:/Users/ADMIN/DoAn_CongCuPhatTrien/Phongkham/Areas/Dentist/Views/Tintucs/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRGVudGlzdFxWaWV3c1xUaW50dWNzXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/lenovo/Desktop/Phongkham/Phongkham/Areas/Dentist/Views/_ViewImports.cshtml]
+[C:/Users/ADMIN/DoAn_CongCuPhatTrien/Phongkham/Areas/Dentist/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRGVudGlzdFxWaWV3c1xfVmlld0ltcG9ydHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/lenovo/Desktop/Phongkham/Phongkham/Areas/Identity/Pages/Account/ExternalLogin.cshtml]
+[C:/Users/ADMIN/DoAn_CongCuPhatTrien/Phongkham/Areas/Identity/Pages/Account/ExternalLogin.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxFeHRlcm5hbExvZ2luLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/lenovo/Desktop/Phongkham/Phongkham/Areas/Identity/Pages/Account/Login.cshtml]
+[C:/Users/ADMIN/DoAn_CongCuPhatTrien/Phongkham/Areas/Identity/Pages/Account/Login.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxMb2dpbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/lenovo/Desktop/Phongkham/Phongkham/Areas/Identity/Pages/Account/Manage/ChangePassword.cshtml]
+[C:/Users/ADMIN/DoAn_CongCuPhatTrien/Phongkham/Areas/Identity/Pages/Account/Manage/ChangePassword.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcQ2hhbmdlUGFzc3dvcmQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/lenovo/Desktop/Phongkham/Phongkham/Areas/Identity/Pages/Account/Manage/Email.cshtml]
+[C:/Users/ADMIN/DoAn_CongCuPhatTrien/Phongkham/Areas/Identity/Pages/Account/Manage/Email.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcRW1haWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/lenovo/Desktop/Phongkham/Phongkham/Areas/Identity/Pages/Account/Manage/ExternalLogins.cshtml]
+[C:/Users/ADMIN/DoAn_CongCuPhatTrien/Phongkham/Areas/Identity/Pages/Account/Manage/ExternalLogins.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcRXh0ZXJuYWxMb2dpbnMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/lenovo/Desktop/Phongkham/Phongkham/Areas/Identity/Pages/Account/Manage/Index.cshtml]
+[C:/Users/ADMIN/DoAn_CongCuPhatTrien/Phongkham/Areas/Identity/Pages/Account/Manage/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/lenovo/Desktop/Phongkham/Phongkham/Areas/Identity/Pages/Account/Manage/PersonalData.cshtml]
+[C:/Users/ADMIN/DoAn_CongCuPhatTrien/Phongkham/Areas/Identity/Pages/Account/Manage/PersonalData.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcUGVyc29uYWxEYXRhLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/lenovo/Desktop/Phongkham/Phongkham/Areas/Identity/Pages/Account/Manage/_ManageNav.cshtml]
+[C:/Users/ADMIN/DoAn_CongCuPhatTrien/Phongkham/Areas/Identity/Pages/Account/Manage/_ManageNav.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcX01hbmFnZU5hdi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/lenovo/Desktop/Phongkham/Phongkham/Areas/Identity/Pages/Account/Manage/_ViewImports.cshtml]
+[C:/Users/ADMIN/DoAn_CongCuPhatTrien/Phongkham/Areas/Identity/Pages/Account/Manage/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/lenovo/Desktop/Phongkham/Phongkham/Areas/Identity/Pages/Account/Register.cshtml]
+[C:/Users/ADMIN/DoAn_CongCuPhatTrien/Phongkham/Areas/Identity/Pages/Account/Register.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxSZWdpc3Rlci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/lenovo/Desktop/Phongkham/Phongkham/Areas/Identity/Pages/Account/RegisterWithoutAdmin.cshtml]
+[C:/Users/ADMIN/DoAn_CongCuPhatTrien/Phongkham/Areas/Identity/Pages/Account/RegisterWithoutAdmin.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxSZWdpc3RlcldpdGhvdXRBZG1pbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/lenovo/Desktop/Phongkham/Phongkham/Areas/Identity/Pages/Account/_ViewImports.cshtml]
+[C:/Users/ADMIN/DoAn_CongCuPhatTrien/Phongkham/Areas/Identity/Pages/Account/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxfVmlld0ltcG9ydHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/lenovo/Desktop/Phongkham/Phongkham/Areas/Identity/Pages/_ValidationScriptsPartial.cshtml]
+[C:/Users/ADMIN/DoAn_CongCuPhatTrien/Phongkham/Areas/Identity/Pages/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZhbGlkYXRpb25TY3JpcHRzUGFydGlhbC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/lenovo/Desktop/Phongkham/Phongkham/Areas/Identity/Pages/_ViewImports.cshtml]
+[C:/Users/ADMIN/DoAn_CongCuPhatTrien/Phongkham/Areas/Identity/Pages/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/lenovo/Desktop/Phongkham/Phongkham/Areas/Identity/Pages/_ViewStart.cshtml]
+[C:/Users/ADMIN/DoAn_CongCuPhatTrien/Phongkham/Areas/Identity/Pages/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/lenovo/Desktop/Phongkham/Phongkham/Areas/Patient/Views/Danglich/Create.cshtml]
+[C:/Users/ADMIN/DoAn_CongCuPhatTrien/Phongkham/Areas/Patient/Views/Danglich/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcUGF0aWVudFxWaWV3c1xEYW5nbGljaFxDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/lenovo/Desktop/Phongkham/Phongkham/Areas/Patient/Views/Danglich/Delete.cshtml]
+[C:/Users/ADMIN/DoAn_CongCuPhatTrien/Phongkham/Areas/Patient/Views/Danglich/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcUGF0aWVudFxWaWV3c1xEYW5nbGljaFxEZWxldGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/lenovo/Desktop/Phongkham/Phongkham/Areas/Patient/Views/Danglich/Edit.cshtml]
+[C:/Users/ADMIN/DoAn_CongCuPhatTrien/Phongkham/Areas/Patient/Views/Danglich/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcUGF0aWVudFxWaWV3c1xEYW5nbGljaFxFZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/lenovo/Desktop/Phongkham/Phongkham/Areas/Patient/Views/Danglich/Index.cshtml]
+[C:/Users/ADMIN/DoAn_CongCuPhatTrien/Phongkham/Areas/Patient/Views/Danglich/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcUGF0aWVudFxWaWV3c1xEYW5nbGljaFxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/lenovo/Desktop/Phongkham/Phongkham/Areas/Patient/Views/Home/Chat.cshtml]
+[C:/Users/ADMIN/DoAn_CongCuPhatTrien/Phongkham/Areas/Patient/Views/Home/Chat.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcUGF0aWVudFxWaWV3c1xIb21lXENoYXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/lenovo/Desktop/Phongkham/Phongkham/Areas/Patient/Views/Home/Detail.cshtml]
+[C:/Users/ADMIN/DoAn_CongCuPhatTrien/Phongkham/Areas/Patient/Views/Home/Detail.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcUGF0aWVudFxWaWV3c1xIb21lXERldGFpbC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/lenovo/Desktop/Phongkham/Phongkham/Areas/Patient/Views/Home/DetailDC.cshtml]
+[C:/Users/ADMIN/DoAn_CongCuPhatTrien/Phongkham/Areas/Patient/Views/Home/DetailDC.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcUGF0aWVudFxWaWV3c1xIb21lXERldGFpbERDLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/lenovo/Desktop/Phongkham/Phongkham/Areas/Patient/Views/Home/dichVu1.cshtml]
+[C:/Users/ADMIN/DoAn_CongCuPhatTrien/Phongkham/Areas/Patient/Views/Home/dichVu1.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcUGF0aWVudFxWaWV3c1xIb21lXGRpY2hWdTEuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/lenovo/Desktop/Phongkham/Phongkham/Areas/Patient/Views/Home/Index.cshtml]
+[C:/Users/ADMIN/DoAn_CongCuPhatTrien/Phongkham/Areas/Patient/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcUGF0aWVudFxWaWV3c1xIb21lXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/lenovo/Desktop/Phongkham/Phongkham/Areas/Patient/Views/Home/IndexLK.cshtml]
+[C:/Users/ADMIN/DoAn_CongCuPhatTrien/Phongkham/Areas/Patient/Views/Home/IndexLK.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcUGF0aWVudFxWaWV3c1xIb21lXEluZGV4TEsuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/lenovo/Desktop/Phongkham/Phongkham/Areas/Patient/Views/Home/IndexTT.cshtml]
+[C:/Users/ADMIN/DoAn_CongCuPhatTrien/Phongkham/Areas/Patient/Views/Home/IndexTT.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcUGF0aWVudFxWaWV3c1xIb21lXEluZGV4VFQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/lenovo/Desktop/Phongkham/Phongkham/Areas/Patient/Views/Home/Privacy.cshtml]
+[C:/Users/ADMIN/DoAn_CongCuPhatTrien/Phongkham/Areas/Patient/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcUGF0aWVudFxWaWV3c1xIb21lXFByaXZhY3kuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/lenovo/Desktop/Phongkham/Phongkham/Areas/Patient/Views/Tintucs/Details.cshtml]
+[C:/Users/ADMIN/DoAn_CongCuPhatTrien/Phongkham/Areas/Patient/Views/Tintucs/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcUGF0aWVudFxWaWV3c1xUaW50dWNzXERldGFpbHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/lenovo/Desktop/Phongkham/Phongkham/Areas/Patient/Views/Tintucs/Index.cshtml]
+[C:/Users/ADMIN/DoAn_CongCuPhatTrien/Phongkham/Areas/Patient/Views/Tintucs/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcUGF0aWVudFxWaWV3c1xUaW50dWNzXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/lenovo/Desktop/Phongkham/Phongkham/Areas/Patient/Views/_ViewImports.cshtml]
+[C:/Users/ADMIN/DoAn_CongCuPhatTrien/Phongkham/Areas/Patient/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcUGF0aWVudFxWaWV3c1xfVmlld0ltcG9ydHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/lenovo/Desktop/Phongkham/Phongkham/Areas/Staff/Views/StaffCakhams/Index.cshtml]
+[C:/Users/ADMIN/DoAn_CongCuPhatTrien/Phongkham/Areas/Staff/Views/StaffCakhams/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcU3RhZmZcVmlld3NcU3RhZmZDYWtoYW1zXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/lenovo/Desktop/Phongkham/Phongkham/Areas/Staff/Views/StaffDichvu/create.cshtml]
+[C:/Users/ADMIN/DoAn_CongCuPhatTrien/Phongkham/Areas/Staff/Views/StaffDichvu/create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcU3RhZmZcVmlld3NcU3RhZmZEaWNodnVcY3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/lenovo/Desktop/Phongkham/Phongkham/Areas/Staff/Views/StaffDichvu/Delete.cshtml]
+[C:/Users/ADMIN/DoAn_CongCuPhatTrien/Phongkham/Areas/Staff/Views/StaffDichvu/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcU3RhZmZcVmlld3NcU3RhZmZEaWNodnVcRGVsZXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/lenovo/Desktop/Phongkham/Phongkham/Areas/Staff/Views/StaffDichvu/Edit.cshtml]
+[C:/Users/ADMIN/DoAn_CongCuPhatTrien/Phongkham/Areas/Staff/Views/StaffDichvu/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcU3RhZmZcVmlld3NcU3RhZmZEaWNodnVcRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/lenovo/Desktop/Phongkham/Phongkham/Areas/Staff/Views/StaffDichvu/Index.cshtml]
+[C:/Users/ADMIN/DoAn_CongCuPhatTrien/Phongkham/Areas/Staff/Views/StaffDichvu/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcU3RhZmZcVmlld3NcU3RhZmZEaWNodnVcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/lenovo/Desktop/Phongkham/Phongkham/Areas/Staff/Views/StaffLichdat/Index.cshtml]
+[C:/Users/ADMIN/DoAn_CongCuPhatTrien/Phongkham/Areas/Staff/Views/StaffLichdat/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcU3RhZmZcVmlld3NcU3RhZmZMaWNoZGF0XEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/lenovo/Desktop/Phongkham/Phongkham/Areas/Staff/Views/StaffLichkham/Create.cshtml]
+[C:/Users/ADMIN/DoAn_CongCuPhatTrien/Phongkham/Areas/Staff/Views/StaffLichkham/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcU3RhZmZcVmlld3NcU3RhZmZMaWNoa2hhbVxDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/lenovo/Desktop/Phongkham/Phongkham/Areas/Staff/Views/StaffLichkham/Index.cshtml]
+[C:/Users/ADMIN/DoAn_CongCuPhatTrien/Phongkham/Areas/Staff/Views/StaffLichkham/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcU3RhZmZcVmlld3NcU3RhZmZMaWNoa2hhbVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/lenovo/Desktop/Phongkham/Phongkham/Areas/Staff/Views/StaffLoaitintucs/Create.cshtml]
+[C:/Users/ADMIN/DoAn_CongCuPhatTrien/Phongkham/Areas/Staff/Views/StaffLoaitintucs/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcU3RhZmZcVmlld3NcU3RhZmZMb2FpdGludHVjc1xDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/lenovo/Desktop/Phongkham/Phongkham/Areas/Staff/Views/StaffLoaitintucs/Delete.cshtml]
+[C:/Users/ADMIN/DoAn_CongCuPhatTrien/Phongkham/Areas/Staff/Views/StaffLoaitintucs/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcU3RhZmZcVmlld3NcU3RhZmZMb2FpdGludHVjc1xEZWxldGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/lenovo/Desktop/Phongkham/Phongkham/Areas/Staff/Views/StaffLoaitintucs/Details.cshtml]
+[C:/Users/ADMIN/DoAn_CongCuPhatTrien/Phongkham/Areas/Staff/Views/StaffLoaitintucs/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcU3RhZmZcVmlld3NcU3RhZmZMb2FpdGludHVjc1xEZXRhaWxzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/lenovo/Desktop/Phongkham/Phongkham/Areas/Staff/Views/StaffLoaitintucs/Edit.cshtml]
+[C:/Users/ADMIN/DoAn_CongCuPhatTrien/Phongkham/Areas/Staff/Views/StaffLoaitintucs/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcU3RhZmZcVmlld3NcU3RhZmZMb2FpdGludHVjc1xFZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/lenovo/Desktop/Phongkham/Phongkham/Areas/Staff/Views/StaffLoaitintucs/Index.cshtml]
+[C:/Users/ADMIN/DoAn_CongCuPhatTrien/Phongkham/Areas/Staff/Views/StaffLoaitintucs/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcU3RhZmZcVmlld3NcU3RhZmZMb2FpdGludHVjc1xJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/lenovo/Desktop/Phongkham/Phongkham/Areas/Staff/Views/StaffPhieukham/Index.cshtml]
+[C:/Users/ADMIN/DoAn_CongCuPhatTrien/Phongkham/Areas/Staff/Views/StaffPhieukham/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcU3RhZmZcVmlld3NcU3RhZmZQaGlldWtoYW1cSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/lenovo/Desktop/Phongkham/Phongkham/Areas/Staff/Views/StaffThuoc/Create.cshtml]
+[C:/Users/ADMIN/DoAn_CongCuPhatTrien/Phongkham/Areas/Staff/Views/StaffThuoc/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcU3RhZmZcVmlld3NcU3RhZmZUaHVvY1xDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/lenovo/Desktop/Phongkham/Phongkham/Areas/Staff/Views/StaffThuoc/Delete.cshtml]
+[C:/Users/ADMIN/DoAn_CongCuPhatTrien/Phongkham/Areas/Staff/Views/StaffThuoc/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcU3RhZmZcVmlld3NcU3RhZmZUaHVvY1xEZWxldGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/lenovo/Desktop/Phongkham/Phongkham/Areas/Staff/Views/StaffThuoc/Edit.cshtml]
+[C:/Users/ADMIN/DoAn_CongCuPhatTrien/Phongkham/Areas/Staff/Views/StaffThuoc/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcU3RhZmZcVmlld3NcU3RhZmZUaHVvY1xFZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/lenovo/Desktop/Phongkham/Phongkham/Areas/Staff/Views/StaffThuoc/Index.cshtml]
+[C:/Users/ADMIN/DoAn_CongCuPhatTrien/Phongkham/Areas/Staff/Views/StaffThuoc/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcU3RhZmZcVmlld3NcU3RhZmZUaHVvY1xJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/lenovo/Desktop/Phongkham/Phongkham/Areas/Staff/Views/StaffThuoc/Restore.cshtml]
+[C:/Users/ADMIN/DoAn_CongCuPhatTrien/Phongkham/Areas/Staff/Views/StaffThuoc/Restore.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcU3RhZmZcVmlld3NcU3RhZmZUaHVvY1xSZXN0b3JlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/lenovo/Desktop/Phongkham/Phongkham/Areas/Staff/Views/StaffTintucs/Create.cshtml]
+[C:/Users/ADMIN/DoAn_CongCuPhatTrien/Phongkham/Areas/Staff/Views/StaffTintucs/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcU3RhZmZcVmlld3NcU3RhZmZUaW50dWNzXENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/lenovo/Desktop/Phongkham/Phongkham/Areas/Staff/Views/StaffTintucs/Delete.cshtml]
+[C:/Users/ADMIN/DoAn_CongCuPhatTrien/Phongkham/Areas/Staff/Views/StaffTintucs/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcU3RhZmZcVmlld3NcU3RhZmZUaW50dWNzXERlbGV0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/lenovo/Desktop/Phongkham/Phongkham/Areas/Staff/Views/StaffTintucs/Details.cshtml]
+[C:/Users/ADMIN/DoAn_CongCuPhatTrien/Phongkham/Areas/Staff/Views/StaffTintucs/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcU3RhZmZcVmlld3NcU3RhZmZUaW50dWNzXERldGFpbHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/lenovo/Desktop/Phongkham/Phongkham/Areas/Staff/Views/StaffTintucs/Edit.cshtml]
+[C:/Users/ADMIN/DoAn_CongCuPhatTrien/Phongkham/Areas/Staff/Views/StaffTintucs/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcU3RhZmZcVmlld3NcU3RhZmZUaW50dWNzXEVkaXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/lenovo/Desktop/Phongkham/Phongkham/Areas/Staff/Views/StaffTintucs/Index.cshtml]
+[C:/Users/ADMIN/DoAn_CongCuPhatTrien/Phongkham/Areas/Staff/Views/StaffTintucs/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcU3RhZmZcVmlld3NcU3RhZmZUaW50dWNzXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/lenovo/Desktop/Phongkham/Phongkham/Areas/Staff/Views/Taikham/Index.cshtml]
+[C:/Users/ADMIN/DoAn_CongCuPhatTrien/Phongkham/Areas/Staff/Views/Taikham/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcU3RhZmZcVmlld3NcVGFpa2hhbVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/lenovo/Desktop/Phongkham/Phongkham/Areas/Staff/Views/ThongKe/Index.cshtml]
+[C:/Users/ADMIN/DoAn_CongCuPhatTrien/Phongkham/Areas/Staff/Views/ThongKe/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcU3RhZmZcVmlld3NcVGhvbmdLZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/lenovo/Desktop/Phongkham/Phongkham/Areas/Staff/Views/ThongKe/IndexNgay.cshtml]
+[C:/Users/ADMIN/DoAn_CongCuPhatTrien/Phongkham/Areas/Staff/Views/ThongKe/IndexNgay.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcU3RhZmZcVmlld3NcVGhvbmdLZVxJbmRleE5nYXkuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/lenovo/Desktop/Phongkham/Phongkham/Areas/Staff/Views/ThongKe/IndexTheoNam.cshtml]
+[C:/Users/ADMIN/DoAn_CongCuPhatTrien/Phongkham/Areas/Staff/Views/ThongKe/IndexTheoNam.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcU3RhZmZcVmlld3NcVGhvbmdLZVxJbmRleFRoZW9OYW0uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/lenovo/Desktop/Phongkham/Phongkham/Areas/Staff/Views/ThongKe/PieChartThang.cshtml]
+[C:/Users/ADMIN/DoAn_CongCuPhatTrien/Phongkham/Areas/Staff/Views/ThongKe/PieChartThang.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcU3RhZmZcVmlld3NcVGhvbmdLZVxQaWVDaGFydFRoYW5nLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/lenovo/Desktop/Phongkham/Phongkham/Areas/Staff/Views/thuchiendichvu/Index.cshtml]
+[C:/Users/ADMIN/DoAn_CongCuPhatTrien/Phongkham/Areas/Staff/Views/thuchiendichvu/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcU3RhZmZcVmlld3NcdGh1Y2hpZW5kaWNodnVcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/lenovo/Desktop/Phongkham/Phongkham/Areas/Staff/Views/_ViewImports.cshtml]
+[C:/Users/ADMIN/DoAn_CongCuPhatTrien/Phongkham/Areas/Staff/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcU3RhZmZcVmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/lenovo/Desktop/Phongkham/Phongkham/Pages/Error.cshtml]
+[C:/Users/ADMIN/DoAn_CongCuPhatTrien/Phongkham/Pages/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXJyb3IuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/lenovo/Desktop/Phongkham/Phongkham/Pages/_Layout.cshtml]
+[C:/Users/ADMIN/DoAn_CongCuPhatTrien/Phongkham/Pages/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX0xheW91dC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/lenovo/Desktop/Phongkham/Phongkham/Pages/_ViewImports.cshtml]
+[C:/Users/ADMIN/DoAn_CongCuPhatTrien/Phongkham/Pages/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/lenovo/Desktop/Phongkham/Phongkham/Pages/_ViewStart.cshtml]
+[C:/Users/ADMIN/DoAn_CongCuPhatTrien/Phongkham/Pages/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/lenovo/Desktop/Phongkham/Phongkham/Views/DLKVL/Create.cshtml]
+[C:/Users/ADMIN/DoAn_CongCuPhatTrien/Phongkham/Views/DLKVL/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRExLVkxcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/lenovo/Desktop/Phongkham/Phongkham/Views/DLKVL/Edit.cshtml]
+[C:/Users/ADMIN/DoAn_CongCuPhatTrien/Phongkham/Views/DLKVL/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRExLVkxcRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/lenovo/Desktop/Phongkham/Phongkham/Views/DLKVL/Search.cshtml]
+[C:/Users/ADMIN/DoAn_CongCuPhatTrien/Phongkham/Views/DLKVL/Search.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRExLVkxcU2VhcmNoLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/lenovo/Desktop/Phongkham/Phongkham/Views/HomeVL/ChatAdmin.cshtml]
+[C:/Users/ADMIN/DoAn_CongCuPhatTrien/Phongkham/Views/HomeVL/ChatAdmin.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVZMXENoYXRBZG1pbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/lenovo/Desktop/Phongkham/Phongkham/Views/HomeVL/ChatClient.cshtml]
+[C:/Users/ADMIN/DoAn_CongCuPhatTrien/Phongkham/Views/HomeVL/ChatClient.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVZMXENoYXRDbGllbnQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/lenovo/Desktop/Phongkham/Phongkham/Views/HomeVL/DetailDCVL.cshtml]
+[C:/Users/ADMIN/DoAn_CongCuPhatTrien/Phongkham/Views/HomeVL/DetailDCVL.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVZMXERldGFpbERDVkwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/lenovo/Desktop/Phongkham/Phongkham/Views/HomeVL/DetailVL.cshtml]
+[C:/Users/ADMIN/DoAn_CongCuPhatTrien/Phongkham/Views/HomeVL/DetailVL.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVZMXERldGFpbFZMLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/lenovo/Desktop/Phongkham/Phongkham/Views/HomeVL/DichVU.cshtml]
+[C:/Users/ADMIN/DoAn_CongCuPhatTrien/Phongkham/Views/HomeVL/DichVU.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVZMXERpY2hWVS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/lenovo/Desktop/Phongkham/Phongkham/Views/HomeVL/Index.cshtml]
+[C:/Users/ADMIN/DoAn_CongCuPhatTrien/Phongkham/Views/HomeVL/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVZMXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/lenovo/Desktop/Phongkham/Phongkham/Views/HomeVL/IndexTTVL.cshtml]
+[C:/Users/ADMIN/DoAn_CongCuPhatTrien/Phongkham/Views/HomeVL/IndexTTVL.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVZMXEluZGV4VFRWTC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/lenovo/Desktop/Phongkham/Phongkham/Views/Questions/Answer.cshtml]
+[C:/Users/ADMIN/DoAn_CongCuPhatTrien/Phongkham/Views/Questions/Answer.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUXVlc3Rpb25zXEFuc3dlci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/lenovo/Desktop/Phongkham/Phongkham/Views/Questions/Create.cshtml]
+[C:/Users/ADMIN/DoAn_CongCuPhatTrien/Phongkham/Views/Questions/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUXVlc3Rpb25zXENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/lenovo/Desktop/Phongkham/Phongkham/Views/Questions/Index.cshtml]
+[C:/Users/ADMIN/DoAn_CongCuPhatTrien/Phongkham/Views/Questions/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUXVlc3Rpb25zXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/lenovo/Desktop/Phongkham/Phongkham/Views/Shared/Error.cshtml]
+[C:/Users/ADMIN/DoAn_CongCuPhatTrien/Phongkham/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/lenovo/Desktop/Phongkham/Phongkham/Views/Shared/_AdLayout.cshtml]
+[C:/Users/ADMIN/DoAn_CongCuPhatTrien/Phongkham/Views/Shared/_AdLayout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9BZExheW91dC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/lenovo/Desktop/Phongkham/Phongkham/Views/Shared/_LayoutDentist.cshtml]
+[C:/Users/ADMIN/DoAn_CongCuPhatTrien/Phongkham/Views/Shared/_LayoutDentist.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXREZW50aXN0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/lenovo/Desktop/Phongkham/Phongkham/Views/Shared/_LayoutStaff.cshtml]
+[C:/Users/ADMIN/DoAn_CongCuPhatTrien/Phongkham/Views/Shared/_LayoutStaff.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXRTdGFmZi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/lenovo/Desktop/Phongkham/Phongkham/Views/Shared/_LayoutVL.cshtml]
+[C:/Users/ADMIN/DoAn_CongCuPhatTrien/Phongkham/Views/Shared/_LayoutVL.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXRWTC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/lenovo/Desktop/Phongkham/Phongkham/Views/Shared/_LoginPartial.cshtml]
+[C:/Users/ADMIN/DoAn_CongCuPhatTrien/Phongkham/Views/Shared/_LoginPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Mb2dpblBhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/lenovo/Desktop/Phongkham/Phongkham/Views/Shared/_Menu.cshtml]
+[C:/Users/ADMIN/DoAn_CongCuPhatTrien/Phongkham/Views/Shared/_Menu.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9NZW51LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/lenovo/Desktop/Phongkham/Phongkham/Views/Shared/_MenuPartial.cshtml]
+[C:/Users/ADMIN/DoAn_CongCuPhatTrien/Phongkham/Views/Shared/_MenuPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9NZW51UGFydGlhbC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/lenovo/Desktop/Phongkham/Phongkham/Views/Shared/_MenuVL.cshtml]
+[C:/Users/ADMIN/DoAn_CongCuPhatTrien/Phongkham/Views/Shared/_MenuVL.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9NZW51VkwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/lenovo/Desktop/Phongkham/Phongkham/Views/Shared/_ValidationScriptsPartial.cshtml]
+[C:/Users/ADMIN/DoAn_CongCuPhatTrien/Phongkham/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/lenovo/Desktop/Phongkham/Phongkham/Views/Statistics/ServiceRevenueChart.cshtml]
+[C:/Users/ADMIN/DoAn_CongCuPhatTrien/Phongkham/Views/Statistics/ServiceRevenueChart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3RhdGlzdGljc1xTZXJ2aWNlUmV2ZW51ZUNoYXJ0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/lenovo/Desktop/Phongkham/Phongkham/Views/_ViewImports.cshtml]
+[C:/Users/ADMIN/DoAn_CongCuPhatTrien/Phongkham/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/lenovo/Desktop/Phongkham/Phongkham/Views/_ViewStart.cshtml]
+[C:/Users/ADMIN/DoAn_CongCuPhatTrien/Phongkham/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/lenovo/Desktop/Phongkham/Phongkham/Views/Shared/_Layout.cshtml]
+[C:/Users/ADMIN/DoAn_CongCuPhatTrien/Phongkham/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-bmre0gaj2x

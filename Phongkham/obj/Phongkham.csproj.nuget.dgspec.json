@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\Phongkham.csproj": {}
+    "C:\\Users\\ADMIN\\DoAn_CongCuPhatTrien\\Phongkham\\Phongkham.csproj": {}
   },
   "projects": {
-    "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\Phongkham.csproj": {
+    "C:\\Users\\ADMIN\\DoAn_CongCuPhatTrien\\Phongkham\\Phongkham.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\Phongkham.csproj",
+        "projectUniqueName": "C:\\Users\\ADMIN\\DoAn_CongCuPhatTrien\\Phongkham\\Phongkham.csproj",
         "projectName": "Phongkham",
-        "projectPath": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\Phongkham.csproj",
-        "packagesPath": "C:\\Users\\lenovo\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\obj\\",
+        "projectPath": "C:\\Users\\ADMIN\\DoAn_CongCuPhatTrien\\Phongkham\\Phongkham.csproj",
+        "packagesPath": "C:\\Users\\ADMIN\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\ADMIN\\DoAn_CongCuPhatTrien\\Phongkham\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\lenovo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\ADMIN\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
