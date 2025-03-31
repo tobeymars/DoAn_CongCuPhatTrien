@@ -5,7 +5,7 @@ using Newtonsoft.Json;
 using Phongkham.Areas.Patient.Controllers;
 using Phongkham.Data;
 using Phongkham.Models;
-
+//aaaa
 namespace Phongkham.Controllers
 {
     public class HomeVLController : Controller
