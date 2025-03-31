@@ -12888,19 +12888,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\lenovo\\.nuget\\packages\\": {}
+    "C:\\Users\\Admin\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\Phongkham.csproj",
+      "projectUniqueName": "C:\\Users\\Admin\\DoAn_CongCuPhatTrien\\Phongkham\\Phongkham.csproj",
       "projectName": "Phongkham",
-      "projectPath": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\Phongkham.csproj",
-      "packagesPath": "C:\\Users\\lenovo\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\lenovo\\Desktop\\Phongkham\\Phongkham\\obj\\",
+      "projectPath": "C:\\Users\\Admin\\DoAn_CongCuPhatTrien\\Phongkham\\Phongkham.csproj",
+      "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Admin\\DoAn_CongCuPhatTrien\\Phongkham\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\lenovo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -13021,7 +13021,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.200/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.202/PortableRuntimeIdentifierGraph.json"
       }
     }
   },

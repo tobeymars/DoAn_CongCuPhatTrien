@@ -1,12 +1,41 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\lenovo\\Desktop\\Phongkham\\",
-  "Documents": [],
+  "WorkspaceRootPath": "C:\\Users\\Admin\\DoAn_CongCuPhatTrien\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{4B6957EC-316A-4F3F-849C-F11D2EB814FE}|Phongkham\\Phongkham.csproj|c:\\users\\admin\\doan_congcuphattrien\\phongkham\\controllers\\homevlcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4B6957EC-316A-4F3F-849C-F11D2EB814FE}|Phongkham\\Phongkham.csproj|solutionrelative:phongkham\\controllers\\homevlcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": []
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "HomeVLController.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\DoAn_CongCuPhatTrien\\Phongkham\\Controllers\\HomeVLController.cs",
+              "RelativeDocumentMoniker": "Phongkham\\Controllers\\HomeVLController.cs",
+              "ToolTip": "C:\\Users\\Admin\\DoAn_CongCuPhatTrien\\Phongkham\\Controllers\\HomeVLController.cs",
+              "RelativeToolTip": "Phongkham\\Controllers\\HomeVLController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAuAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-31T14:47:06.436Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            }
+          ]
+        }
+      ]
     }
   ]
 }

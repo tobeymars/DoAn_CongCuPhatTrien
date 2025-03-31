@@ -8,6 +8,7 @@ using Phongkham.Models;
 
 namespace Phongkham.Controllers
 {
+    // truong ngoc thanh phong
     public class HomeVLController : Controller
     {
         private readonly ApplicationDBcontext _context;
