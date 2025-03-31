@@ -4,6 +4,7 @@ using Phongkham.Data;
 
 namespace Phongkham.Controllers
 {
+    // Nguyen minh nhut
     public class ChatController : Controller
     {
         private readonly ApplicationDBcontext _context;
